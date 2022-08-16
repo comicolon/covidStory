@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'Laravel') }}</title>
+        <title>{{ config('app.name', 'Covid Story') }}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -17,10 +17,26 @@
         @livewireStyles
     </head>
     <body class="font-sans antialiased">
-        <x-jet-banner />
+        {{-- <x-jet-banner /> --}}
 
-        <div class="min-h-screen bg-gray-100">
+        <div class="">
             @livewire('navigation-menu')
+
+            <div class="relative flex items-top justify-center min-h-full bg-green-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+                @if (Route::has('login'))
+                    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+                        @auth
+                            {{-- <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a> --}}
+                        @else
+                            <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+    
+                            @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
+                            @endif
+                        @endauth
+                    </div>
+                @endif
+            </div>
 
             <!-- Page Heading -->
             @if (isset($header))
@@ -31,11 +47,16 @@
                 </header>
             @endif
 
-            <!-- Page Content -->
-            <main>
-                {{ $slot }}
-            </main>
-        </div>
+            <div class="flex">
+                @if (preg_match("/covidInfo/", $path) || preg_match("/covidNews/", $path))
+                    @include('components.left-menu')
+                @endif
+
+                <!-- Page Content -->
+                <div class="container h-full">
+                    @yield('content')
+                </div>
+            </div>
 
         @stack('modals')
 
