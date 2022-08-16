@@ -19,6 +19,13 @@
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
 
+             {{-- 닉네임 추가 --}}
+            <div class="mt-4">
+                <x-jet-label for="nickname" value="{{ __('Nickname') }}" />
+                <x-jet-input id="nickname" class="block mt-1 w-full" maxlength="32"
+                type="text" name="nickname" :value="old('nickname')" required />
+            </div>
+
             <div class="mt-4">
                 <x-jet-label for="password" value="{{ __('Password') }}" />
                 <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
