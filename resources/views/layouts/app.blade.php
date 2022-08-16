@@ -48,9 +48,9 @@
             @endif
 
             <div class="flex">
-                @if (preg_match("/covidInfo/", $path) || preg_match("/covidNews/", $path))
+                {{-- @if (preg_match("/covidInfo/", $path) || preg_match("/covidNews/", $path)) --}}
                     @include('components.left-menu')
-                @endif
+                {{-- @endif --}}
 
                 <!-- Page Content -->
                 <div class="container h-full">
