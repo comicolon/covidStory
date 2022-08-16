@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\BaseController;
+use App\Http\Controllers\covidInfo\covidInfo;
+use App\Http\Controllers\covidInfo\covidNewsController;
+use App\Http\Controllers\profile\show;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +17,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BaseController::class, 'index'])->name('home');
+Route::get('/index', [BaseController::class, 'index'])->name('home');
+
+// 네비게이션
+//코로나 정보
+Route::get('/covidInfo', [covidInfo::class, 'index'])->name('covidInfo');
+
+Route::get('/covidNews', [covidNewsController::class, 'index'])->name('covidNews');
+Route::get('/covidNews/create', [covidNewsController::class, 'create'])->name('covidNewsCreate');
+Route::post('/covidNews', [covidNewsController::class, 'store']);
+Route::get('/covidNews/{covidNews}', [covidNewsController::class, 'show']);
+Route::get('/covidNews/{covidNews}/edit', [covidNewsController::class, 'edit'])->name('covidNewsEdit');
+Route::put('/covidNews/{covidNews}', [covidNewsController::class, 'update']);
+Route::delete('/covidNews/{covidNews}', [covidNewsController::class, 'destroy']);
+
+//프로필
+Route::get('/user/profile', [show::class, 'index'])->name('profileShow');
 
 Route::middleware([
     'auth:sanctum',
