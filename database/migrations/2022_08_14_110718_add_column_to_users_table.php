@@ -20,6 +20,8 @@ return new class extends Migration
             $table->bigInteger('point')->nullable();
             $table->string('address')->nullable();
             $table->date('birth_date')->Nullable();
+            $table->integer('phone')->nullable();
+            $table->dateTime('change_nick_date')->nullable();
         });
     }
 

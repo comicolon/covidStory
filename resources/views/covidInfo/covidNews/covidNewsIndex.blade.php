@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    
+
 <div class="flex-grow">
     <div class="mx-auto my-auto px-8 py-4">
         <div class="flex">
@@ -12,8 +12,8 @@
         </div>
         <ul>
             @foreach ($covidNews as $news)
-                <a href="/covidNews/{{$news->id}}"
-                    <li class="block border-b p-3 m-3"> {{$news->title}} 
+                <a href="/covidNews/{{$news->id}}">
+                    <li class="block border-b p-3 m-3"> {{$news->title}}
                         <small class="float-right"> {{$news->created_at->format('Y-m-d')}}</small></li><br>
                 </a>
             @endforeach

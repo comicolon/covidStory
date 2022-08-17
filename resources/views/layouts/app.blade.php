@@ -12,6 +12,10 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        {{-- <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script> --}}
+        {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>   --}}
+        {{-- <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script> --}}
+        <script language="JavaScript" src="{{ URL::asset('js/jquery/jquery-3.6.0.min.js') }}"></script>
 
         <!-- Styles -->
         @livewireStyles
@@ -22,14 +26,14 @@
         <div class="">
             @livewire('navigation-menu')
 
-            <div class="relative flex items-top justify-center min-h-full bg-green-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
+            <div class="relative flex items-top justify-center bg-green-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
                 @if (Route::has('login'))
                     <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                         @auth
                             {{-- <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a> --}}
                         @else
                             <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
-    
+
                             @if (Route::has('register'))
                                 <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
                             @endif
@@ -57,7 +61,7 @@
                     @yield('content')
                 </div>
             </div>
-
+        </div>
         @stack('modals')
 
         @livewireScripts

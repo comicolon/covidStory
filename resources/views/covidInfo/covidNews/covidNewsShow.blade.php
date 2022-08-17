@@ -6,14 +6,14 @@
             {{$covidNews -> title}}
         </div>
         <div class="mb-8 pl-1 pb-2">
-            <small>출처 : {{$covidNews -> source}}<small>
+            <small>출처 : {{$covidNews -> source}}</small>
         </div>
         <div class="text-lg">
             @if($covidNews->image_name)
             <img src="{{asset('/storage/images/news/'.$covidNews->image_name)}}" style="width: 100%; height: 100%"
                     onclick="window.open(this.src)">
             @endif
-            {{$covidNews -> content}}
+            {!! $covidNews-> content !!}
         </div>
         <div class="mt-8">
             <a href="{{route('covidNews')}}">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    
+
 <div class="flex-grow">
 
     <div class="w-full text-2xl text-blue-600 mt-8">코로나 뉴스 수정</div>
@@ -12,10 +12,10 @@
                 <input type="text" id="title" name="title" required value="{{$covidNews->title}}"
                        class="outline-none border border-blue-400 w-full pl-1 py-1 rounded-lg">
             </p>
-            <p class="mt-4 h-44">
+            <p class="mt-4>
                 <label for="content" class="text-xl">내용</label>
                 <textarea id="content" name="content" required
-                          class="outline-none border border-blue-400 w-full h-full mt-2 rounded-lg resize-none">{{$covidNews->content}}</textarea>
+                          class="outline-none border border-blue-400 w-full h-full mt-2 rounded-lg resize-none">{!! $covidNews->content!!}</textarea>
             </p>
 
             <p class="mt-10">
@@ -39,3 +39,5 @@
         </form>
 </div>
 @endsection
+
+@include('.components.board');
