@@ -1,6 +1,0 @@
-
-<div>
-                    
-        index page
-        
-</div>
