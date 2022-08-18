@@ -3,6 +3,7 @@
 use App\Http\Controllers\BaseController;
 use App\Http\Controllers\covidInfo\covidInfo;
 use App\Http\Controllers\covidInfo\covidNewsController;
+use App\Http\Controllers\board\LifeStoryBoardController;
 use App\Http\Controllers\profile\show;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +34,11 @@ Route::put('/covidNews/{covidNews}', [covidNewsController::class, 'update']);
 Route::delete('/covidNews/{covidNews}', [covidNewsController::class, 'destroy']);
 //파일 업로드
 Route::post('/covidNews/upload', [covidNewsController::class, 'upload'])->name('covidNewsUpload');
+
+//게시판
+//일상이야기
+Route::get('/lifeStory', [LifeStoryBoardController::class, 'index'])->name('lifeStory');
+
 
 
 //프로필
