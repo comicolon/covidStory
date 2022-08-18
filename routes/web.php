@@ -1,9 +1,10 @@
 <?php
 
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\board\lifeStoryBoardController;
 use App\Http\Controllers\covidInfo\covidInfo;
 use App\Http\Controllers\covidInfo\covidNewsController;
-use App\Http\Controllers\board\LifeStoryBoardController;
+
 use App\Http\Controllers\profile\show;
 use Illuminate\Support\Facades\Route;
 
