@@ -9,10 +9,11 @@
             <small>출처 : {{$covidNews -> source}}</small>
         </div>
         <div class="text-lg">
-            @if($covidNews->image_name)
-            <img src="{{asset('/storage/images/news/'.$covidNews->image_name)}}" style="width: 100%; height: 100%"
-                    onclick="window.open(this.src)">
-            @endif
+{{--            이미지 업로드 주석처리--}}
+{{--            @if($covidNews->image_name)--}}
+{{--            <img src="{{asset('/storage/images/news/'.$covidNews->image_name)}}" style="width: 100%; height: 100%"--}}
+{{--                    onclick="window.open(this.src)">--}}
+{{--            @endif--}}
             {!! $covidNews-> content !!}
         </div>
         <div class="mt-8">

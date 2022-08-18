@@ -21,11 +21,12 @@ class covidNewsController extends Controller
         ]);
     }
 
-    public function create(Request $request){
+    public function show(Request $request, covidNews $covidNews){
 
         $path = $this-> getPath($request);
-        return view('covidInfo.covidNews.covidNewsCreate', [
-            'path' => $path
+        return view('covidInfo.covidNews.covidNewsShow', [
+            'path' => $path,
+            'covidNews' => $covidNews
         ]);
     }
 
@@ -63,12 +64,14 @@ class covidNewsController extends Controller
         return redirect('/covidNews/');
     }
 
-    public function show(Request $request, covidNews $covidNews){
+
+
+
+    public function create(Request $request){
 
         $path = $this-> getPath($request);
-        return view('covidInfo.covidNews.covidNewsShow', [
-            'path' => $path,
-            'covidNews' => $covidNews
+        return view('covidInfo.covidNews.covidNewsCreate', [
+            'path' => $path
         ]);
     }
 

@@ -43,9 +43,11 @@
                 {{-- @endif --}}
 
                 <!-- Page Content -->
-                <div class="container h-full">
+                <div class="container h-full w-3/4">
                     @yield('content')
                 </div>
+
+                    @include('components.right-menu')
             </div>
         </div>
         @stack('modals')

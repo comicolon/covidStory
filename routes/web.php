@@ -27,19 +27,24 @@ Route::get('/index', [BaseController::class, 'index'])->name('home');
 Route::get('/covidInfo', [covidInfo::class, 'index'])->name('covidInfo');
 //코로나 뉴스
 Route::get('/covidNews', [covidNewsController::class, 'index'])->name('covidNews');
-Route::get('/covidNews/create', [covidNewsController::class, 'create'])->name('covidNewsCreate');
-Route::post('/covidNews', [covidNewsController::class, 'store'])    ;
-Route::get('/covidNews/{covidNews}', [covidNewsController::class, 'show']);
-Route::get('/covidNews/{covidNews}/edit', [covidNewsController::class, 'edit'])->name('covidNewsEdit');
-Route::put('/covidNews/{covidNews}', [covidNewsController::class, 'update']);
-Route::delete('/covidNews/{covidNews}', [covidNewsController::class, 'destroy']);
-//파일 업로드
-Route::post('/covidNews/upload', [covidNewsController::class, 'upload'])->name('covidNewsUpload');
+Route::get('/covidNews/{covidNews}', [covidNewsController::class, 'show'])->name('covidNewsShow');
+
+Route::middleware('auth')->group(function () {
+
+
+    Route::post('/covidNews', [covidNewsController::class, 'store']);
+    Route::get('/covidNews/{covidNews}/edit', [covidNewsController::class, 'edit'])->name('covidNewsEdit');
+    Route::put('/covidNews/{covidNews}', [covidNewsController::class, 'update']);
+    Route::delete('/covidNews/{covidNews}', [covidNewsController::class, 'destroy']);
+    Route::get('/covidNews/create', [covidNewsController::class, 'create'])->name('covidNewsCreate');
+    //파일 업로드
+    Route::post('/covidNews/upload', [covidNewsController::class, 'upload'])->name('covidNewsUpload');
+});
+
 
 //게시판
 //일상이야기
 Route::get('/lifeStory', [LifeStoryBoardController::class, 'index'])->name('lifeStory');
-
 
 
 //프로필
@@ -52,6 +57,6 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('dashboard');
+        return view('index');
     })->name('dashboard');
 });
