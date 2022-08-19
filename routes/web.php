@@ -44,7 +44,7 @@ Route::middleware('auth')->group(function () {
 
 //게시판
 //일상이야기
-Route::get('/lifeStory', [LifeStoryBoardController::class, 'index'])->name('lifeStory');
+
 
 
 //프로필
