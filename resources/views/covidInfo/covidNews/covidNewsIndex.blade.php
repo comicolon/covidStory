@@ -5,10 +5,12 @@
     <div class="mx-auto my-auto px-8 py-4">
         <div class="flex">
             <h1 class="font-bold text-3xl p-3 flex-1">코로나 뉴스</h1>
+            @if(Auth::user()->grade >=10)
             <a href="{{route('covidNewsCreate')}}" class="flex items-center">
             <button class="bg-green-400 hover:bg-green-500 px-4 py-2 float-right
                          text-white rounded-md">글쓰기</button>
             </a>
+            @endif
         </div>
         <ul>
             @foreach ($covidNews as $news)

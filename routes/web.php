@@ -6,6 +6,7 @@ use App\Http\Controllers\covidInfo\covidNewsController;
 use App\Http\Controllers\board\LifeStoryBoardController;
 use App\Http\Controllers\profile\show;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [BaseController::class, 'index'])->name('home');
-Route::get('/index', [BaseController::class, 'index'])->name('home');
+Route::get('/index', [BaseController::class, 'index']);
 
 // 네비게이션
 //코로나 정보
@@ -30,14 +31,14 @@ Route::get('/covidNews/{covidNews}', [covidNewsController::class, 'show'])->name
 
 Route::middleware('auth')->group(function () {
 
-
     Route::post('/covidNews', [covidNewsController::class, 'store']);
     Route::get('/covidNews/{covidNews}/edit', [covidNewsController::class, 'edit'])->name('covidNewsEdit');
     Route::put('/covidNews/{covidNews}', [covidNewsController::class, 'update']);
     Route::delete('/covidNews/{covidNews}', [covidNewsController::class, 'destroy']);
-    Route::get('/covidNews/create', [covidNewsController::class, 'create'])->name('covidNewsCreate');
+    Route::get('/covidNews/create/private', [covidNewsController::class, 'create'])->name('covidNewsCreate');
     //파일 업로드
     Route::post('/covidNews/upload', [covidNewsController::class, 'upload'])->name('covidNewsUpload');
+
 });
 
 
@@ -56,6 +57,6 @@ Route::middleware([
     'verified'
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('index');
+        return view('dashboard');
     })->name('dashboard');
 });

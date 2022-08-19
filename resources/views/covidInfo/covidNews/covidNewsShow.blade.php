@@ -20,6 +20,7 @@
             <a href="{{route('covidNews')}}">
                 <button class="px-4 py-1 text-white text-lg bg-blue-300 hover:bg-blue-700">목록</button>
             </a>
+            @if(Auth::user()->grade >= 10)
             <a href="{{route('covidNewsEdit', $covidNews -> id)}}">
                 <button class="px-4 py-1 text-white text-lg bg-blue-500 hover:bg-blue-700">수정</button>
             </a>
@@ -28,6 +29,7 @@
                 @method('DELETE')
                 <button class="px-4 py-1 text-white text-lg bg-red-500 hover:bg-red-700">삭제</button>
             </form>
+            @endif
         </div>
     </section>
 @endsection

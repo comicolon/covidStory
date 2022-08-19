@@ -27,12 +27,12 @@
 {{--                <label for="image"></label>--}}
 {{--                <input type="file" id="image" name="image" accept="image/jpeg,png,jpg,gif,svg">--}}
 {{--            </p>--}}
-
+                @if(Auth::user()->grade >= 10)
                 <input type="submit" value="작성" id="submitPost"
                        class="px-4 py-1 bg-green-500 hover:bg-green-700 text-lg text-white">
                 <input type="button" value="취소" onclick="history.back()"
                        class="px-4 py-1 ml-6 bg-red-500 hover:bg-red-700 text-lg text-white">
-
+                @endif
         </form>
     </div>
 </div>
