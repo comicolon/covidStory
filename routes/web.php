@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\board\lifeStoryController;
 use App\Http\Controllers\covidInfo\covidInfo;
 use App\Http\Controllers\covidInfo\covidNewsController;
 use App\Http\Controllers\board\LifeStoryBoardController;
@@ -44,7 +45,7 @@ Route::middleware('auth')->group(function () {
 
 //게시판
 //일상이야기
-
+Route::get('/lifeStory', [lifeStoryController::class, 'index']);
 
 
 //프로필
