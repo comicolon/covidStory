@@ -45,7 +45,21 @@ Route::middleware('auth')->group(function () {
 
 //게시판
 //일상이야기
-Route::get('/lifeStory', [lifeStoryController::class, 'index']);
+Route::get('/lifeStory', [lifeStoryController::class, 'index'])->name('lifeStory');
+Route::get('/lifeStory/{lifeStory}', [lifeStoryController::class, 'show'])->name('lifeStoryShow');
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/lifeStory/create/user', [lifeStoryController::class, 'create'])->name('lifeStoryCreate');
+//    Route::post('/lifeStory', [covidNewsController::class, 'store']);
+//    Route::get('/lifeStory/{covidNews}/edit', [covidNewsController::class, 'edit'])->name('covidNewsEdit');
+//    Route::put('/lifeStory/{covidNews}', [covidNewsController::class, 'update']);
+//    Route::delete('/lifeStory/{covidNews}', [covidNewsController::class, 'destroy']);
+//    //파일 업로드
+//    Route::post('/lifeStory/upload', [covidNewsController::class, 'upload'])->name('covidNewsUpload');
+
+});
+
 
 
 //프로필

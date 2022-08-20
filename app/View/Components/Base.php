@@ -23,6 +23,6 @@ class Base extends Component
      */
     public function render()
     {
-        return view('components.base');
+        return view('components.base.php');
     }
 }

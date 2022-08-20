@@ -4,7 +4,7 @@
 <div class="flex-grow">
     <div class="mx-auto my-auto px-8 py-4">
         <div class="flex">
-            <h1 class="font-bold text-3xl p-3 flex-1">코로나 뉴스</h1>
+            <h4 class="font-bold p-3 flex-0">코로나 뉴스</h4>
             @auth
                 @if(Auth::user()->grade >=10)
                 <a href="{{route('covidNewsCreate')}}" class="flex items-center">
