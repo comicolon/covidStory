@@ -42,7 +42,7 @@ class lifeStoryController extends Controller
                         $nowPagePaket++;
                     }
                 }
-                if($nowPagePaket == $page / $pageViewCount){
+                if($nowPagePaket == $page / $pageViewCount && $page != null){
                     $nowPagePaket--;
                 }
                 // 현재 페이지 묶음이 가득 채워서 보여줘야할때
@@ -54,6 +54,8 @@ class lifeStoryController extends Controller
                 }
             }
         }
+
+
 
         if ($page != 1){
             $isFirst = false;

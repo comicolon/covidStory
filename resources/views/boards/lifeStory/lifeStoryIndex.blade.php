@@ -53,6 +53,7 @@
                         <img src="/images/arr_right.png">
                     </a>
                 @endif
+                <?php echo($nowPagePaket.'___'.$pageViewCount)?>
             </div>
         </div>
     </div>
