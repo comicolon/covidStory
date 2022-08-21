@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('u_id');
             $table->string('nickname');
-            $table->unsignedBigInteger('board_id');
+            $table->unsignedBigInteger('post_id');
             $table->unsignedBigInteger('parent_id')->nullable()->comment('부모 댓글의 아이디');
             $table->text('content');
             $table->boolean('is_published')->default(true);
@@ -26,7 +26,7 @@ return new class extends Migration
 
             //외래키 설정
             $table->foreign('u_id')->references('id')->on('users');
-            $table->foreign('board_id')->references('id')->on('life_story_boards');
+            $table->foreign('post_id')->references('id')->on('life_story_boards');
 
 
         });

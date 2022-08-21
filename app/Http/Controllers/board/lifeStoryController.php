@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\LifeStoryBoard;
 use App\Service\baseConfig;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 
 class lifeStoryController extends Controller
 {
@@ -55,13 +56,24 @@ class lifeStoryController extends Controller
                 }
             }
         }
-
-        if ($page == null || $page == 1){
+        // 이전페이지 화살표 처리
+        if ($totalPageCount <= $pageViewCount){
             $isFirst = true;
         }
-        if ($page >= ceil($totalPageCount) + 1){
-            $isEnd = true;
+        if ($nowPagePaket == 0){
+            $isFirst = true;
         }
+        // 다음 페이지 화살표 처리
+         if ($nowPagePaket >= $totalPageCount / $pageViewCount){
+            $isEnd = true;
+         }
+         else if ($totalPageCount <= $pageViewCount){
+             $isEnd = true;
+         }
+         if(($totalPageCount / $pageViewCount - $nowPagePaket) <= 1){
+             $isEnd = true;
+         }
+
         $postPacket = LifeStoryBoard::latest()->skip(($page -1) * $postViewCount)->take($postViewCount)->get();
 
 //        dd($isFirst);
@@ -87,9 +99,13 @@ class lifeStoryController extends Controller
            'views' => $lifeStoryBoard->views,
         ]);
 
+        $comment = $lifeStoryBoard->comment;
+
+
         return view('boards.lifeStory.lifeStoryShow', [
             'path' => $path,
-            'lifeStoryBoard' => $lifeStoryBoard,
+            'post' => $lifeStoryBoard,
+            'comment' => $comment,
         ]);
     }
 

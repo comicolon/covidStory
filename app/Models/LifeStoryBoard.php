@@ -31,11 +31,13 @@ class LifeStoryBoard extends Model
     protected $guarded = [];
         // 사용자는 포스트를 쓰고 포스트는 사용자에 속한다.
     public function user(){
-        return $this->belongsTo(User::class);
+//        return $this->belongsTo(User::class);
+        return $this->belongsTo('App\Models\User','u_id');
     }
 
     public  function comment(){
-        return $this->hasMany(comment::class);
+//        return $this->hasMany(comment::class);
+        return $this->hasMany('App\Models\comment','post_id');
     }
 
 }

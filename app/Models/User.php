@@ -68,13 +68,15 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_photo_url',
     ];
 
-    public function lifeStory(){
+    public function LifeStoryBoard(){
         //사용자는 글을 많이 쓸 수 있다.
-        return $this->hasMany(lifeStoryBoard::class);
+//        return $this->hasMany(lifeStoryBoard::class);
+        return $this->hasMany('App\Models\LifeStoryBoard','u_id');
     }
 
     public function comment(){
         // 사용자는 댓글을 많이 단다.
-        return $this->hasMany(comment::class);
+//        return $this->hasMany(comment::class);
+        return $this->hasMany('App\Models\comment','u_id','id');
     }
 }

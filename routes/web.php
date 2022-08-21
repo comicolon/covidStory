@@ -5,6 +5,7 @@ use App\Http\Controllers\board\lifeStoryController;
 use App\Http\Controllers\covidInfo\covidInfo;
 use App\Http\Controllers\covidInfo\covidNewsController;
 use App\Http\Controllers\board\LifeStoryBoardController;
+use App\Http\Controllers\extra\CommentController;
 use App\Http\Controllers\profile\show;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -57,9 +58,12 @@ Route::middleware('auth')->group(function () {
     Route::delete('/lifeStory/{lifeStoryBoard}', [lifeStoryController::class, 'destroy']);
 //    //파일 업로드
     Route::post('/lifeStory/upload', [lifeStoryController::class, 'upload'])->name('lifeStoryUpload');
-
 });
 
+// 댓글
+Route::middleware('auth')->group(function () {
+    Route::post('/comment',[CommentController::class, 'store'])->name('comment.add');
+});
 
 
 //프로필

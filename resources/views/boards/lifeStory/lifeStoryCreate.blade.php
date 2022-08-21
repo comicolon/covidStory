@@ -19,7 +19,7 @@
         </div>
         <div class="flex py-3">
             <h4 class="px-3 flex items-center">출처</h4>
-            <input type="text" id="source" name="source" required
+            <input type="text" id="source" name="source"
                    class="h-6 outline-none border border-blue-400 flex-grow pl-1 py-1 rounded-lg">
         </div>
         @auth

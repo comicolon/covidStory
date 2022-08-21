@@ -19,7 +19,7 @@ class lifeStoryBoardFactory extends Factory
         return [
 
             'title' => $this->faker->unique()->sentence(4),
-            'u_id' => $this->faker->unique()->numberBetween(300,5000),
+            'u_id' => $this->faker->numberBetween(1,1),
             'content' => $this->faker->unique()->realText(20),
             'source' => $this->faker->unique()->sentence(4),
             'like' => $this->faker->numberBetween(0,30),
