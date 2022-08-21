@@ -81,6 +81,12 @@ class lifeStoryController extends Controller
     public function show(Request $request, lifeStoryBoard $lifeStoryBoard){
 
         $path = $this-> getPath($request);
+
+        $lifeStoryBoard->views++;
+        $lifeStoryBoard->update([
+           'views' => $lifeStoryBoard->views,
+        ]);
+
         return view('boards.lifeStory.lifeStoryShow', [
             'path' => $path,
             'lifeStoryBoard' => $lifeStoryBoard,

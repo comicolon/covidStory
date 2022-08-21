@@ -67,4 +67,14 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function lifeStory(){
+        //사용자는 글을 많이 쓸 수 있다.
+        return $this->hasMany(lifeStoryBoard::class);
+    }
+
+    public function comment(){
+        // 사용자는 댓글을 많이 단다.
+        return $this->hasMany(comment::class);
+    }
 }

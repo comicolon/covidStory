@@ -26,4 +26,16 @@ class LifeStoryBoard extends Model
         'comment_count'
 
     ];
+
+    //db 관계 설정
+    protected $guarded = [];
+        // 사용자는 포스트를 쓰고 포스트는 사용자에 속한다.
+    public function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    public  function comment(){
+        return $this->hasMany(comment::class);
+    }
+
 }
