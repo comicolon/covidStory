@@ -7,6 +7,7 @@
         <form action="/covidNews/{{$covidNews->id}}" method="post" class="mt-8 w-full" enctype="multipart/form-data">
             @method('PUT')
             @csrf
+            <input type="hidden" id="board_name" value="{{$covidNews->board_name}}">
             <p>
                 <label for="title" class="text-xl">제목</label>
                 <input type="text" id="title" name="title" required value="{{$covidNews->title}}"
@@ -23,12 +24,6 @@
                 <input type="text" id="source" name="source" required value="{{$covidNews->source}}"
                        class="outline-none border border-blue-400 w-full pl-1 py-1 rounded-lg">
             </p>
-{{--이미지 업로드 주석처리--}}
-{{--            <p class="mt-4">--}}
-{{--                <label for="image"></label>--}}
-{{--                <input type="file" id="image" name="image"--}}
-{{--                class="border rounded-md">--}}
-{{--            </p>--}}
 
             <p class="mt-8">
                 <input type="submit" value="수정"

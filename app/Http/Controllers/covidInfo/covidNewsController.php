@@ -33,8 +33,8 @@ class covidNewsController extends Controller
     public function store(Request $request)
     {
 
-        Log::info('this.', ['title' => request('title')]);
-        Log::info('this.', ['content' => request('content')]);
+//        Log::info('this.', ['title' => request('title')]);
+//        Log::info('this.', ['content' => request('content')]);
 
         $validation = $request -> validate([
             'image' => 'image|mimes:jpeg,png,jpg,gif,svg',
@@ -103,12 +103,6 @@ class covidNewsController extends Controller
         $news -> content = $validation['content'];
         $news -> source = $validation['source'];
 
-        if($request -> hasFile('image')){
-            $fileName = time().'_'.$request -> file('image') -> getClientOriginalName();
-            $path = $request -> file('image') -> storeAs('public/images/news', $fileName);
-            $news -> image_name = $fileName;
-            $news -> image_path = $path;
-        }
         $news -> save();
 
         // return redirect('/covidNews/'.$news -> id);

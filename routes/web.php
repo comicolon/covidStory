@@ -32,11 +32,11 @@ Route::get('/covidNews/{covidNews}', [covidNewsController::class, 'show'])->name
 
 Route::middleware('auth')->group(function () {
 
+    Route::get('/covidNews/create/private', [covidNewsController::class, 'create'])->name('covidNewsCreate');
     Route::post('/covidNews', [covidNewsController::class, 'store']);
     Route::get('/covidNews/{covidNews}/edit', [covidNewsController::class, 'edit'])->name('covidNewsEdit');
     Route::put('/covidNews/{covidNews}', [covidNewsController::class, 'update']);
     Route::delete('/covidNews/{covidNews}', [covidNewsController::class, 'destroy']);
-    Route::get('/covidNews/create/private', [covidNewsController::class, 'create'])->name('covidNewsCreate');
     //파일 업로드
     Route::post('/covidNews/upload', [covidNewsController::class, 'upload'])->name('covidNewsUpload');
 
@@ -46,17 +46,17 @@ Route::middleware('auth')->group(function () {
 //게시판
 //일상이야기
 Route::get('/lifeStory', [lifeStoryController::class, 'index'])->name('lifeStory');
-Route::get('/lifeStory/{lifeStory}', [lifeStoryController::class, 'show'])->name('lifeStoryShow');
+Route::get('/lifeStory/{lifeStoryBoard}', [lifeStoryController::class, 'show'])->name('lifeStoryShow');
 
 Route::middleware('auth')->group(function () {
 
+    Route::put('/lifeStory/{lifeStoryBoard}', [lifeStoryController::class, 'update']);
     Route::get('/lifeStory/create/user', [lifeStoryController::class, 'create'])->name('lifeStoryCreate');
-//    Route::post('/lifeStory', [covidNewsController::class, 'store']);
-//    Route::get('/lifeStory/{covidNews}/edit', [covidNewsController::class, 'edit'])->name('covidNewsEdit');
-//    Route::put('/lifeStory/{covidNews}', [covidNewsController::class, 'update']);
-//    Route::delete('/lifeStory/{covidNews}', [covidNewsController::class, 'destroy']);
+    Route::post('/lifeStory', [lifeStoryController::class, 'store']);
+    Route::get('/lifeStory/{lifeStoryBoard}/edit', [lifeStoryController::class, 'edit'])->name('lifeStoryEdit');
+    Route::delete('/lifeStory/{lifeStoryBoard}', [lifeStoryController::class, 'destroy']);
 //    //파일 업로드
-//    Route::post('/lifeStory/upload', [covidNewsController::class, 'upload'])->name('covidNewsUpload');
+    Route::post('/lifeStory/upload', [lifeStoryController::class, 'upload'])->name('lifeStoryUpload');
 
 });
 

@@ -15,12 +15,12 @@
         {{-- <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script> --}}
         {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>   --}}
         {{-- <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script> --}}
-        <script language="JavaScript" src="{{ URL::asset('js/jquery/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ URL::asset('js/jquery/jquery-3.6.0.min.js') }}"></script>
 
         <!-- Styles -->
         @livewireStyles
     </head>
-    <body class="font-sans antialiased">
+    <body class="">
         {{-- <x-jet-banner /> --}}
 
         <div class="">
@@ -43,7 +43,7 @@
                 {{-- @endif --}}
 
                 <!-- Page Content -->
-                <div class="container h-full w-3/4">
+                <div class="container h-full w-full">
                     @yield('content')
                 </div>
 

@@ -1,3 +1,31 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.board_title {
+    @apply drop-shadow-lg
+            px-4
+            py-4
+            bg-green-100
+            text-xl
+            font-bold
+
+}
+.jb-xx-small { font-size: xx-small; }
+.jb-x-small { font-size: x-small; }
+.jb-small { font-size: small; }
+.jb-medium { font-size: medium; }
+.jb-large { font-size: large; }
+.jb-x-large { font-size: x-large; }
+.jb-xx-large { font-size: xx-large; }
+
+.board_to_list {
+    @apply px-4 py-1 my-4 text-white text-lg bg-blue-300 hover:bg-blue-700 rounded-lg
+}
+.board_to_edit {
+    @apply px-4 py-1 text-white text-lg bg-blue-500 hover:bg-blue-700
+}
+.board_to_delete {
+    @apply px-4 py-1 text-white text-lg bg-red-500 hover:bg-red-700
+}
+

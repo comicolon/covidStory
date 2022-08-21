@@ -16,5 +16,8 @@ class covidNews extends Model
                             'u_nickname',
                             'image_name',
                             'image_path',
-                            'views'];
+                            'views',
+                            'comment_count',
+                            'board_name'
+    ];
 }

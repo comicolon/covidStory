@@ -1,4 +1,4 @@
-<div class="w-48 hidden md:flex">
+<div class="w-72 hidden md:flex">
     <ul class="flex-grow">
         <a href="{{route('covidInfo')}}">
             <li class="px-3 py-1 hover:bg-blue-400 hover:text-white drop-shadow-lg ">

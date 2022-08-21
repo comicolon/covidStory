@@ -10,9 +10,9 @@ CKEDITOR.editorConfig = function( config ) {
 
     config.language = 'ko';			//언어설정
     config.uiColor = '#EEEEEE';		//ui 색상
-    config.height = '300px';		//Editor 높이
-    config.width = '800px';			//Editor 넓이
-    // config.contentsCss = ['/css/style.css'],['/css/main.css'];	//홈페이지에서 사용하는 Css 파일 인클루드
+    config.height = '400px';		//Editor 높이
+    config.width = '1100px';			//Editor 넓이
+    // config.contentsCss = ['resources/css/app.css'];	//홈페이지에서 사용하는 Css 파일 인클루드
     config.font_defaultLabel = 'Gulim';
     config.font_names='Gulim/Gulim;Dotum/Dotum;Batang/Batang;Gungsuh/Gungsuh/Arial/Arial;Tahoma/Tahoma;Verdana/Verdana';
     config.fontSize_defaultLabel = '12px';
@@ -29,3 +29,4 @@ CKEDITOR.editorConfig = function( config ) {
     // config.extraAllowedContent = 'video[*]{*};source[*]{*}';		//video , embed 등 막힌 태그를 허용하게 하는 설정
 
 };
+

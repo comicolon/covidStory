@@ -4,7 +4,7 @@
     <div class="flex-grow">
         <div class="mx-auto my-auto px-8 py-4">
             <div class="flex">
-                <h4 class="font-bold p-3 flex-0">일상 이야기</h4>
+                <h4 class="font-bold p-3 flex-grow">일상 이야기</h4>
                 @auth
                     <a href="{{route('lifeStoryCreate')}}" class="flex items-center">
                         <button class="bg-green-400 hover:bg-green-500 px-4 py-2 float-right
@@ -20,7 +20,7 @@
                                 <small class="text-gray-400">{{$story->id}}</small>
                             </div>
                             <div class="flex-grow">
-                                <p class="text-lg">{{$story->title}}</p>
+                                <p class="text-base">{{$story->title}}</p>
                             </div>
                             <div class=" flex-0 mx-3 flex justify-center items-center w-20">
                                 <p>{{$story->nickname}}</p>
@@ -53,7 +53,6 @@
                         <img src="/images/arr_right.png">
                     </a>
                 @endif
-                <?php echo($nowPagePaket.'___'.$pageViewCount)?>
             </div>
         </div>
     </div>

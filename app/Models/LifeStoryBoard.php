@@ -22,6 +22,8 @@ class LifeStoryBoard extends Model
         'gubun',
         'views',
         'nickname',
+        'board_name',
+        'comment_count'
 
     ];
 }

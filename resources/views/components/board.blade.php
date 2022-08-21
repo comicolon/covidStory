@@ -6,10 +6,18 @@
 <script>
 
 $(document).ready(function (){
-    CKEDITOR.replace( 'content', {
-        filebrowserUploadUrl: "{{route('covidNewsUpload', ['_token' => csrf_token() ])}}",
-        filebrowserUploadMethod: 'form'
-    });
+   if ($('#board_name').val() == 'covidNews'){
+        CKEDITOR.replace( 'content', {
+            filebrowserUploadUrl: "{{route('covidNewsUpload', ['_token' => csrf_token() ])}}",
+            filebrowserUploadMethod: 'form'
+        });
+   }
+   else if ($('#board_name').val() == 'lifeStory'){
+       CKEDITOR.replace( 'content', {
+           filebrowserUploadUrl: "{{route('lifeStoryUpload', ['_token' => csrf_token() ])}}",
+           filebrowserUploadMethod: 'form'
+       });
+   }
 });
 
 function postSubmit() {
