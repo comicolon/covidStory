@@ -137,11 +137,11 @@ return [
          Features::emailVerification(), // 이메일 인증
         Features::updateProfileInformation(),
         Features::updatePasswords(),
-        Features::twoFactorAuthentication([
-            'confirm' => true,
-            'confirmPassword' => true,
-            // 'window' => 0,
-        ]),
+//        Features::twoFactorAuthentication([       // 2단계 인증
+//            'confirm' => true,
+//            'confirmPassword' => true,
+//            // 'window' => 0,
+//        ]),
     ],
 
 ];

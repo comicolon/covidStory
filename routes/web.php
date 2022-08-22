@@ -63,6 +63,9 @@ Route::middleware('auth')->group(function () {
 // 댓글
 Route::middleware('auth')->group(function () {
     Route::post('/comment',[CommentController::class, 'store'])->name('comment.add');
+    Route::delete('/comment/{comment}', [CommentController::class,'destroy']);
+    //파일 업로드
+    Route::post('/comment/upload', [lifeStoryController::class, 'upload'])->name('commentUpload');
 });
 
 

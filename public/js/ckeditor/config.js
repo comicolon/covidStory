@@ -10,7 +10,7 @@ CKEDITOR.editorConfig = function( config ) {
 
     config.language = 'ko';			//언어설정
     config.uiColor = '#EEEEEE';		//ui 색상
-    config.height = '400px';		//Editor 높이
+    config.height = '500px';		//Editor 높이
     config.width = '1100px';			//Editor 넓이
     // config.contentsCss = ['resources/css/app.css'];	//홈페이지에서 사용하는 Css 파일 인클루드
     config.font_defaultLabel = 'Gulim';
@@ -27,6 +27,8 @@ CKEDITOR.editorConfig = function( config ) {
     // config.docType = "<!DOCTYPE html>";		//문서타입 설정
 
     // config.extraAllowedContent = 'video[*]{*};source[*]{*}';		//video , embed 등 막힌 태그를 허용하게 하는 설정
+
+
 
 };
 
