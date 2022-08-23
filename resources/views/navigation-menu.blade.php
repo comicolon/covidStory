@@ -185,23 +185,49 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="fixed top-1 right-7 px-6 py-4 sm:block">
-            @auth
-                {{-- <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a> --}}
-            @else
-                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
+{{--        <div class="fixed top-1 right-7 px-6 py-4 sm:block">--}}
+{{--            @auth--}}
+{{--                --}}{{-- <a href="{{ url('/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a> --}}
+{{--            @else--}}
+{{--                <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>--}}
 
-                @if (Route::has('register'))
-                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>
-                @endif
-            @endauth
-        </div>
-
-
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('home') }}" :active="request()->routeIs('home')">
+{{--                @if (Route::has('register'))--}}
+{{--                    <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 underline">Register</a>--}}
+{{--                @endif--}}
+{{--            @endauth--}}
+{{--        </div>--}}
+        @auth
+        @else
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                    {{ __('로그인') }}
+                </x-jet-responsive-nav-link>
+            </div>
+            @if (Route::has('register'))
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                    {{ __('회원가입') }}
+                </x-jet-responsive-nav-link>
+            </div>
+            @endif
+        @endauth
+        <div class="pt-2 pb-3 space-y-1 parent_menu">
+            <x-jet-responsive-nav-link>
                 {{ __('코로나 정보') }}
             </x-jet-responsive-nav-link>
+        </div>
+        <div class="submenu hidden pl-3">
+            <div class="pt-2 pb-3 space-y-1 ">
+                <x-jet-responsive-nav-link href="{{ route('covidInfo') }}" :active="request()->routeIs('covidInfo')">
+                    {{ __('코로나 정보') }}
+                </x-jet-responsive-nav-link>
+            </div>
+
+            <div class="pt-2 pb-3 space-y-1 ">
+                <x-jet-responsive-nav-link href="{{ route('covidNews') }}" :active="request()->routeIs('covidNews')">
+                    {{ __('코로나 뉴스') }}
+                </x-jet-responsive-nav-link>
+            </div>
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
@@ -211,7 +237,7 @@
         </div>
 
         <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+            <x-jet-responsive-nav-link href="{{ route('lifeStory') }}" :active="request()->routeIs('lifeStory')">
                 {{ __('일상 이야기') }}
             </x-jet-responsive-nav-link>
         </div>
@@ -223,11 +249,11 @@
         </div>
 
         {{-- 대시보드 일단 주석처리  --}}
-        {{-- <div class="pt-2 pb-3 space-y-1">
+         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
             </x-jet-responsive-nav-link>
-        </div> --}}
+        </div>
 
         <!-- Responsive Settings Options -->
         @auth

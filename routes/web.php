@@ -23,6 +23,7 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/', [BaseController::class, 'index'])->name('home');
 Route::get('/index', [BaseController::class, 'index']);
+Route::get('/dashboard', [BaseController::class, 'index'])->name('dashboard');
 
 // 네비게이션
 //코로나 정보
@@ -73,12 +74,14 @@ Route::middleware('auth')->group(function () {
 Route::get('/user/profile', [show::class, 'index'])->name('profileShow');
 
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+//Route::middleware([
+//    'auth:sanctum',
+//    config('jetstream.auth_session'),
+//    'verified'
+//])->group(function () {
+//    Route::get('/dashboard', function () {
+//        return view('dashboard');
+//    })->name('dashboard');
+//});
+
+

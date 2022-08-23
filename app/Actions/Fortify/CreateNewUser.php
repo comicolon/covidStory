@@ -16,17 +16,28 @@ class CreateNewUser implements CreatesNewUsers
      * Validate and create a newly registered user.
      *
      * @param  array  $input
-     * @return \App\Models\User
+     * @return User|\Illuminate\Http\RedirectResponse
      */
     public function create(array $input)
     {
-        Validator::make($input, [
+          $validator = Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'nickname' =>['required', 'string', 'max:32'],
+            'nickname' =>['required', 'string', 'max:32', 'unique:users',],
             'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['accepted', 'required'] : '',
-        ])->validate();
+        ],
+        [
+            'name.required' => '이름을 입력하세요',
+            'email.unique' => '중복된 이메일 입니다.',
+            'nickname.unique' => '중복된 닉네임 입니다.',
+        ]);
+
+//        if ($validator->fails()) {
+//            return redirect()->back()->withErrors($validator)->withInput();
+//        }
+
+        $validator->validate();
 
         return User::create([
             'name' => $input['name'],

@@ -2,7 +2,7 @@
 @section('content')
 
     <div class="flex-grow">
-        <div class="mx-auto my-auto px-8 py-4">
+        <div class="mx-auto my-auto px-auto py-auto">
             <div class="flex">
                 <h4 class="font-bold p-3 flex-grow">일상 이야기</h4>
                 @auth
@@ -16,7 +16,7 @@
                 @foreach ($postPacket as $story)
                     <a href="/lifeStory/{{$story->id}}">
                         <li class="block border-b m-3 flex">
-                            <div class="mx-10 flex-0">
+                            <div class="mx-10 flex-0 hidden md:flex">
                                 <small class="text-gray-400">{{$story->id}}</small>
                             </div>
                             <div class="flex-grow">
@@ -28,7 +28,7 @@
                             <div class="flex-0 mx-3 flex justify-center items-center w-20">
                                 <p class="text-gray-400 text-sm">{{$story->views}}</p>
                             </div>
-                            <div class="flex-0 mx-3 flex items-center">
+                            <div class="flex-0 mx-3 flex items-center hidden md:flex">
                                 <p class="text-gray-400 text-xs"> {{$story->created_at}}</p>
                             </div>
                         </li>
@@ -45,7 +45,7 @@
                 @endif
                 @for($i = ($nowPagePaket * $pageViewCount) + 1; $i <= $totalViewPage; $i++)
                     <a href="/lifeStory?page={{$i}}">
-                        <button class="px-2 py-0 mx-2 border border-indigo-400">{{$i}}</button>
+                        <button class="px-1 py-0 mx-1 border border-indigo-400">{{$i}}</button>
                     </a>
                 @endfor
                 @if ($isEnd == false)
