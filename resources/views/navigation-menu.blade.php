@@ -18,11 +18,11 @@
                     </x-jet-nav-link>
                 </div>
 
-                <div class="item hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('수다방') }}
-                    </x-jet-nav-link>
-                </div>
+{{--                <div class="item hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">--}}
+{{--                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">--}}
+{{--                        {{ __('수다방') }}--}}
+{{--                    </x-jet-nav-link>--}}
+{{--                </div>--}}
 
                 <div class="item hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="/lifeStory">
@@ -30,11 +30,11 @@
                     </x-jet-nav-link>
                 </div>
 
-                <div class="item hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                        {{ __('격리일기') }}
-                    </x-jet-nav-link>
-                </div>
+{{--                <div class="item hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">--}}
+{{--                    <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">--}}
+{{--                        {{ __('격리일기') }}--}}
+{{--                    </x-jet-nav-link>--}}
+{{--                </div>--}}
 
                 {{-- 대시보드 일단 주석 처리함 --}}
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -178,7 +178,7 @@
     </div>
 
 {{--    <div class="h-12 bg-gradient-to-r from-green-400 to-stone-200"></div>--}}
-    <div class="h-12 bg-blue-200"></div>
+    <div class="h-10 bg-gradient-to-br from-blue-200 to-blue-50"></div>
 
 
 
@@ -230,11 +230,11 @@
             </div>
         </div>
 
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('수다방') }}
-            </x-jet-responsive-nav-link>
-        </div>
+{{--        <div class="pt-2 pb-3 space-y-1">--}}
+{{--            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">--}}
+{{--                {{ __('수다방') }}--}}
+{{--            </x-jet-responsive-nav-link>--}}
+{{--        </div>--}}
 
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('lifeStory') }}" :active="request()->routeIs('lifeStory')">
@@ -242,11 +242,11 @@
             </x-jet-responsive-nav-link>
         </div>
 
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('격리일기') }}
-            </x-jet-responsive-nav-link>
-        </div>
+{{--        <div class="pt-2 pb-3 space-y-1">--}}
+{{--            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">--}}
+{{--                {{ __('격리일기') }}--}}
+{{--            </x-jet-responsive-nav-link>--}}
+{{--        </div>--}}
 
         {{-- 대시보드 일단 주석처리  --}}
          <div class="pt-2 pb-3 space-y-1">

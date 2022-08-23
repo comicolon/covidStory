@@ -4,7 +4,6 @@ use App\Http\Controllers\BaseController;
 use App\Http\Controllers\board\lifeStoryController;
 use App\Http\Controllers\covidInfo\covidInfo;
 use App\Http\Controllers\covidInfo\covidNewsController;
-use App\Http\Controllers\board\LifeStoryBoardController;
 use App\Http\Controllers\extra\CommentController;
 use App\Http\Controllers\profile\show;
 use Illuminate\Support\Facades\Route;
