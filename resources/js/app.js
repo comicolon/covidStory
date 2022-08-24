@@ -29,6 +29,6 @@ if ($area != null){
 
 $('#localArea').change(function (){
     var area = $('#localArea').val();
-    location.replace('/covidInfo'+'?area='+area);
+    location.replace('/covidInfo'+'?area='+area + '#localArea');
 });
 

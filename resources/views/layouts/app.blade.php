@@ -4,6 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
+        <!-- 구글 애드센스 -->
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9211697104889412"
+                crossorigin="anonymous"></script>
 
         <title>{{ config('app.name', 'Covid Story') }}</title>
 
