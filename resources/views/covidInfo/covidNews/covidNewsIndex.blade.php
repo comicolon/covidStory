@@ -2,7 +2,7 @@
 @section('content')
 
 <div class="flex-grow">
-    <div class="mx-auto my-auto px-8 py-4">
+    <div class="mx-auto my-auto px-auto py-auto">
         <div class="flex">
             <h4 class="font-bold p-3 flex-0">코로나 뉴스</h4>
             @auth

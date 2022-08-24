@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 class show extends Controller
 {
     public function index(Request $request){
-        
+
         $path = $this-> getPath($request);
 
         return view('profile.show', [
