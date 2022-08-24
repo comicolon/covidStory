@@ -7,7 +7,7 @@
             {{$covidNews -> title}}
         </div>
         <div class="mb-8 pl-1 pb-2">
-            <small>출처 : {{$covidNews -> source}}</small>
+            <p class="text-sm">출처 : {{$covidNews -> source}}</p>
         </div>
         <div class="text-lg">
             {!! $covidNews-> content !!}

@@ -10,12 +10,12 @@ CKEDITOR.editorConfig = function( config ) {
 
     config.language = 'ko';			//언어설정
     config.uiColor = '#EEEEEE';		//ui 색상
-    config.height = '500px';		//Editor 높이
-    config.width = '1100px';			//Editor 넓이
+    config.height = '25em';		//Editor 높이
+    config.width = '60em';			//Editor 넓이
     // config.contentsCss = ['resources/css/app.css'];	//홈페이지에서 사용하는 Css 파일 인클루드
     config.font_defaultLabel = 'Gulim';
     config.font_names='Gulim/Gulim;Dotum/Dotum;Batang/Batang;Gungsuh/Gungsuh/Arial/Arial;Tahoma/Tahoma;Verdana/Verdana';
-    config.fontSize_defaultLabel = '12px';
+    config.fontSize_defaultLabel = '16px';
     config.fontSize_sizes='8/8px;9/9px;10/10px;11/11px;12/12px;14/14px;16/16px;18/18px;20/20px;22/22px;24/24px;26/26px;28/28px;36/36px;48/48px;';
     config.enterMode =CKEDITOR.ENTER_BR;		//엔터키 입력시 br 태그 변경
     // config.shiftEnterMode = CKEDITOR.ENTER_P;	//엔터키 입력시 p 태그로 변경

@@ -19,6 +19,9 @@
         {{-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>   --}}
         {{-- <script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script> --}}
         <script src="{{ URL::asset('js/jquery/jquery-3.6.0.min.js') }}"></script>
+        <script src="{{ URL::asset('js/autoLink/autolink.js') }}"></script>
+
+
 
         <!-- Styles -->
         @livewireStyles
@@ -48,7 +51,7 @@
                 {{-- @endif --}}
 
                 <!-- Page Content -->
-                <div class="flex-row w-full">
+                <div class="flex-grow">
                     @yield('content')
                 </div>
                 <div class="">

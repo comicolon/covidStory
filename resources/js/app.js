@@ -26,9 +26,14 @@ if ($area != null){
     $('#localArea').val($area).prop('selected', true);
 }
 
-
+// 지역 바꾸기
 $('#localArea').change(function (){
     var area = $('#localArea').val();
     location.replace('/covidInfo'+'?area='+area + '#localArea');
 });
 
+
+//오토링크
+$.each($('p'), function(idx, tg) {
+    $(this).html($(this).html().autoLink({ target: "_blank" }));
+});

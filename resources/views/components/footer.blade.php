@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="/css/custom01.css">
 
 <div id="footer_div">
     <ul id="footer_ul">
