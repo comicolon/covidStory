@@ -24,13 +24,14 @@
         <div class="px-2 mb-3">{!!$cmt->content!!}</div>
         @endforeach
         @auth
-        <form action="{{route('comment.add')}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('comment.add')}}" method="post" enctype="multipart/form-data" onsubmit="postSubmit();"
+                id="commentForm">
             @csrf
             <div class="flex border-y-2 border-emerald-700 bg-gray-100 h-40 mt-10">
                 <input type="hidden" name="post_id" value="{{$post->id}}">
                 <input type="hidden" name="nickname" value="{{Auth::user()->nickname}}">
                 <input type="hidden" name="parent_id" value="0">
-                <textarea id="content" name="content" required
+                <textarea id="content" name="content" required value="{{old('content') ? old('content') : ''}}"
                           class="flex-grow resize-none"></textarea>
                 <input type="submit" value="등록" id="submitComment"
                 class="w-20 h-10 flex-0 bg-emerald-500 hover:bg-emerald-600 text-lg text-white">

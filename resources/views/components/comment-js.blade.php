@@ -10,7 +10,7 @@
             language : 'ko',			//언어설정
             uiColor : '#EEEEEE',		//ui 색상
             height : '85px',		//Editor 높이
-            width : '55em',			//Editor 넓이
+            width : '100%',			//Editor 넓이
             // config.contentsCss = ['resources/css/app.css'];	//홈페이지에서 사용하는 Css 파일 인클루드
             font_defaultLabel : 'Gulim',
             font_names : 'Gulim/Gulim;Dotum/Dotum;Batang/Batang;Gungsuh/Gungsuh/Arial/Arial;Tahoma/Tahoma;Verdana/Verdana',
@@ -38,7 +38,12 @@
 
     function postSubmit() {
         var data = CKEDITOR.instances.content.getData();
-        $('#content').val(data);
-        return true;
+        if (data === '' || data == null){
+            alert('댓글을 입력하세요');
+            return false;
+        }else{
+            $('#comment').val(data);
+            return true;
+        }
     }
 </script>

@@ -20,9 +20,15 @@ $(document).ready(function (){
    }
 });
 
+// 내용 업로드전 확인
 function postSubmit() {
     var data = CKEDITOR.instances.content.getData();
-    $('#content').val(data);
-    return true;
+    if (data ==='' || data == null){
+        alert('내용을 입력하세요');
+        return false;
+    }else{
+        $('#content').val(data);
+        return true;
+    }
 }
 </script>

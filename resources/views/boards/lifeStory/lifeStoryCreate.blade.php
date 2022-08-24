@@ -2,7 +2,7 @@
 @section('content')
 <section>
     <form id="submitform" action="/lifeStory" method="post" class="mt-8 w-full"
-          enctype="multipart/form-data" onsubmit="return postSubmit()">
+          enctype="multipart/form-data" onsubmit="postSubmit()">
         @csrf
         <input type="hidden" id="board_name" value="lifeStory">
         <div class="h-16">
@@ -10,16 +10,17 @@
         <div class="flex">
             <h3 class="px-3 flex items-center">제목</h3>
             <input type="text" id="title" name="title" required
-                   class="outline-none border border-blue-400 flex-grow pl-1 py-1 rounded-lg">
+                   class="outline-none border border-blue-400 flex-grow pl-1 py-1 rounded-lg"
+                   value="{{old('title') ? old('title') : ''}}">
         </div>
         <div class="">
             <h3 class="px-3 py-2">내용</h3>
-            <textarea id="content" name="content" required
+            <textarea id="content" name="content" required value="{{old('content') ? old('content') : ''}}"
                       class=""></textarea>
         </div>
         <div class="flex py-3">
             <h4 class="px-3 flex items-center">출처</h4>
-            <input type="text" id="source" name="source"
+            <input type="text" id="source" name="source" value="{{old('source') ? old('source') : ''}}"
                    class="h-6 outline-none border border-blue-400 flex-grow pl-1 py-1 rounded-lg">
         </div>
         @auth
