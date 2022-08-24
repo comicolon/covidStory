@@ -37,7 +37,7 @@
                 </header>
             @endif
 
-            <div class="flex h-auto min-h-full pb-32 w-full">
+            <div class="flex h-auto min-h-full pb-56 w-full">
                 {{-- @if (preg_match("/covidInfo/", $path) || preg_match("/covidNews/", $path)) --}}
                 <div class="">
                     @include('components.left-menu')
@@ -53,11 +53,9 @@
                 </div>
             </div>
 
-
-            <footer class="footer">
+            <footer class="footer h-32 position-relative">
                 @include('.components.footer')
             </footer>
-
 
         </div>
         @stack('modals')
