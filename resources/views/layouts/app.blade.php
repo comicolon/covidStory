@@ -37,18 +37,28 @@
                 </header>
             @endif
 
-            <div class="flex">
+            <div class="flex h-auto min-h-full pb-32 w-full">
                 {{-- @if (preg_match("/covidInfo/", $path) || preg_match("/covidNews/", $path)) --}}
+                <div class="">
                     @include('components.left-menu')
+                </div>
                 {{-- @endif --}}
 
                 <!-- Page Content -->
-                <div class="container h-full w-full">
+                <div class="flex-row w-full">
                     @yield('content')
                 </div>
-
+                <div class="">
                     @include('components.right-menu')
+                </div>
             </div>
+
+
+            <footer class="footer">
+                @include('.components.footer')
+            </footer>
+
+
         </div>
         @stack('modals')
 

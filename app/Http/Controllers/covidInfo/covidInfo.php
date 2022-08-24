@@ -30,7 +30,7 @@ class covidInfo extends Controller
         }
 
         return view('covidInfo.covidInfo', [
-
+            'path' => $path,
             'json' => $json,
             'area' => $area,
         ]);

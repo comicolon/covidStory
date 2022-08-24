@@ -1,3 +1,3 @@
-<div class="w-96 hidden md:flex">
+<div class="w-72 hidden md:flex">
 
 </div>

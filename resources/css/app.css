@@ -23,7 +23,7 @@
 .text-5xl { font-size: 3.15em;}
 .text-6xl { font-size: 4.35em;}
 
-
+/*게시판*/
 .board_to_list {
     @apply px-4 py-1 my-4 text-white text-lg bg-blue-300 hover:bg-blue-700 rounded-lg
 }
@@ -33,4 +33,23 @@
 .board_to_delete {
     @apply px-4 py-1 text-white text-lg bg-red-500 hover:bg-red-700
 }
+
+/*푸터 설정*/
+.footer{
+    height: 32px;
+    position : relative;
+    transform : translateY(-100%);
+}
+
+
+
+
+
+
+
+
+
+
+
+
 
