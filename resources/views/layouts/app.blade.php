@@ -7,6 +7,16 @@
         <!-- 구글 애드센스 -->
         <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7981523207325760"
                 crossorigin="anonymous"></script>
+        <!-- 구글 애널리틱스 -->
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-DW9L6TT00E"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-DW9L6TT00E');
+        </script>
         <title>{{ config('app.name', 'Covid Story') }}</title>
 
         <!-- Fonts -->
