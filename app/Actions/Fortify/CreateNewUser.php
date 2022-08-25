@@ -31,6 +31,7 @@ class CreateNewUser implements CreatesNewUsers
             'name.required' => '이름을 입력하세요',
             'email.unique' => '중복된 이메일 입니다.',
             'nickname.unique' => '중복된 닉네임 입니다.',
+            'password.confirmed' => '비밀번호가 일치하지 않습니다.'
         ]);
 
 //        if ($validator->fails()) {
