@@ -13,17 +13,22 @@ class covidNewsController extends Controller
     public function index(Request $request){
 
         $path = $this-> getPath($request);
-        $covidNews = covidNews::latest()->get();
+        $covidNews = covidNews::orderBy('id','desc')->paginate(10);
 
         return view('covidInfo.covidNews.covidNewsIndex', [
             'path' => $path,
-            'covidNews' => $covidNews,
-        ]);
+        ], compact('covidNews'));
     }
 
     public function show(Request $request, covidNews $covidNews){
 
         $path = $this-> getPath($request);
+
+        $covidNews->views++;
+        $covidNews->update([
+            'views' => $covidNews->views,
+        ]);
+
         return view('covidInfo.covidNews.covidNewsShow', [
             'path' => $path,
             'covidNews' => $covidNews

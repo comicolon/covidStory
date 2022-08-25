@@ -17,11 +17,14 @@
         <ul>
             @foreach ($covidNews as $news)
                 <a href="/covidNews/{{$news->id}}">
-                    <li class="block border-b m-3"> {{$news->title}}
+                    <li class="block border-b m-2 py-2"> {{$news->title}}
                         <small class="float-right"> {{$news->created_at->format('Y-m-d')}}</small></li>
                 </a>
             @endforeach
         </ul>
+        <div>
+            {{ $covidNews->links() }}
+        </div>
     </div>
 </div>
 @endsection
