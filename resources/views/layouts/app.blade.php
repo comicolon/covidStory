@@ -17,7 +17,8 @@
 
             gtag('config', 'G-DW9L6TT00E');
         </script>
-        <title>{{ config('app.name', 'Covid Story') }}</title>
+{{--        <title>{{ config('app.name', 'Covid Story') }}</title>--}}
+        <title>{{'코스토리 - 코로나 이야기'}}</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
