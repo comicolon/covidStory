@@ -62,6 +62,12 @@
                     {{ __('Register') }}
                 </x-jet-button>
             </div>
+
+            <div class="w-48">
+                <a href="/login/google" class="" id="">
+                    <li class="google_login_button h-12 w-48 list-none"></li>
+                </a>
+            </div>
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>

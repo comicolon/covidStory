@@ -36,6 +36,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'phone',
         'change_nick_date',
         'grade',
+        'google_id',
+        'naver_id',
+        'kakao_id',
+        'facebook_id',
     ];
 
     /**

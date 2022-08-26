@@ -5,6 +5,7 @@ use App\Http\Controllers\board\lifeStoryController;
 use App\Http\Controllers\covidInfo\covidInfo;
 use App\Http\Controllers\covidInfo\covidNewsController;
 use App\Http\Controllers\extra\CommentController;
+use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\profile\show;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [BaseController::class, 'index'])->name('home');
 Route::get('/index', [BaseController::class, 'index']);
 Route::get('/dashboard', [BaseController::class, 'index'])->name('dashboard');
+
+//소셜 로그인
+Route::get('/login/google', [GoogleLoginController::class, 'redirect']);
+Route::get('/callback', [GoogleLoginController::class, 'callback']);
 
 // 네비게이션
 //코로나 정보

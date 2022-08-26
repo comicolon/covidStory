@@ -38,6 +38,13 @@
     @apply px-2 py-1 bg-green-500 hover:bg-green-700 text-lg text-white
 }
 
+/*구글 로그인 버튼*/
+.google_login_button {
+    background: url("/public/images/btn_google_signin_light_normal_web.png") no-repeat;
+}
+.google_login_button:hover {
+    background: url("/public/images/btn_google_signin_light_focus_web.png") no-repeat;
+}
 
 
 
