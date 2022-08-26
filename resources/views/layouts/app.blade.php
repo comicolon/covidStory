@@ -17,6 +17,8 @@
 
             gtag('config', 'G-DW9L6TT00E');
         </script>
+        <!-- 네이버 소유 확인 -->
+        <meta name="naver-site-verification" content="30998c16c4dc864e14279f6fce86c54b19ca7b61" />
 
         <!-- 페이지 설명 -->
         <meta name="description" content="코로나 시대, 하소연 할 곳 없는 지친 사람들의 쉼터 입니다. 한 번  감염 되었다 하더라도
