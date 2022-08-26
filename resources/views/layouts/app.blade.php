@@ -17,6 +17,19 @@
 
             gtag('config', 'G-DW9L6TT00E');
         </script>
+
+        <!-- 페이지 설명 -->
+        <meta name="description" content="코로나 시대, 하소연 할 곳 없는 지친 사람들의 쉼터 입니다. 한 번  감염 되었다 하더라도
+            재감염 될 수도 있는 코로나, 각자의 이야기들을 풀어 놓는 곳 입니다.">
+
+        <!-- 콘텐츠 마크업 -->
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="코스토리 - 코로나 이야기">
+        <meta property="og:description" content="코로나 시대, 하소연 할 곳 없는 지친 사람들의 쉼터 입니다. 한 번  감염 되었다 하더라도
+            재감염 될 수도 있는 코로나, 각자의 이야기들을 풀어 놓는 곳 입니다.">
+        <meta property="og:image" content="https://costory.kr/images/logo_02.png">
+        <meta property="og:url" content="https://costory.kr">
+
 {{--        <title>{{ config('app.name', 'Covid Story') }}</title>--}}
         <title>{{'코스토리 - 코로나 이야기'}}</title>
 
