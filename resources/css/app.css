@@ -2,6 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+    height: 100%;
+}
+/*페이지 전체 div*/
+.wrap {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 20vh;
+}
+
+/*헤더를 제외한 페이지 전체*/
+.page_full_except_header {
+    @apply flex justify-center h-auto min-h-full pb-16 w-full
+}
+/*페이지 콘텐트 영역*/
+.page_content {
+    @apply  w-content md:flex justify-center
+}
+
+/*푸터*/
+.footer {
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+}
+
+
 .board_title {
     @apply drop-shadow-lg
             px-4
@@ -22,6 +49,16 @@
 
 .text-5xl { font-size: 3.15em;}
 .text-6xl { font-size: 4.35em;}
+
+/*길이*/
+@layer components {
+    .w-120 {width: 30rem}
+    .w-160 {width: 40rem}
+    .w-200 {width: 50rem}
+    .w-240 {width: 60rem}
+    .w-content {width: 73rem}
+}
+
 
 /*게시판*/
 .board_to_list {
@@ -46,6 +83,66 @@
     background: url("/public/images/btn_google_signin_light_focus_web.png") no-repeat;
 }
 
+/*메인 페이지*/
+/*메인페이지 큰 div*/
+.main_page_content {
+    @apply w-full md:flex
+}
+/*오더1*/
+.main_order1 {
+    @apply flex-1 order-1 flex-row
+}
+/*오더2*/
+.main_order2 {
+    @apply flex-1 order-2 flex-row bg-emerald-50
+}
+
+/*메인 페이지 뉴스 인덱스*/
+
+.main_news_index{
+    @apply py-1 truncate w-80 md:w-160
+}
+
+/*메인 페이지 스토리 인덱스*/
+.main_story_index{
+    @apply w-80 md:w-160 py-1
+}
+
+/*코로나 뉴스 인덱스 페이지 리스트 헤더*/
+.covid_news_index_header {
+    @apply flex border-b border-t border-gray-400 bg-gray-50
+}
+
+/*코로나 뉴스 인덱스 페이지 헤더 번호*/
+.covid_news_index_header_id {
+    @apply px-3 py-1 w-16 flex justify-center text-xs hidden md:flex
+}
+
+/*코로나 뉴스 인덱스 페이지 리스트 헤더 제목*/
+.covid_news_index_header_title {
+    @apply px-3 py-1 w-64 flex justify-center text-xs
+        md:w-120 lg:w-160 xl:w-200 2xl:w-240
+}
+
+/*코로나 뉴스 인덱스 페이지 리스트 헤더 날짜*/
+.covid_news_index_header_datetime {
+    @apply px-3 py-1 w-44 flex justify-center text-xs hidden md:flex
+}
+
+/*코로나 뉴스 인덱스 페이지 리스트 아이템 제목*/
+.covid_news_index_item_id {
+    @apply px-3 py-2 w-16 flex justify-center items-center text-gray-600 text-sm
+}
+
+/*코로나 뉴스 인덱스 페이지 리스트 아이템 제목*/
+.covid_news_index_item_title{
+    @apply px-3 py-2 truncate w-64 md:w-120 lg:w-160 xl:w-200 2xl:w-240
+}
+
+/*코로나 뉴스 인덱스 페이지 리스트 아이템 날짜*/
+.covid_news_index_item_datetime {
+    @apply hidden md:flex w-44 justify-center items-center py-2 text-sm text-gray-600
+}
 
 
 

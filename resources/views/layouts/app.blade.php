@@ -54,7 +54,7 @@
     <body class="">
         {{-- <x-jet-banner /> --}}
 
-        <div class="">
+        <div class="wrap">
             @livewire('navigation-menu')
 
 
@@ -68,7 +68,7 @@
                 </header>
             @endif
 
-            <div class="flex h-auto min-h-full pb-56 w-full">
+            <div class="page_full_except_header">
                 {{-- @if (preg_match("/covidInfo/", $path) || preg_match("/covidNews/", $path)) --}}
                 <div class="">
                     @include('components.left-menu')
@@ -76,17 +76,16 @@
                 {{-- @endif --}}
 
                 <!-- Page Content -->
-                <div class="flex-grow">
+                <div class="page_content">
                     @yield('content')
                 </div>
                 <div class="">
                     @include('components.right-menu')
                 </div>
-            </div>
 
-            <footer class="footer h-32 position-relative">
-                @include('.components.footer')
-            </footer>
+                <footer class="footer">
+                    @include('.components.footer')
+                </footer>
 
         </div>
         @stack('modals')
