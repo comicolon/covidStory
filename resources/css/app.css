@@ -56,7 +56,7 @@ html, body {
     .w-160 {width: 40rem}
     .w-200 {width: 50rem}
     .w-240 {width: 60rem}
-    .w-content {width: 73rem}
+    .w-content {width: 75rem}
 }
 
 
@@ -120,23 +120,23 @@ html, body {
 
 /*코로나 뉴스 인덱스 페이지 리스트 헤더 제목*/
 .covid_news_index_header_title {
-    @apply px-3 py-1 w-64 flex justify-center text-xs
+    @apply px-3 py-1 w-64 flex justify-center text-xs w-full
         md:w-120 lg:w-160 xl:w-200 2xl:w-240
 }
 
 /*코로나 뉴스 인덱스 페이지 리스트 헤더 날짜*/
 .covid_news_index_header_datetime {
-    @apply px-3 py-1 w-44 flex justify-center text-xs hidden md:flex
+    @apply hidden md:flex px-3 py-1 w-44 flex justify-center text-xs
 }
 
-/*코로나 뉴스 인덱스 페이지 리스트 아이템 제목*/
+/*코로나 뉴스 인덱스 페이지 리스트 아이템 번호*/
 .covid_news_index_item_id {
-    @apply px-3 py-2 w-16 flex justify-center items-center text-gray-600 text-sm
+    @apply px-3 py-2 w-16 flex justify-center items-center text-gray-600 text-sm hidden md:flex
 }
 
 /*코로나 뉴스 인덱스 페이지 리스트 아이템 제목*/
 .covid_news_index_item_title{
-    @apply px-3 py-2 truncate w-64 md:w-120 lg:w-160 xl:w-200 2xl:w-240
+    @apply px-3 py-2 truncate w-96 md:w-120 lg:w-160 xl:w-200 2xl:w-240
 }
 
 /*코로나 뉴스 인덱스 페이지 리스트 아이템 날짜*/
