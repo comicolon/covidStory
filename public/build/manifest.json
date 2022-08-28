@@ -1,0 +1,20 @@
+{
+  "public/images/btn_google_signin_light_normal_web.png": {
+    "file": "assets/btn_google_signin_light_normal_web.ba0db343.png",
+    "src": "public/images/btn_google_signin_light_normal_web.png"
+  },
+  "public/images/btn_google_signin_light_focus_web.png": {
+    "file": "assets/btn_google_signin_light_focus_web.1e83c336.png",
+    "src": "public/images/btn_google_signin_light_focus_web.png"
+  },
+  "resources/js/app.js": {
+    "file": "assets/app.e0c016aa.js",
+    "src": "resources/js/app.js",
+    "isEntry": true
+  },
+  "resources/css/app.css": {
+    "file": "assets/app.dbf231dc.css",
+    "src": "resources/css/app.css",
+    "isEntry": true
+  }
+}
