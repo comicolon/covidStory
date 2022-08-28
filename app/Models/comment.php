@@ -18,7 +18,7 @@ class comment extends Model
         'content',
         'is_published',
         'is_deleted',
-
+        'board_name',
     ];
 
     protected $guarded = [];

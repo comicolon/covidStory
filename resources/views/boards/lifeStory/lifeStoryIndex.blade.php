@@ -24,7 +24,7 @@
             <ul>
                 @foreach ($postPacket as $story)
                     <a href="/lifeStory/{{$story->id}}">
-                        <li class="block border-b m-3 flex-row md:flex">
+                        <li class="block border-b py-1 flex-row hover:bg-emerald-50 md:flex">
                             <div class="lifeStory_index_item_id">
                                 <p>{{$story->id}}</p>
                             </div>
@@ -48,7 +48,7 @@
             </ul>
 {{--            {{dd($nowPagePaket, $totalViewPage)}}--}}
 
-            <div name="paging" class="flex justify-center">
+            <div name="paging" class="flex justify-center mt-2">
                 @if ($isFirst == false)
                     <a href="/lifeStory?page={{ ($nowPagePaket - 1) * $pageViewCount + 1}}">
                         <img src="/images/arr_left.png">

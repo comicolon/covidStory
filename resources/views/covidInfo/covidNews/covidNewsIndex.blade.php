@@ -21,7 +21,7 @@
 
         @foreach ($covidNews as $news)
             <a href="/covidNews/{{$news->id}}">
-                <div class="flex">
+                <div class="block border-b py-1 flex-row hover:bg-emerald-50 md:flex">
                     <span class="covid_news_index_item_id">{{$news->id}}</span>
                     <span class="covid_news_index_item_title"> {{$news->title}}</span>
                     <span class="write_time covid_news_index_item_datetime"> {{$news->created_at->format('Y-m-d')}}</span>

@@ -178,7 +178,7 @@ html, body {
 
 /*일상 이야기 인덱스 리스트 아이템 번호*/
 .lifeStory_index_item_id {
-    @apply w-24 hidden md:flex justify-center text-xs px-3 text-gray-500
+    @apply w-24 hidden md:flex justify-center items-center text-xs px-3 text-gray-500
 }
 /*일상 이야기 인덱스 리스트 아이템 제목*/
 .lifeStory_index_item_title{
@@ -186,11 +186,11 @@ html, body {
 }
 /*일상 이야기 인덱스 리스트 아이템 작성자*/
 .lifeStory_index_item_nickname {
-    @apply w-40 text-xs text-gray-500
+    @apply w-40 text-xs text-gray-500 flex justify-center items-center
 }
 /*일상 이야기 인덱스 리스트 아이템 조회수*/
 .lifeStory_index_item_views {
-    @apply w-20 text-xs text-gray-500
+    @apply w-20 text-xs text-gray-500 flex justify-center items-center
 }
 /*일상 이야기 인덱스 리스트 아이템 날짜*/
 .lifeStory_index_item_datetime {

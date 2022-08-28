@@ -31,6 +31,7 @@
                 <input type="hidden" name="post_id" value="{{$post->id}}">
                 <input type="hidden" name="nickname" value="{{Auth::user()->nickname}}">
                 <input type="hidden" name="parent_id" value="0">
+                <input type="hidden" name="board_name" value="{{$post->board_name}}">
                 <textarea id="content" name="content" required value="{{old('content') ? old('content') : ''}}"
                           class="flex-grow resize-none"></textarea>
                 <input type="submit" value="등록" id="submitComment"
