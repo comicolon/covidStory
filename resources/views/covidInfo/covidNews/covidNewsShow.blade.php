@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="my-auto mx-auto py-4">
+    <section class="py-2 w-full md:px-2">
 
         <div class="border-b border-gray-300 mb-8 pl-1 pb-2 text-xl font-bold">
             {{$covidNews -> title}}

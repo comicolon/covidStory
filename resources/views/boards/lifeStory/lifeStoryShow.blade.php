@@ -1,5 +1,7 @@
 @extends('layouts.app')
 @section('content')
+<div class="w-full">
+
     <section class="">
         <div class="h-16">
         </div>
@@ -14,7 +16,7 @@
                 <p class="jb-small px-2 flex items-center">조회수</p><p class="">{{$post -> views}}</p>
             </div>
             <div class="mx-3 flex">
-                <p class="text-xs flex items-center">{{$post -> created_at}}</p>
+                <p class="write_time text-xs flex items-center">{{$post -> created_at}}</p>
             </div>
         </div>
         <div class="px-3 pb-3 mx-3">
@@ -23,7 +25,7 @@
         <div class="text-lg border py-3 px-3">
             {!! $post-> content !!}
         </div>
-{{--        버튼--}}
+        {{--        버튼--}}
         <div class="">
             <a href="{{route('lifeStory')}}">
                 <button class="board_to_list">목록</button>
@@ -43,6 +45,9 @@
         </div>
     </section>
 
-@include('components.comment')
+    <div class="">
+    @include('components.comment')
+    </div>
 
+</div>
 @endsection

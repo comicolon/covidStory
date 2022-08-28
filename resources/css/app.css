@@ -52,11 +52,16 @@ html, body {
 
 /*길이*/
 @layer components {
+    .w-content {width: 75rem}
+    /*뉴스게*/
     .w-120 {width: 30rem}
     .w-160 {width: 40rem}
     .w-200 {width: 50rem}
     .w-240 {width: 60rem}
-    .w-content {width: 75rem}
+    /*일상게 */
+    .w-140 {width: 35rem}
+    .w-176 {width: 44rem}
+    .w-180 {width: 45rem}
 }
 
 
@@ -141,15 +146,56 @@ html, body {
 
 /*코로나 뉴스 인덱스 페이지 리스트 아이템 날짜*/
 .covid_news_index_item_datetime {
-    @apply hidden md:flex w-44 justify-center items-center py-2 text-sm text-gray-600
+    @apply hidden md:flex px-3 py-1 w-44 flex justify-center items-center text-xs
 }
 
+/*일상 이야기 인덱스 리스트 헤더*/
+.lifeStory_index_header {
+    @apply hidden md:flex border-b border-t border-gray-400 bg-gray-50 text-xs
+}
 
+/*일상 이야기 인덱스 리스트 헤더 번호*/
+.lifeStory_index_header_id {
+    @apply px-3 py-1 w-24 flex justify-center text-xs
+}
+/*일상 이야기 인덱스 리스트 헤더 제목*/
+.lifeStory_index_header_title {
+    @apply px-3 py-1 flex justify-center text-xs w-full
+    md:w-180
+}
+/*일상 이야기 인덱스 리스트 헤더 작성자*/
+.lifeStory_index_header_nickname {
+    @apply px-3 py-1 w-40 flex justify-center text-xs
+}
+/*일상 이야기 인덱스 리스트 헤더 조회*/
+.lifeStory_index_header_views {
+    @apply px-3 py-1 w-20 flex justify-center text-xs
+}
+/*일상 이야기 인덱스 리스트 헤더 날짜*/
+.lifeStory_index_header_datetime {
+    @apply px-3 py-1 w-36 flex justify-center text-xs hidden md:flex
+}
 
-
-
-
-
+/*일상 이야기 인덱스 리스트 아이템 번호*/
+.lifeStory_index_item_id {
+    @apply w-24 hidden md:flex justify-center text-xs px-3 text-gray-500
+}
+/*일상 이야기 인덱스 리스트 아이템 제목*/
+.lifeStory_index_item_title{
+    @apply w-96 truncate md:w-180
+}
+/*일상 이야기 인덱스 리스트 아이템 작성자*/
+.lifeStory_index_item_nickname {
+    @apply w-40 text-xs text-gray-500
+}
+/*일상 이야기 인덱스 리스트 아이템 조회수*/
+.lifeStory_index_item_views {
+    @apply w-20 text-xs text-gray-500
+}
+/*일상 이야기 인덱스 리스트 아이템 날짜*/
+.lifeStory_index_item_datetime {
+    @apply w-36 flex justify-center items-center text-xs text-gray-500
+}
 
 
 

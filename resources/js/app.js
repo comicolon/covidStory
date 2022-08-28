@@ -1,6 +1,7 @@
 import './bootstrap';
 
 import Alpine from 'alpinejs';
+import {trim} from "lodash/string";
 
 window.Alpine = Alpine;
 
@@ -32,8 +33,32 @@ $('#localArea').change(function (){
     location.replace('/covidInfo'+'?area='+area + '#localArea');
 });
 
-
-//오토링크
+//오토링크 // 출처를 오토 링크 시켜줌
 $.each($('p'), function(idx, tg) {
     $(this).html($(this).html().autoLink({ target: "_blank" }));
 });
+
+// 작성시간이 오늘인지 이전 시간인지 바꿔 줌
+if ($('.write_time')){
+    var now = new Date();
+    var year = now.getFullYear();
+    var month = now.getMonth()+1;
+    if (month < 10){
+        month = "0" + month;
+    }
+    var date = now.getDate();
+    var nowDate = trim (year + '/' + month + '/' + date);
+}
+$.each($('.write_time'), function (index, value) {
+    var dateTime = $(value).text();
+    var date = trim( dateTime.split('?')[0]);
+    var time = trim( dateTime.split('?')[1]);
+    if (date === nowDate){
+        $(value).text(time);
+    }
+    else if (date !== nowDate){
+        $(value).text(date);
+    }
+})
+
+

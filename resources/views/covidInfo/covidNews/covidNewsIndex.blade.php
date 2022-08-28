@@ -24,7 +24,7 @@
                 <div class="flex">
                     <span class="covid_news_index_item_id">{{$news->id}}</span>
                     <span class="covid_news_index_item_title"> {{$news->title}}</span>
-                    <span class="covid_news_index_item_datetime"> {{$news->created_at->format('Y-m-d')}}</span>
+                    <span class="write_time covid_news_index_item_datetime"> {{$news->created_at->format('Y-m-d')}}</span>
                 </div>
             </a>
         @endforeach

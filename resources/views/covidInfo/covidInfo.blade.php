@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 
-<div class=" md:flex">
+<div class="w-full md:flex">
     <div class="flex-1 order-1">
         <div class="bg-indigo-900 text-2xl text-white flex items-center h-12">
             <p class="ml-4"> 국내 코로나 발생 현황 </p>

@@ -1,35 +1,46 @@
 @extends('layouts.app')
 @section('content')
 
-    <div class="flex-grow">
-        <div class="mx-auto my-auto px-auto py-auto">
+    <div class="w-full md:flex">
+        <div class="">
             <div class="flex">
                 <h4 class="font-bold p-3 flex-grow">일상 이야기</h4>
                 @auth
                     <a href="{{route('lifeStoryCreate')}}" class="flex items-center">
-                        <button class="bg-green-400 hover:bg-green-500 px-4 py-2 float-right
-                         text-white rounded-md">글쓰기</button>
+                        <button class="bg-green-400 hover:bg-green-500 px-4 py-2 mr-2 float-right
+                            text-white rounded-md">글쓰기</button>
                     </a>
                 @endauth
             </div>
+
+            <div class="lifeStory_index_header">
+                <span class="lifeStory_index_header_id">번호</span>
+                <span class="lifeStory_index_header_title">제목</span>
+                <span class="lifeStory_index_header_nickname">작성자</span>
+                <span class="lifeStory_index_header_views">조회</span>
+                <span class="lifeStory_index_header_datetime">작성일</span>
+            </div>
+
             <ul>
                 @foreach ($postPacket as $story)
                     <a href="/lifeStory/{{$story->id}}">
-                        <li class="block border-b m-3 flex">
-                            <div class="mx-10 flex-0 hidden md:flex">
-                                <small class="text-gray-400">{{$story->id}}</small>
+                        <li class="block border-b m-3 flex-row md:flex">
+                            <div class="lifeStory_index_item_id">
+                                <p>{{$story->id}}</p>
                             </div>
-                            <div class="flex-grow">
-                                <p class="text-base">{{$story->title}}</p>
+                            <div class="lifeStory_index_item_title">
+                                <p>{{$story->title}}</p>
                             </div>
-                            <div class=" flex-0 mx-3 flex justify-center items-center w-20">
-                                <p>{{$story->nickname}}</p>
-                            </div>
-                            <div class="flex-0 mx-3 flex justify-center items-center w-20">
-                                <p class="text-gray-400 text-sm">{{$story->views}}</p>
-                            </div>
-                            <div class="flex-0 mx-3 flex items-center hidden md:flex">
-                                <p class="text-gray-400 text-xs"> {{$story->created_at}}</p>
+                            <div class="flex">
+                                <div class="lifeStory_index_item_nickname">
+                                    <p>{{$story->nickname}}</p>
+                                </div>
+                                <div class="lifeStory_index_item_views">
+                                    <p>{{$story->views}}</p>
+                                </div>
+                                <div class="lifeStory_index_item_datetime">
+                                    <span class="write_time"> {{$story->created_at->format('Y/m/d?H:i:s')}}</span>
+                                </div>
                             </div>
                         </li>
                     </a>
