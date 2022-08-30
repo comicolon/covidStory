@@ -772,5 +772,6 @@
     "Zip / Postal Code": "Zip / 우편 번호",
     "Åland Islands": "올란드 제도",
 
-    "Nickname": "별명"
+    "Nickname": "별명",
+    "auth.failed": "이메일 또는 비밀번호를 확인 해주세요."
 }

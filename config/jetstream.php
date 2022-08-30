@@ -59,7 +59,7 @@ return [
 
     'features' => [
         // Features::termsAndPrivacyPolicy(),
-        // Features::profilePhotos(),
+        // Features::profilePhotos(),           // 프로필 사진
         // Features::api(),
         // Features::teams(['invitations' => true]),
         Features::accountDeletion(),

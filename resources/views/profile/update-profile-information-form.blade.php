@@ -81,6 +81,13 @@
                 @endif
             @endif
         </div>
+
+        <!-- 별명 -->
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="nickname" value="{{ __('Nickname') }}" />
+            <x-jet-input id="nickname" type="text" class="mt-1 block w-full" wire:model.defer="state.nickname" autocomplete="nickname" required/>
+            <x-jet-input-error for="nickname" class="mt-2" />
+        </div>
     </x-slot>
 
     <x-slot name="actions">
