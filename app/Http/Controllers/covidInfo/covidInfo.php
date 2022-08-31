@@ -35,4 +35,33 @@ class covidInfo extends Controller
             'area' => $area,
         ]);
     }
+
+    public function officialIndex (Request $request){
+
+        $path = $this-> getPath($request);
+
+        /* PHP 샘플 코드 */
+
+        $ch = curl_init();
+        $url = 'http://openapi.data.go.kr/openapi/service/rest/Covid19/getCovid19InfStateJson'; /*URL*/
+
+        $queryParams = '?' . urlencode('serviceKey') . '=rEKbeM4B%2Fg4XCmKRlsnXn23QmHz3FwQSo3gHz3fqMB%2Fx%2BDRPbmlOecJWoWTR7hzn%2FG6VWk%2BfOCX7Hl7pFyQ1Zw%3D%3D'; /*Service Key*/
+        $queryParams .= '&' . urlencode('pageNo') . '=' . urlencode('1'); /**/
+        $queryParams .= '&' . urlencode('numOfRows') . '=' . urlencode('10'); /**/
+        $queryParams .= '&' . urlencode('startCreateDt') . '=' . urlencode('20200310'); /**/
+        $queryParams .= '&' . urlencode('endCreateDt') . '=' . urlencode('20200315'); /**/
+
+        curl_setopt($ch, CURLOPT_URL, $url . $queryParams);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+        curl_setopt($ch, CURLOPT_HEADER, FALSE);
+        curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+        $response = curl_exec($ch);
+        curl_close($ch);
+
+        var_dump($response);
+
+        return view('covidInfo.officialInfo',[
+            'path' => $path,
+        ]);
+    }
 }

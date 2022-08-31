@@ -77,6 +77,8 @@ Route::middleware('auth')->group(function () {
 //프로필
 Route::get('/user/profile', [show::class, 'index'])->name('profileShow');
 
+//임시 api
+ Route::get('/official_covid', [covidInfo::class, 'officialIndex']);
 
 //Route::middleware([
 //    'auth:sanctum',
