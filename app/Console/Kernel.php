@@ -17,7 +17,9 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('11:00');
+        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:30');
+        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('11:30');
+        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('23:30');
     }
 
     /**

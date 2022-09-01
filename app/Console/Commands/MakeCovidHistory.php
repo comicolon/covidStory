@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\CovidHistory;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Log;
 
 class MakeCovidHistory extends Command
 {
@@ -29,7 +30,7 @@ class MakeCovidHistory extends Command
      */
     public function handle()
     {
-        echo '코로나 히스토리 쌓기 ';
+        Log::info('코로나 히스토리 쌓기 실행');
         // 코로나 api 가져오기
         $key = 'jPabJtf8zIFvgs6pR7TqV9UEQ4xyZHlDc';
 
@@ -59,7 +60,7 @@ class MakeCovidHistory extends Command
         //디비에 저장되어있는 최신의 것과 비교해서 같은 날짜면 넘김
         $latestDay = CovidHistory::where('counting_date', $apiDateDatetime)->first();
         if ($latestDay != null){
-            echo '같은 날짜가 이미 저장되어 있습니다.';
+            Log::info('같은 날짜가 이미 저장되어 있습니다.');
             return 0;
         }
 
