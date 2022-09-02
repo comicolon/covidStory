@@ -30,7 +30,7 @@ class MakeCovidHistory extends Command
      */
     public function handle()
     {
-        Log::info('코로나 히스토리 쌓기 실행');
+        Log::info('코로나 히스토리 쌓기 실행',['run'=>1]);
         // 코로나 api 가져오기
         $key = 'jPabJtf8zIFvgs6pR7TqV9UEQ4xyZHlDc';
 
@@ -60,7 +60,7 @@ class MakeCovidHistory extends Command
         //디비에 저장되어있는 최신의 것과 비교해서 같은 날짜면 넘김
         $latestDay = CovidHistory::where('counting_date', $apiDateDatetime)->first();
         if ($latestDay != null){
-            Log::info('같은 날짜가 이미 저장되어 있습니다.');
+            Log::info('같은 날짜가 이미 저장되어 있습니다.',['res'=>0]);
             return 0;
         }
 
