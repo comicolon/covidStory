@@ -29,7 +29,11 @@
                                 <p>{{$story->id}}</p>
                             </div>
                             <div class="lifeStory_index_item_title">
-                                <p>{{$story->title}}</p>
+                                <p>{{$story->title}}
+                                @if ($story->comment_count != 0)
+                                    {{' ('.$story->comment_count.')'}}
+                                @endif
+                                </p>
                             </div>
                             <div class="flex">
                                 <div class="lifeStory_index_item_nickname">

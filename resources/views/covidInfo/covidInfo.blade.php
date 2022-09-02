@@ -31,7 +31,7 @@
         </div>
         <div class="h-20 bg-blue-800 px-3 text-white">
             <p class="text-xl">국내 코로나 발생률</p>
-            <p class="text-3xl">{{ number_format($json['korea']['qurRate']).'%'}}</p>
+            <p class="text-3xl">{{ number_format($json['korea']['qurRate']/1000,3).'%'}}</p>
         </div>
     </div>
 
@@ -99,7 +99,7 @@
                 <div class="flex items-center justify-center">
                     <div>
                         <p class="text-xl flex justify-center">코로나 발생률</p>
-                        <p class="text-3xl flex justify-center">{{ number_format($json[$area]['qurRate']).'%'}}</p>
+                        <p class="text-3xl flex justify-center">{{ number_format($json[$area]['qurRate']/1000,3).'%'}}</p>
                     </div>
                 </div>
             </div>
