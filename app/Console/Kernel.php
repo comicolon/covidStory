@@ -20,7 +20,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:30');
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('11:30');
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('23:30');
-        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->everyMinute();
     }
 
     /**
@@ -37,6 +36,6 @@ class Kernel extends ConsoleKernel
     }
 
     protected $commands = [
-        '\App\Console\Commands\MakeCovidHistory',
+         \App\Console\Commands\MakeCovidHistory::class,
     ];
 }
