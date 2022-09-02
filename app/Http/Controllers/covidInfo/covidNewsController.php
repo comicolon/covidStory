@@ -55,8 +55,6 @@ class covidNewsController extends Controller
          $news -> content = $validation['content'];
          $news -> source = $validation['source'];
 
-        Log::info('this.', ['id' => 1]);
-
          if($request -> hasFile('image')){
              $fileName = time().'_'.$request -> file('image') -> getClientOriginalName();
              $path = $request -> file('image') -> storeAs('public/images/news', $fileName);
