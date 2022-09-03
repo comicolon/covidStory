@@ -13,10 +13,23 @@
             <div class="h-8 px-3 bg-gray-300 flex items-center">
                 <P class="text-green-800-500">{{ mb_substr($json['API']['updateTime'],23, 13, 'utf8')}}</P>
             </div>
-            <div class="max-h-36 bg-amber-500 px-3 text-white">
+            <div class="bg-amber-500 px-3 text-white">
                 <p class="text-2xl">전일대비 확진자 수</p>
                 <p class="text-5xl">{{number_format($json['korea']['incDec'])}}</p>
+                <div class="flex-grow text-gray-100">
+                    <p class="flex justify-center text-xl">전일 보다</p>
+                    <p class="flex justify-center text-4xl">{{number_format(abs($diffinDec))}}</p>
+                    @if($diffinDec < 0)
+                        <p class="flex justify-center text-3xl">감소⬇</p>
+                    @elseif($diffinDec > 0)
+                        <p class="flex justify-center text-3xl">증가⬆</p>
+                    @elseif($diffinDec == 0)
+                        <p class="flex justify-center text-3xl">변화없음⏸</p>
+                    @endif
+                </div>
             </div>
+
+
 
             <div class="flex bg-gray-200">
                 <div class="my-2 flex flex-grow justify-center">

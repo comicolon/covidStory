@@ -13,9 +13,22 @@
         <div class="h-8 px-3 bg-gray-300 flex items-center">
             <P class="text-green-800-500">{{ mb_substr($json['API']['updateTime'],23, 13, 'utf8')}}</P>
         </div>
-        <div class="h-36 bg-amber-500 px-3 text-white">
-            <p class="text-2xl">전일대비 확진자 수</p>
-            <p class="text-6xl">{{number_format($json['korea']['incDec'])}}</p>
+        <div class="h-36 flex bg-amber-500 px-3 text-white">
+            <div>
+                <p class="text-2xl">전일대비 확진자 수</p>
+                <p class="text-6xl">{{number_format($json['korea']['incDec'])}}</p>
+            </div>
+            <div class="flex-grow text-gray-100">
+                <p class="flex justify-center text-xl">전일 보다</p>
+                <p class="flex justify-center text-4xl">{{number_format(abs($diffinDec))}}</p>
+                @if($diffinDec < 0)
+                    <p class="flex justify-center text-3xl">감소⬇</p>
+                @elseif($diffinDec > 0)
+                    <p class="flex justify-center text-3xl">증가⬆</p>
+                @elseif($diffinDec == 0)
+                    <p class="flex justify-center text-3xl">변화없음⏸</p>
+                @endif
+            </div>
         </div>
         <div class="h-24 bg-emerald-500 px-3 text-white">
             <p class="text-xl">국내 완치자 수</p>
@@ -61,7 +74,7 @@
             </label>
         </div>
         <div class="h-full">
-            <div class="h-3/4 flex-row bg-gradient-to-b from-white to-stone-200
+            <div class="h-4/5 flex-row bg-gradient-to-b from-white to-stone-200
                     flex-row justify-center items-center">
                 <div class="flex items-center justify-center px-3 py-3 bg-blue-300">
                     <p class="text-xl text-green-700">{{$json[$area]['countryNm']}}</p>
@@ -73,9 +86,20 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-center">
-                    <div class="">
+                    <div class="border-2 border-red-400 p-1">
                         <p class="text-xl flex justify-center">전일대비 확진자 수</p>
-                        <p class="text-4xl flex justify-center border-2 border-red-400">{{number_format($json[$area]['incDec'])}}</p>
+                        <p class="text-4xl flex justify-center">{{number_format($json[$area]['incDec'])}}</p>
+                    </div>
+                    <div class="ml-2 border-2 border-red-300 text-gray-800">
+                        <p class="flex text-xl">전일 보다</p>
+                        <p class="flex text-4xl">{{number_format(abs($diffincDecArea))}}</p>
+                        @if($diffincDecArea < 0)
+                            <p class="flex text-3xl">감소⬇</p>
+                        @elseif($diffincDecArea > 0)
+                            <p class="flex text-3xl">증가⬆</p>
+                        @elseif($diffincDecArea == 0)
+                            <p class="flex text-3xl">변화없음⏸</p>
+                        @endif
                     </div>
                 </div>
                 <div class="flex items-center justify-center">

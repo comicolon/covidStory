@@ -10,9 +10,10 @@ use Illuminate\Http\Request;
 
 class covidInfo extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
 
-        $path = $this-> getPath($request);
+        $path = $this->getPath($request);
 
         //api 받아오는 부분
         $key = 'jPabJtf8zIFvgs6pR7TqV9UEQ4xyZHlDc';
@@ -24,52 +25,40 @@ class covidInfo extends Controller
         }
 
         if ($existKey) {
-            $data = @file_get_contents('https://api.corona-19.kr/korea/beta/?serviceKey='. $key);
+            $data = @file_get_contents('https://api.corona-19.kr/korea/beta/?serviceKey=' . $key);
             $json = json_decode($data, true);
         }
 
         // 지역 구분
         $area = 'seoul';
-        if($request->get('area') != null){
+        if ($request->get('area') != null) {
             $area = $request->get('area');
         }
 
-        //api 날짜 시간 구하기
-        //현재시간
-        $dt = Carbon::now()->timezone('Asia/Seoul');
-
-        //api 기준시간
-        $rough = mb_substr($json['API']['updateTime'],23, 9, 'utf8');
-        $apiMonth = mb_substr($rough, 0,2,'utf8');
-        $apiDay = mb_substr($rough, 3,2,'utf8');
-        $nowYear = $dt->format('Y');
-
-        $apiDate = $nowYear.'-'.$apiMonth.'-'.$apiDay.' 00:00:00';
-        $apiDateDatetime = date_create_from_format('Y-m-d H:i:s', $apiDate);
-
-        $resFirst = CovidHistory::latest()->get()->first();
-        $resBefore = $resFirst;
-        //api 기준시간을 이용해 이미 저장이 되어 있다면 하나 이전의 데이터를 가져온다.
-        if ($resFirst->counting_date == $apiDateDatetime->format('Y-m-d H:i:s')) {
-            $resSecond = CovidHistory::latest()->skip(1)->take(1)->get();
-            $resBefore = $resSecond[0];
-        }
+        $resBefore = $this->getBeforeRes($json);
 
         // 연관 배열로 만들어 준다.
         $jsonBefore = (new BigFunctions)->changeInfoToJson($resBefore);
 
+        //현재와 비교하여 차이를 계산함
+        $diffincDec = $json['korea']['incDec'] - $jsonBefore['korea']['incDec'];        // 전체 확진자 차이
+
+        $diffincDecArea = $json[$area]['incDec'] - $jsonBefore[$area]['incDec'];        // 지역 확진자 차이
 
         return view('covidInfo.covidInfo', [
             'path' => $path,
             'json' => $json,
-            'jsonBefore' => $jsonBefore,
+//            'jsonBefore' => $jsonBefore,
+            'diffinDec' => $diffincDec,
+            'diffincDecArea' => $diffincDecArea,
             'area' => $area,
         ]);
     }
 
-    public function officialIndex (Request $request){
+    public function officialIndex(Request $request)
+    {
 
-        $path = $this-> getPath($request);
+        $path = $this->getPath($request);
 
         /* PHP 샘플 코드 */
 
@@ -91,8 +80,35 @@ class covidInfo extends Controller
 
         var_dump($response);
 
-        return view('covidInfo.officialInfo',[
+        return view('covidInfo.officialInfo', [
             'path' => $path,
         ]);
+    }
+
+    public function getBeforeRes($json)
+    {
+        //api 날짜 시간 구하기
+        //현재시간
+        $dt = Carbon::now()->timezone('Asia/Seoul');
+
+        //api 기준시간
+        $rough = mb_substr($json['API']['updateTime'], 23, 9, 'utf8');
+        $apiMonth = mb_substr($rough, 0, 2, 'utf8');
+        $apiDay = mb_substr($rough, 3, 2, 'utf8');
+        $nowYear = $dt->format('Y');
+
+        $apiDate = $nowYear . '-' . $apiMonth . '-' . $apiDay . ' 00:00:00';
+        $apiDateDatetime = date_create_from_format('Y-m-d H:i:s', $apiDate);
+
+        $resFirst = CovidHistory::latest()->get()->first();
+        $resBefore = $resFirst;
+        //api 기준시간을 이용해 이미 저장이 되어 있다면 하나 이전의 데이터를 가져온다.
+        if ($resFirst->counting_date == $apiDateDatetime->format('Y-m-d H:i:s')) {
+            $resSecond = CovidHistory::latest()->skip(1)->take(1)->get();
+            $resBefore = $resSecond[0];
+
+        }
+
+        return $resBefore;
     }
 }

@@ -216,6 +216,7 @@ class BigFunctions
         (
             'API' => $apiArr,
             'korea' => $koreaArr,
+            'seoul' => $seoulArr,
             'busan' => $busanArr,
             'daegu' => $daeguArr,
             'incheon' => $incheonArr,
