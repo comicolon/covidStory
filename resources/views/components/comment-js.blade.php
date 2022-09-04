@@ -32,7 +32,7 @@
 
             filebrowserUploadUrl: "{{route('commentUpload', ['_token' => csrf_token() ])}}",
             filebrowserUploadMethod: 'form'
-    },
+        },
 
     );
 

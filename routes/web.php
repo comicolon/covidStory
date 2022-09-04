@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BaseController;
+use App\Http\Controllers\BestList\BestListController;
 use App\Http\Controllers\board\lifeStoryController;
 use App\Http\Controllers\covidInfo\covidInfo;
 use App\Http\Controllers\covidInfo\covidNewsController;
@@ -72,6 +73,9 @@ Route::middleware('auth')->group(function () {
     //파일 업로드
     Route::post('/comment/upload', [lifeStoryController::class, 'upload'])->name('commentUpload');
 });
+
+// 베스트 링크
+Route::get('/bestList', [BestListController::class, 'index'])->name('bestList.index');
 
 
 //프로필

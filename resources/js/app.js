@@ -47,6 +47,9 @@ if ($('.write_time')){
         month = "0" + month;
     }
     var date = now.getDate();
+    if (date < 10){
+        date = '0' + date;
+    }
     var nowDate = trim (year + '/' + month + '/' + date);
 }
 $.each($('.write_time'), function (index, value) {

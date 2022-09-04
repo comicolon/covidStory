@@ -237,4 +237,17 @@ class BigFunctions
 
         return $arrBefore;
     }
+
+    public function isMobileCk(){
+        $sAgent = $_SERVER['HTTP_USER_AGENT'];
+        $sMobile = '/(iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)/i';
+        if(preg_match($sMobile, $sAgent)){
+            //모바일일경우.
+            return true;
+        }
+        else{
+            //PC인경우
+            return false;
+        }
+    }
 }

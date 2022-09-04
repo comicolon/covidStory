@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\board;
 
 use App\Http\Controllers\Controller;
+use App\Service\BigFunctions;
 use Database\Factories\lifeStoryBoardFactory;
 use Illuminate\Http\Request;
 use App\Models\LifeStoryBoard;
 use App\Service\baseConfig;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Mobile_Detect;
 
 class lifeStoryController extends Controller
 {
@@ -112,8 +114,11 @@ class lifeStoryController extends Controller
     // 글 쓰기
     public function create(Request $request){
         $path = $this-> getPath($request);
+        $isMo = (new BigFunctions)->isMobileCk();
+
         return view('boards.lifeStory.lifeStoryCreate', [
-            'path' => $path
+            'path' => $path,
+            'isMo' => $isMo,
         ]);
     }
 
@@ -142,10 +147,12 @@ class lifeStoryController extends Controller
     public function edit(Request $request, lifeStoryBoard $lifeStoryBoard){
 
         $path = $this-> getPath($request);
+        $isMo = (new BigFunctions)->isMobileCk();
 
         return view('boards.lifeStory.lifeStoryEdit', [
             'path' => $path,
             'lifeStory' => $lifeStoryBoard,
+            'isMo' => $isMo,
         ]);
     }
 

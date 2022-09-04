@@ -8,12 +8,12 @@
     "src": "public/images/btn_google_signin_light_focus_web.png"
   },
   "resources/js/app.js": {
-    "file": "assets/app.e0c016aa.js",
+    "file": "assets/app.d4e845ea.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.a9abfb7e.css",
+    "file": "assets/app.cb6a7a1b.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }

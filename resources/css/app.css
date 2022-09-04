@@ -182,7 +182,7 @@ html, body {
 }
 /*일상 이야기 인덱스 리스트 아이템 제목*/
 .lifeStory_index_item_title{
-    @apply w-96 truncate md:w-180
+    @apply w-96 truncate md:w-180 px-2
 }
 /*일상 이야기 인덱스 리스트 아이템 작성자*/
 .lifeStory_index_item_nickname {

@@ -86,11 +86,11 @@
                     </div>
                 </div>
                 <div class="flex items-center justify-center">
-                    <div class="border-2 border-red-400 p-1">
+                    <div class="bg-rose-200 p-1">
                         <p class="text-xl flex justify-center">전일대비 확진자 수</p>
                         <p class="text-4xl flex justify-center">{{number_format($json[$area]['incDec'])}}</p>
                     </div>
-                    <div class="ml-2 border-2 border-red-300 text-gray-800">
+                    <div class="ml-2 bg-rose-100 text-gray-800">
                         <p class="flex text-xl">전일 보다</p>
                         <p class="flex text-4xl">{{number_format(abs($diffincDecArea))}}</p>
                         @if($diffincDecArea < 0)
