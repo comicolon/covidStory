@@ -177,8 +177,19 @@
         </div>
     </div>
 
-{{--    <div class="h-12 bg-gradient-to-r from-green-400 to-stone-200"></div>--}}
-    <div class="h-10 bg-gradient-to-br from-blue-200 to-blue-50"></div>
+{{--    <div class="h-10 bg-gradient-to-br from-blue-200 to-blue-50"></div>--}}
+    <ul class="h-10 text-center text-lg bg-siteTheme3 text-siteTheme4">
+        <li class="w-24 float-left ml-2 mt-2 md:hidden">
+            <h2>
+                <a href="{{route('lifeStory')}}" class="">일상이야기</a>
+            </h2>
+        </li>
+{{--        <li class="w-20 float-left ml-2 mt-2 md:hidden">--}}
+{{--            <h2>--}}
+{{--                <a href="{{route('lifeStory')}}" class="">베스트글</a>--}}
+{{--            </h2>--}}
+{{--        </li>--}}
+    </ul>
 
 
 

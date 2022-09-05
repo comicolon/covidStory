@@ -46,6 +46,11 @@ module.exports = {
                 'silver': '#ecebff',
                 'bubble-gum': '#ff77e9',
                 'bermuda': '#78dcca',
+                'siteTheme1': '#4A947E',
+                'siteTheme2': '#B3FFE8',
+                'siteTheme3': '#87e1c6',
+                'siteTheme4': '#944E3B',
+                'siteTheme5': '#E09A87',
             },
 
         },
