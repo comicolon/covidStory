@@ -6,20 +6,20 @@
         <div class="bg-indigo-900 text-2xl text-white flex items-center h-12">
             <p class="ml-4"> 국내 코로나 발생 현황 </p>
         </div>
-        <div class="max-h-36 bg-amber-400 text-white px-3">
+        <div class="max-h-36 bg-amber-100 text-gray-800 px-3">
                 <p class="text-2xl">국내 확진자 수</p>
                 <p class="text-6xl">{{number_format($json['korea']['totalCnt'])}}</p>
         </div>
         <div class="h-8 px-3 bg-gray-300 flex items-center">
             <P class="text-green-800-500">{{ mb_substr($json['API']['updateTime'],23, 13, 'utf8')}}</P>
         </div>
-        <div class="h-36 flex bg-amber-500 px-3 text-white">
+        <div class="h-36 flex bg-amber-200 px-3 text-gray-800">
             <div>
                 <p class="text-2xl">전일대비 확진자 수</p>
                 <p class="text-6xl">{{number_format($json['korea']['incDec'])}}</p>
             </div>
-            <div class="flex-grow text-gray-100">
-                <p class="flex justify-center text-xl">전일 보다</p>
+            <div class="flex-grow text-gray-800">
+                <p class="flex justify-center text-2xl">전일 보다</p>
                 <p class="flex justify-center text-4xl">{{number_format(abs($diffinDec))}}</p>
                 @if($diffinDec < 0)
                     <p class="flex justify-center text-3xl">감소⬇</p>
@@ -30,7 +30,7 @@
                 @endif
             </div>
         </div>
-        <div class="h-24 bg-emerald-500 px-3 text-white">
+        <div class="h-24 bg-emerald-200 px-3 text-gray-800">
             <p class="text-xl">국내 완치자 수</p>
             <p class="text-4xl">{{number_format($json['korea']['recCnt'])}}</p>
         </div>
@@ -42,7 +42,7 @@
             <p class="text-xl">국내 치료중 환자 수</p>
             <p class="text-3xl">{{number_format($json['korea']['isolCnt'])}}</p>
         </div>
-        <div class="h-20 bg-blue-800 px-3 text-white">
+        <div class="h-20 bg-indigo-200 px-3 text-gray-800">
             <p class="text-xl">국내 코로나 발생률</p>
             <p class="text-3xl">{{ number_format($json['korea']['qurRate']/1000,3).'%'}}</p>
         </div>
@@ -77,7 +77,7 @@
             <div class="h-4/5 flex-row bg-gradient-to-b from-white to-stone-200
                     flex-row justify-center items-center">
                 <div class="flex items-center justify-center px-3 py-3 bg-blue-300">
-                    <p class="text-xl text-green-700">{{$json[$area]['countryNm']}}</p>
+                    <p class="text-2xl text-green-900">{{$json[$area]['countryNm']}}</p>
                 </div>
                 <div class="flex items-center justify-center">
                     <div>
@@ -85,20 +85,20 @@
                         <p class="text-4xl flex justify-center">{{number_format($json[$area]['totalCnt'])}}</p>
                     </div>
                 </div>
-                <div class="flex items-center justify-center">
-                    <div class="bg-rose-200 p-1">
+                <div class="flex items-center justify-center bg-rose-100">
+                    <div class="p-1">
                         <p class="text-xl flex justify-center">전일대비 확진자 수</p>
                         <p class="text-4xl flex justify-center">{{number_format($json[$area]['incDec'])}}</p>
                     </div>
-                    <div class="ml-2 bg-rose-100 text-gray-800">
-                        <p class="flex text-xl">전일 보다</p>
-                        <p class="flex text-4xl">{{number_format(abs($diffincDecArea))}}</p>
+                    <div class="ml-2 text-gray-800 flex-grow">
+                        <p class="flex text-2xl justify-center">전일 보다</p>
+                        <p class="flex text-4xl justify-center">{{number_format(abs($diffincDecArea))}}</p>
                         @if($diffincDecArea < 0)
-                            <p class="flex text-3xl">감소⬇</p>
+                            <p class="flex text-3xl justify-center">감소⬇</p>
                         @elseif($diffincDecArea > 0)
-                            <p class="flex text-3xl">증가⬆</p>
+                            <p class="flex text-3xl justify-center">증가⬆</p>
                         @elseif($diffincDecArea == 0)
-                            <p class="flex text-3xl">변화없음⏸</p>
+                            <p class="flex text-3xl justify-center">변화없음⏸</p>
                         @endif
                     </div>
                 </div>

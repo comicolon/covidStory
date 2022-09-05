@@ -3,21 +3,23 @@
 
     <div class="main_page_content">
         <div class="main_order1">
-            <div class="bg-indigo-900 text-xl text-white flex items-center h-12">
+            <div class="bg-indigo-200 text-xl text-gray-800 flex items-center h-10">
                 <p class="ml-4"> 국내 코로나 발생 현황 </p>
             </div>
-            <div class="max-h-36 bg-amber-400 text-white px-3">
+            <div class="max-h-36 bg-amber-100 text-gray-800 px-3">
                 <p class="text-2xl">국내 확진자 수</p>
                 <p class="text-5xl">{{number_format($json['korea']['totalCnt'])}}</p>
             </div>
             <div class="h-8 px-3 bg-gray-300 flex items-center">
                 <P class="text-green-800-500">{{ mb_substr($json['API']['updateTime'],23, 13, 'utf8')}}</P>
             </div>
-            <div class="bg-amber-500 px-3 text-white">
-                <p class="text-2xl">전일대비 확진자 수</p>
-                <p class="text-5xl">{{number_format($json['korea']['incDec'])}}</p>
-                <div class="flex-grow text-gray-100">
-                    <p class="flex justify-center text-xl">전일 보다</p>
+            <div class="flex bg-amber-200 px-3 text-gray-800">
+                <div class="mt-4">
+                    <p class="text-2xl">전일대비 확진자 수</p>
+                    <p class="text-5xl">{{number_format($json['korea']['incDec'])}}</p>
+                </div>
+                <div class="flex-row flex-grow text-gray-800">
+                    <p class="flex justify-center text-2xl">전일 보다</p>
                     <p class="flex justify-center text-4xl">{{number_format(abs($diffinDec))}}</p>
                     @if($diffinDec < 0)
                         <p class="flex justify-center text-3xl">감소⬇</p>
@@ -48,7 +50,7 @@
         <div class="main_order2">
 
             <div>
-                <div class="border-b-2 border-indigo-400 px-3 py-1 bg-emerald-400 text-white">
+                <div class="px-3 py-1 bg-emerald-400 text-white">
                     <a href="{{'/covidNews'}}">
                         <h3>뉴스</h3>
                     </a>
@@ -65,7 +67,7 @@
             </div>
 
             <div>
-                <div class="border-b-2 border-indigo-400 px-3 py-1 bg-emerald-400 text-white">
+                <div class="px-3 py-1 bg-emerald-400 text-white">
                     <a href="{{'/lifeStory'}}">
                         <h3>일상 이야기</h3>
                     </a>
