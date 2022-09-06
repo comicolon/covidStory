@@ -2,6 +2,7 @@
 
 namespace App\Console;
 
+use App\Console\Commands\CrawlingBestList;
 use App\Console\Commands\MakeCovidHistory;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
@@ -17,11 +18,17 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
+        //코로나 히스토리 업데이트
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:05');
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:15');
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:30');
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:45');
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('11:00');
+
+        //베스트글 크롤링
+        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(01);
+        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(21);
+        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(41);
     }
 
     /**
@@ -38,6 +45,7 @@ class Kernel extends ConsoleKernel
     }
 
     protected $commands = [
-         \App\Console\Commands\MakeCovidHistory::class,
+        MakeCovidHistory::class,
+        CrawlingBestList::class,
     ];
 }

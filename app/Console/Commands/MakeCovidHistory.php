@@ -21,7 +21,7 @@ class MakeCovidHistory extends Command
      *
      * @var string
      */
-    protected $description = 'Command description';
+    protected $description = '코로나 api에 접속해서 코로나 확진자 정보를 받아와 db에 저장하는 커맨드 이다.';
 
     /**
      * Execute the console command.

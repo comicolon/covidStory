@@ -238,6 +238,7 @@ class BigFunctions
         return $arrBefore;
     }
 
+    //모바일 체크
     public function isMobileCk(){
         $sAgent = $_SERVER['HTTP_USER_AGENT'];
         $sMobile = '/(iPod|iPhone|Android|BlackBerry|SymbianOS|SCH-M\d+|Opera Mini|Windows CE|Nokia|SonyEricsson|webOS|PalmOS)/i';
