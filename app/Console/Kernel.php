@@ -26,9 +26,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('11:00');
 
         //베스트글 크롤링
-        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(01);
-        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(21);
-        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(41);
+        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(26);
+        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(51);
     }
 
     /**

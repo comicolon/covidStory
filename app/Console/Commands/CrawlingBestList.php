@@ -47,7 +47,7 @@ class CrawlingBestList extends Command
         require_once 'simple_html_dom.php';
 
         //상수 선언
-        $sleepTimeM = 1000000;
+        $sleepTimeM = 2000000;
         $idxMax = 30;
 
         // 디씨 인사이드 에서 가져오기
