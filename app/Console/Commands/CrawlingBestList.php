@@ -659,8 +659,10 @@ class CrawlingBestList extends Command
             $info = curl_getinfo($ch);
             $html = str_get_html($exec);
 
+            $html2 = $html->find('.li_sbj');
 
-            dd($html);
+
+            dd($html2);
 
 
 
