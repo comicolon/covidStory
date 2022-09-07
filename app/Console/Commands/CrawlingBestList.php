@@ -16,7 +16,10 @@ use App\Models\Best_theqoo;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
-use function MongoDB\BSON\toRelaxedExtendedJSON;
+
+use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Exception\GuzzleException;
+use Symfony\Component\DomCrawler\Crawler;
 
 
 class CrawlingBestList extends Command
@@ -46,6 +49,7 @@ class CrawlingBestList extends Command
         ini_set("allow_url_fopen",1);
         //심플 파서 로드
         require_once 'simple_html_dom.php';
+        require_once('Snoopy.class.php');
 
         //상수 선언
         $sleepTimeM = 2000000;
@@ -628,130 +632,166 @@ class CrawlingBestList extends Command
 //
 //
 //        // 웃긴대학 인기자료
-	try {
-            // 크롤링이 막혀 있어 우회함
-            $url = 'http://web.humoruniv.com/board/humor/list.html?table=pick';
-            // From https://gist.github.com/fijimunkii/952acac988f2d25bef7e0284bc63c406
-            $user_agents = [
-                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
-//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
-//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
-//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0",
-//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36",
-//                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
-//                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
-//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
-//                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15",
-//                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
-//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0"
-            ];
-            // Get random user agent
-            $user_agent = $user_agents[rand(0, count($user_agents) - 1)];
-            $ch = curl_init();
-            curl_setopt($ch, CURLOPT_URL, $url);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
-            $exec = curl_exec($ch);
-            $html = str_get_html($exec);
-            $htmlTitle = $html->find('.li_sbj');
-	    $htmlWriter = $html->find('.li_icn');
-            $htmlTime = $html->find('.li_date');
-            $htmlViews = $html->find('.li_und');
 
-            $j = 0;
-            $htmlViewsArr = array();
-            foreach ($htmlViews as $item){
-                if ($j % 3 == 0){
-                    array_push($htmlViewsArr, $item);
-                }
+        $url = 'http://web.humoruniv.com/board/humor/list.html?table=pick';
+        $selector = '.li_sbj';
+
+        $res = [];
+        // 열기
+        try {
+            $client = new GuzzleClient();
+            $response = $client->request('GET', $url);
+        } catch (GuzzleException $e) {
+            die('Exception');
+        }
+
+        if ($response->getStatusCode() == 200) {
+            // 찾기
+            $html = strval($response->getBody());
+
+            $crawler = new Crawler($html);
+            $crawler = $crawler->filter($selector);
+            // 보기
+            foreach ($crawler as $domElement) {
+                $res[] = $domElement->nodeValue;
             }
+        }
+
+        print_r($res);
 
 
-            $huArr = array();
-	        $idx = 0;
-
-            for ($i=0; $i < count($htmlTitle); $i++) {
 
 
-                try {
-                    $title = $htmlTitle[$i]->plaintext;
-                    $url = $htmlTitle[$i]->find('a')[0]->href;
-                    $writer = $htmlWriter[$i]->plaintext;
-                    $date = $htmlTime[$i]->plaintext;
-                    $views = $htmlViewsArr[$i]->plaintext;
-                    $pos = strpos($url, 'number=');
-                    $num = substr($url, $pos + 7);
-
-                    echo nl2br('title : ' . $title);
-                    echo nl2br('url : ' . $url);
-                    echo nl2br('writer : ' . $writer);
-                    echo nl2br('date : ' . $date);
-                    echo nl2br('views : ' . $views);
-                    echo nl2br('num : ' . $num);
 
 
-                }
-                catch (\Exception $e) {
-                    echo $e;
-                }
 
 
-//                usleep($sleepTimeM);
-//                $url = $item->find('a')[1]->href;
-//                $url = 'http://web.humoruniv.com/board/humor/' . $url;
-//                $title = trim($item->find('a')[1]->plaintext);
-//                $title =  preg_replace('/\[\d+\]/','',$title);
-//                $title = trim($title);
-//                $writer = $item->find('.hu_nick_txt')[0]->plaintext;
-//                $time = trim($item->find('.li_date')[0]->plaintext);
-//                $datetime = date_create_from_format('Y-m-d H:i', $time);
-//                $views = $item->find('.li_und')[0]->plaintext;
-//                $views = preg_replace("/[^0-9]*/s", "", $views);
-//                $pos = strpos($url, 'number=');
-//                $num = substr($url, $pos + 7);
+
+
+//	try {
+//            // 크롤링이 막혀 있어 우회함
+//            $url = 'http://web.humoruniv.com/board/humor/list.html?table=pick';
+//            // From https://gist.github.com/fijimunkii/952acac988f2d25bef7e0284bc63c406
+//            $user_agents = [
+//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+////                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
+////                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+////                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0",
+////                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36",
+////                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
+////                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+////                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+////                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15",
+////                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
+////                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0"
+//            ];
+//            // Get random user agent
+//            $user_agent = $user_agents[rand(0, count($user_agents) - 1)];
+//            $ch = curl_init();
+//            curl_setopt($ch, CURLOPT_URL, $url);
+//            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+//            curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
+//            $exec = curl_exec($ch);
+//            $html = str_get_html($exec);
+//            $htmlTitle = $html->find('.li_sbj');
+//	    $htmlWriter = $html->find('.li_icn');
+//            $htmlTime = $html->find('.li_date');
+//            $htmlViews = $html->find('.li_und');
 //
-//
-//
-//                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
-//                $arr = array(
-//                    'title' => $title,
-//                    'url' => $url,
-//                    'writer' => $writer,
-//                    'datetime' => $datetime,
-//                    'views' => $views,
-//                    'num' => $num,
-//                );
-//                array_push($huArr, $arr);
-//
-//                $idx++;
-//                if ($idx == $idxMax)
-//                    break;
-            }
-            //디비에 넣어준다.
-//            foreach ($huArr as $item) {
-//
-//                //먼저 있는것과 비교해서 있으면 업데이트 해준다.
-//                $beforeBe = Best_huniv::where('num', $item['num'])->first();
-//                if ($beforeBe != null) {
-//
-//                    $beforeBe->views = $item['views'];
-//                    $beforeBe->save();
-//                } else {
-//                    $nowBest = new Best_huniv();
-//
-//                    $nowBest->title = $item['title'];
-//                    $nowBest->url = $item['url'];
-//                    $nowBest->writer = $item['writer'];
-//                    $nowBest->write_datetime = $item['datetime'];
-//                    $nowBest->views = $item['views'];
-//                    $nowBest->num = $item['num'];
-//
-//                    $nowBest->save();
+//            $j = 0;
+//            $htmlViewsArr = array();
+//            foreach ($htmlViews as $item){
+//                if ($j % 3 == 0){
+//                    array_push($htmlViewsArr, $item);
 //                }
 //            }
-        } catch (\Exception $e) {
-            Log::info('웃긴대학 가져오기 실패',['error : '=>$e]);
-        }
+//
+//
+//            $huArr = array();
+//	        $idx = 0;
+//
+//            for ($i=0; $i < count($htmlTitle); $i++) {
+//
+//
+//                try {
+//                    $title = $htmlTitle[$i]->plaintext;
+//                    $url = $htmlTitle[$i]->find('a')[0]->href;
+//                    $writer = $htmlWriter[$i]->plaintext;
+//                    $date = $htmlTime[$i]->plaintext;
+//                    $views = $htmlViewsArr[$i]->plaintext;
+//                    $pos = strpos($url, 'number=');
+//                    $num = substr($url, $pos + 7);
+//
+//                    echo nl2br('title : ' . $title);
+//                    echo nl2br('url : ' . $url);
+//                    echo nl2br('writer : ' . $writer);
+//                    echo nl2br('date : ' . $date);
+//                    echo nl2br('views : ' . $views);
+//                    echo nl2br('num : ' . $num);
+//
+//
+//                }
+//                catch (\Exception $e) {
+//                    echo $e;
+//                }
+//
+//
+////                usleep($sleepTimeM);
+////                $url = $item->find('a')[1]->href;
+////                $url = 'http://web.humoruniv.com/board/humor/' . $url;
+////                $title = trim($item->find('a')[1]->plaintext);
+////                $title =  preg_replace('/\[\d+\]/','',$title);
+////                $title = trim($title);
+////                $writer = $item->find('.hu_nick_txt')[0]->plaintext;
+////                $time = trim($item->find('.li_date')[0]->plaintext);
+////                $datetime = date_create_from_format('Y-m-d H:i', $time);
+////                $views = $item->find('.li_und')[0]->plaintext;
+////                $views = preg_replace("/[^0-9]*/s", "", $views);
+////                $pos = strpos($url, 'number=');
+////                $num = substr($url, $pos + 7);
+////
+////
+////
+////                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+////                $arr = array(
+////                    'title' => $title,
+////                    'url' => $url,
+////                    'writer' => $writer,
+////                    'datetime' => $datetime,
+////                    'views' => $views,
+////                    'num' => $num,
+////                );
+////                array_push($huArr, $arr);
+////
+////                $idx++;
+////                if ($idx == $idxMax)
+////                    break;
+//            }
+//            //디비에 넣어준다.
+////            foreach ($huArr as $item) {
+////
+////                //먼저 있는것과 비교해서 있으면 업데이트 해준다.
+////                $beforeBe = Best_huniv::where('num', $item['num'])->first();
+////                if ($beforeBe != null) {
+////
+////                    $beforeBe->views = $item['views'];
+////                    $beforeBe->save();
+////                } else {
+////                    $nowBest = new Best_huniv();
+////
+////                    $nowBest->title = $item['title'];
+////                    $nowBest->url = $item['url'];
+////                    $nowBest->writer = $item['writer'];
+////                    $nowBest->write_datetime = $item['datetime'];
+////                    $nowBest->views = $item['views'];
+////                    $nowBest->num = $item['num'];
+////
+////                    $nowBest->save();
+////                }
+////            }
+//        } catch (\Exception $e) {
+//            Log::info('웃긴대학 가져오기 실패',['error : '=>$e]);
+//        }
 
 
         // 보배드림
