@@ -657,7 +657,7 @@ class CrawlingBestList extends Command
             curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
             $exec = curl_exec($ch);
             $html = str_get_html($exec);
-            $htmlTitle = $html->find('.li_sbj')[0];
+//            $htmlTitle = $html->find('.li_sbj')[0];
 
             curl_close($ch);
 
