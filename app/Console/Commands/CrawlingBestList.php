@@ -656,15 +656,13 @@ class CrawlingBestList extends Command
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
             curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
             $exec = curl_exec($ch);
+            $info = curl_getinfo($ch);
             $html = str_get_html($exec);
-//            $htmlTitle = $html->find('.li_sbj')[0];
-
-            curl_close($ch);
 
 
             dd($html);
 
-//            $html = str_get_html($exec);
+
 
 
 
