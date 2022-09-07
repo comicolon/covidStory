@@ -661,7 +661,7 @@ class CrawlingBestList extends Command
             }
             $huArr = array();
 	    $idx = 0;
-	    
+
             foreach ($html3 as $item) {
 
                 usleep($sleepTimeM);
@@ -677,7 +677,7 @@ class CrawlingBestList extends Command
                 $views = preg_replace("/[^0-9]*/s", "", $views);
                 $pos = strpos($url, 'number=');
                 $num = substr($url, $pos + 7);
-		
+
 		echo $title;
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
