@@ -652,71 +652,102 @@ class CrawlingBestList extends Command
             curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
             $exec = curl_exec($ch);
             $html = str_get_html($exec);
-            $html2 = $html->find('[id=post_list] tr');
-            $html3 = array();
-            for ($i = 0; $i < count($html2) - 1; $i++) {
-                if ($i % 2 == 0) {
-                    array_push($html3, $html2[$i]);
+            $htmlTitle = $html->find('.li_sbj');
+            $htmlWriter = $html->find('.li_icn');
+            $htmlTime = $html->find('.li_date');
+            $htmlViews = $html->find('.li_und');
+
+            $j = 0;
+            $htmlViewsArr = array();
+            foreach ($htmlViews as $item){
+                if ($j % 3 == 0){
+                    array_push($htmlViewsArr, $item);
                 }
             }
+
+
             $huArr = array();
-	    $idx = 0;
+	        $idx = 0;
 
-            foreach ($html3 as $item) {
+            for ($i=0; $i < count($htmlTitle); $i++) {
 
-                usleep($sleepTimeM);
-                $url = $item->find('a')[1]->href;
-                $url = 'http://web.humoruniv.com/board/humor/' . $url;
-                $title = trim($item->find('a')[1]->plaintext);
-                $title =  preg_replace('/\[\d+\]/','',$title);
-                $title = trim($title);
-                $writer = $item->find('.hu_nick_txt')[0]->plaintext;
-                $time = trim($item->find('.li_date')[0]->plaintext);
-                $datetime = date_create_from_format('Y-m-d H:i', $time);
-                $views = $item->find('.li_und')[0]->plaintext;
-                $views = preg_replace("/[^0-9]*/s", "", $views);
-                $pos = strpos($url, 'number=');
-                $num = substr($url, $pos + 7);
 
-		echo $title;
+                try {
+                    $title = $htmlTitle[$i]->plaintext;
+                    $url = $htmlTitle[$i]->find('a')[0]->href;
+                    $writer = $htmlWriter[$i]->plaintext;
+                    $date = $htmlTime[$i]->plaintext;
+                    $views = $htmlViewsArr[$i]->plaintext;
+                    $pos = strpos($url, 'number=');
+                    $num = substr($url, $pos + 7);
 
-                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
-                $arr = array(
-                    'title' => $title,
-                    'url' => $url,
-                    'writer' => $writer,
-                    'datetime' => $datetime,
-                    'views' => $views,
-                    'num' => $num,
-                );
-                array_push($huArr, $arr);
+                    echo nl2br('title : ' . $title);
+                    echo nl2br('url : ' . $url);
+                    echo nl2br('writer : ' . $writer);
+                    echo nl2br('date : ' . $date);
+                    echo nl2br('views : ' . $views);
+                    echo nl2br('num : ' . $num);
 
-                $idx++;
-                if ($idx == $idxMax)
-                    break;
-	    }
-            //디비에 넣어준다.
-            foreach ($huArr as $item) {
 
-                //먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_huniv::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
-                } else {
-                    $nowBest = new Best_huniv();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-
-                    $nowBest->save();
                 }
+                catch (\Exception $e) {
+                    echo $e;
+                }
+
+
+//                usleep($sleepTimeM);
+//                $url = $item->find('a')[1]->href;
+//                $url = 'http://web.humoruniv.com/board/humor/' . $url;
+//                $title = trim($item->find('a')[1]->plaintext);
+//                $title =  preg_replace('/\[\d+\]/','',$title);
+//                $title = trim($title);
+//                $writer = $item->find('.hu_nick_txt')[0]->plaintext;
+//                $time = trim($item->find('.li_date')[0]->plaintext);
+//                $datetime = date_create_from_format('Y-m-d H:i', $time);
+//                $views = $item->find('.li_und')[0]->plaintext;
+//                $views = preg_replace("/[^0-9]*/s", "", $views);
+//                $pos = strpos($url, 'number=');
+//                $num = substr($url, $pos + 7);
+//
+//
+//
+//                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+//                $arr = array(
+//                    'title' => $title,
+//                    'url' => $url,
+//                    'writer' => $writer,
+//                    'datetime' => $datetime,
+//                    'views' => $views,
+//                    'num' => $num,
+//                );
+//                array_push($huArr, $arr);
+//
+//                $idx++;
+//                if ($idx == $idxMax)
+//                    break;
             }
+            //디비에 넣어준다.
+//            foreach ($huArr as $item) {
+//
+//                //먼저 있는것과 비교해서 있으면 업데이트 해준다.
+//                $beforeBe = Best_huniv::where('num', $item['num'])->first();
+//                if ($beforeBe != null) {
+//
+//                    $beforeBe->views = $item['views'];
+//                    $beforeBe->save();
+//                } else {
+//                    $nowBest = new Best_huniv();
+//
+//                    $nowBest->title = $item['title'];
+//                    $nowBest->url = $item['url'];
+//                    $nowBest->writer = $item['writer'];
+//                    $nowBest->write_datetime = $item['datetime'];
+//                    $nowBest->views = $item['views'];
+//                    $nowBest->num = $item['num'];
+//
+//                    $nowBest->save();
+//                }
+//            }
         } catch (\Exception $e) {
             Log::info('웃긴대학 가져오기 실패',['error : '=>$e]);
         }
