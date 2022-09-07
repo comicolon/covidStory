@@ -653,7 +653,7 @@ class CrawlingBestList extends Command
             $exec = curl_exec($ch);
             $html = str_get_html($exec);
             $htmlTitle = $html->find('.li_sbj');
-            $htmlWriter = $html->find('.li_icn');
+	    $htmlWriter = $html->find('.li_icn');
             $htmlTime = $html->find('.li_date');
             $htmlViews = $html->find('.li_und');
 
