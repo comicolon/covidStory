@@ -628,8 +628,9 @@ class CrawlingBestList extends Command
 //
 //
 //        // 웃긴대학 인기자료
-
-        try {
+	echo 'this1';
+	try {
+		echo 'this2';
             // 크롤링이 막혀 있어 우회함
             $url = 'http://web.humoruniv.com/board/humor/list.html?table=pick';
             // From https://gist.github.com/fijimunkii/952acac988f2d25bef7e0284bc63c406
@@ -662,7 +663,8 @@ class CrawlingBestList extends Command
             }
             //        $html = file_get_html('http://web.humoruniv.com/board/humor/list.html?table=pick');
             $huArr = array();
-            $idx = 0;
+	    $idx = 0;
+	    dd($html);
             foreach ($html3 as $item) {
 
                 usleep($sleepTimeM);
@@ -693,7 +695,8 @@ class CrawlingBestList extends Command
                 $idx++;
                 if ($idx == $idxMax)
                     break;
-            }
+	    }
+	    echo 'this4';
             //디비에 넣어준다.
             foreach ($huArr as $item) {
 
