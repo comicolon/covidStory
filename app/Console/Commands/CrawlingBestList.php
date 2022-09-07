@@ -634,33 +634,37 @@ class CrawlingBestList extends Command
 //        // 웃긴대학 인기자료
 
         $url = 'http://web.humoruniv.com/board/humor/list.html?table=pick';
-        $selector = '.li_sbj';
+            $url = 'http://web.humoruniv.com/board/humor/list.html?table=pick';
+            // From https://gist.github.com/fijimunkii/952acac988f2d25bef7e0284bc63c406
+            $user_agents = [
+                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36"
+//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
+//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:90.0) Gecko/20100101 Firefox/90.0",
+//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36",
+//                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.131 Safari/537.36",
+//                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.107 Safari/537.36",
+//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+//                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.2 Safari/605.1.15",
+//                "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.1.1 Safari/605.1.15",
+//                "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:91.0) Gecko/20100101 Firefox/91.0"
+            ];
+            // Get random user agent
+            $user_agent = $user_agents[rand(0, count($user_agents) - 1)];
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
+            $exec = curl_exec($ch);
+            $html = str_get_html($exec);
+            $htmlTitle = $html->find('.li_sbj')[0];
 
-        $res = [];
-        // 열기
-
-        $client = new GuzzleClient();
-        $response = $client->request('GET', $url, [
-            'headers' => [
-                'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36',
-                'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9'
-            ]
-        ]);
+            curl_close($ch);
 
 
-        if ($response->getStatusCode() == 200) {
-            // 찾기
-            $html = strval($response->getBody());
+            dd($html);
 
-            $crawler = new Crawler($html);
-            $crawler = $crawler->filter($selector);
-            // 보기
-            foreach ($crawler as $domElement) {
-                $res[] = $domElement->nodeValue;
-            }
-        }
-
-        print_r($res);
+//            $html = str_get_html($exec);
 
 
 
