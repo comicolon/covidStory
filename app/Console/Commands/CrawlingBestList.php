@@ -628,9 +628,7 @@ class CrawlingBestList extends Command
 //
 //
 //        // 웃긴대학 인기자료
-	echo 'this1';
 	try {
-		echo 'this2';
             // 크롤링이 막혀 있어 우회함
             $url = 'http://web.humoruniv.com/board/humor/list.html?table=pick';
             // From https://gist.github.com/fijimunkii/952acac988f2d25bef7e0284bc63c406
@@ -654,17 +652,16 @@ class CrawlingBestList extends Command
             curl_setopt($ch, CURLOPT_USERAGENT, $user_agent);
             $exec = curl_exec($ch);
             $html = str_get_html($exec);
-            $html2 = $html->find('#post_list tr');
+            $html2 = $html->find('[id=post_list] tr');
             $html3 = array();
             for ($i = 0; $i < count($html2) - 1; $i++) {
                 if ($i % 2 == 0) {
                     array_push($html3, $html2[$i]);
                 }
             }
-            //        $html = file_get_html('http://web.humoruniv.com/board/humor/list.html?table=pick');
             $huArr = array();
 	    $idx = 0;
-	    dd($html);
+	    
             foreach ($html3 as $item) {
 
                 usleep($sleepTimeM);
@@ -680,6 +677,8 @@ class CrawlingBestList extends Command
                 $views = preg_replace("/[^0-9]*/s", "", $views);
                 $pos = strpos($url, 'number=');
                 $num = substr($url, $pos + 7);
+		
+		echo $title;
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -696,7 +695,6 @@ class CrawlingBestList extends Command
                 if ($idx == $idxMax)
                     break;
 	    }
-	    echo 'this4';
             //디비에 넣어준다.
             foreach ($huArr as $item) {
 
