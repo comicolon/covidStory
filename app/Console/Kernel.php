@@ -26,14 +26,14 @@ class Kernel extends ConsoleKernel
         $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('11:00');
 
         //베스트글 크롤링
-        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(26);
+        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(11);
+        $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(31);
         $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(51);
 
         //베스트글 정리 작업
-        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(01);
-        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(16);
-        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(31);
-        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(46);
+        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(19);
+        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(39);
+        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(59);
     }
 
     /**
