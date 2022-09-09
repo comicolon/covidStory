@@ -198,10 +198,10 @@ class CrawlingBestList extends Command
 
             try {
                 usleep($sleepTimeM);
-                $num = $item->find('.id')[0]->plaintext;
+                $num = trim($item->find('.id')[0]->plaintext);
                 $url = $item->find('.relative a')[0]->href;
-                $title = $item->find('.relative a')[0]->plaintext;
-                $writer = $item->find('.writer a')[0]->plaintext;
+                $title = trim($item->find('.relative a')[0]->plaintext);
+                $writer = trim($item->find('.writer a')[0]->plaintext);
                 $html2 = file_get_html($url);
                 $time = $html2->find('.regdate')[0]->plaintext;
                 $time = preg_replace("/[^0-9]*/s", "", $time);
@@ -545,7 +545,9 @@ class CrawlingBestList extends Command
                 $time = $html2->find('.side')[1];
                 $time = $time->find('span')[0]->plaintext;
                 $datetime = date_create_from_format('Y.m.d H:i', $time);
-                $views = $html2->find('.count_container')[0]->plaintext;
+                $views = trim($html2->find('.count_container')[0]->plaintext);
+                $pos = strpos($views, '  ');
+                $views = substr($views, 0, $pos);
                 $views = preg_replace("/[^0-9]*/s", "", $views);
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
