@@ -52,7 +52,7 @@ class CrawlingBestList extends Command
         require_once 'simple_html_dom.php';
 
         //상수 선언
-        $sleepTimeM = 2000000;
+        $sleepTimeM = 1500000;
         $idxMax = 30;
 
         // 디씨 인사이드 에서 가져오기
@@ -73,7 +73,9 @@ class CrawlingBestList extends Command
                 $views = $board_data->find('.gall_count')[0]->plaintext;
                 $views = preg_replace("/[^0-9]*/s", "", $views);
                 $pos = strpos($url, '&no=');
-                $num = substr($url, $pos + 4);//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $num = substr($url, $pos + 4);
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -139,7 +141,9 @@ class CrawlingBestList extends Command
                 $time = trim($html2->find('.date')[0]->plaintext);
                 $datetime = date_create_from_format('Y/m/d H:i:s', $time);
                 $views = $item->find('.list_click')[0]->plaintext;
-                $num = $item->find('.list_num')[0]->plaintext;//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $num = $item->find('.list_num')[0]->plaintext;
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -202,7 +206,9 @@ class CrawlingBestList extends Command
                 $time = $html2->find('.regdate')[0]->plaintext;
                 $time = preg_replace("/[^0-9]*/s", "", $time);
                 $datetime = date_create_from_format('YmdHis', $time);
-                $views = $item->find('.hit')[0]->plaintext;//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $views = $item->find('.hit')[0]->plaintext;
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -269,7 +275,9 @@ class CrawlingBestList extends Command
                     $views = $item->find('.m_no')[0]->plaintext;
                     $pos = strpos($url, 'document_srl=');
                     $num = trim(substr($url, $pos + 13));
-                }//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                }
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -334,7 +342,9 @@ class CrawlingBestList extends Command
                 $views = $item->find('.count')[0]->plaintext;
                 $views = preg_replace("/[^0-9]*/s", "", $views);
                 $pos = strpos($url, 'talk/');
-                $num = substr($url, $pos + 5);//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $num = substr($url, $pos + 5);
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -399,7 +409,9 @@ class CrawlingBestList extends Command
                 $pos = strpos($num, '2097/');
                 $num = substr($num, $pos + 5);
                 $pos = strpos($num, '?iskin');
-                $num = substr($num, 0, $pos);//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $num = substr($num, 0, $pos);
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -466,7 +478,9 @@ class CrawlingBestList extends Command
                 $datetime = date_create_from_format('YmdHi', $time);
                 $views = $item->find('.board_date')[2]->plaintext;
                 $pos = strpos($url, '&no=');
-                $num = substr($url, $pos + 4);//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $num = substr($url, $pos + 4);
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -532,7 +546,9 @@ class CrawlingBestList extends Command
                 $time = $time->find('span')[0]->plaintext;
                 $datetime = date_create_from_format('Y.m.d H:i', $time);
                 $views = $html2->find('.count_container')[0]->plaintext;
-                $views = preg_replace("/[^0-9]*/s", "", $views);//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $views = preg_replace("/[^0-9]*/s", "", $views);
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -597,7 +613,9 @@ class CrawlingBestList extends Command
                 $views = preg_replace("/[^0-9]*/s", "", $views);
                 $pos = strpos($url, 'park/');
                 $pos2 = strpos($url, '?od=');
-                $num = substr($url, $pos + 5, $pos2 - ($pos + 5));//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $num = substr($url, $pos + 5, $pos2 - ($pos + 5));
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -752,7 +770,9 @@ class CrawlingBestList extends Command
                 $time = substr($time, -12, 12);
                 $datetime = date_create_from_format('YmdHi', $time);
                 $pos = strpos($url, '&No=');
-                $num = substr($url, $pos + 4, 6);//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $num = substr($url, $pos + 4, 6);
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
@@ -823,12 +843,14 @@ class CrawlingBestList extends Command
                 if (preg_match('/분 전/', $time)) {
                     $timeDiff = preg_replace("/[^0-9]*/s", "", $time);
                     $time = $nowTime->subMinutes($timeDiff);
-                    $datetime = $nowTime->toDateTime();
+                    $datetime = $time->toDateTime();
                 } elseif (preg_match('/시간 전/', $time)) {
                     $timeDiff = preg_replace("/[^0-9]*/s", "", $time);
                     $time = $nowTime->subHours($timeDiff);
-                    $datetime = $nowTime->toDateTime();
-                }//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                    $datetime = $time->toDateTime();
+                }
+
+                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
                     'title' => $title,
                     'url' => $url,
