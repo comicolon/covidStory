@@ -71,40 +71,40 @@ $.each($('.rating_site'), function (index, value) {
     console.log(site_name);
 
     if (site_name === '보배'){
-        $(value).addClass('bg-site_bobaedream');
+        $(value).css('background-color', '#5486c6');
     }
     else if (site_name === '클량'){
-        $(value).addClass('bg-site_clien');
+        $(value).css('background-color', '#3e487e');
     }
     else if (site_name ==='디씨'){
-        $(value).addClass('bg-site_dcinside');
+        $(value).css('background-color', '#3e488d');
     }
     else if (site_name ==='펨코'){
-        $(value).addClass('bg-site_fmkorea');
+        $(value).css('background-color', '#5775ca');
     }
     else if (site_name ==='웃대'){
-        $(value).addClass('bg-site_huniv');
+        $(value).css('background-color', '#da3e4c');
     }
     else if (site_name ==='인티'){
-        $(value).addClass('bg-site_instiz');
+        $(value).css('background-color', '#5cbb65');
     }
     else if (site_name ==='인벤'){
-        $(value).addClass('bg-site_inven');
+        $(value).css('background-color', '#90c34f');
     }
     else if (site_name ==='넷판'){
-        $(value).addClass('bg-site_natepann');
+        $(value).css('background-color', '#dd5241');
     }
     else if (site_name ==='뽐뿌'){
-        $(value).addClass('bg-site_ppomppu');
+        $(value).css('background-color', '#a4a4a4');
     }
     else if (site_name ==='루리'){
-        $(value).addClass('bg-site_ruliweb');
+        $(value).css('background-color', '#2860b2');
     }
     else if (site_name ==='에세랄'){
-        $(value).addClass('bg-site_slrclub');
+        $(value).css('background-color', '#588bda');
     }
     else if (site_name ==='더쿠'){
-        $(value).addClass('bg-site_theqoo');
+        $(value).css('background-color', '#3e5370');
     }
 
 })
