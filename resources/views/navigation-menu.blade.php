@@ -36,6 +36,12 @@
 {{--                    </x-jet-nav-link>--}}
 {{--                </div>--}}
 
+                <div class="item hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="/bestList">
+                        {{ __('베스트 모아') }}
+                    </x-jet-nav-link>
+                </div>
+
                 {{-- 대시보드 일단 주석 처리함 --}}
                 {{-- <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
@@ -184,11 +190,11 @@
                 <a href="{{route('lifeStory')}}" class="">일상이야기</a>
             </h2>
         </li>
-{{--        <li class="w-20 float-left ml-2 mt-2 md:hidden">--}}
-{{--            <h2>--}}
-{{--                <a href="{{route('lifeStory')}}" class="">베스트글</a>--}}
-{{--            </h2>--}}
-{{--        </li>--}}
+        <li class="w-24 float-left ml-2 mt-2 md:hidden">
+            <h2>
+                <a href="{{route('bestList.index')}}" class="">베스트 모아</a>
+            </h2>
+        </li>
     </ul>
 
 
@@ -250,6 +256,12 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('lifeStory') }}" :active="request()->routeIs('lifeStory')">
                 {{ __('일상 이야기') }}
+            </x-jet-responsive-nav-link>
+        </div>
+
+        <div class="pt-2 pb-3 space-y-1">
+            <x-jet-responsive-nav-link href="{{ route('bestList.index') }}" :active="request()->routeIs('bestList.index')">
+                {{ __('베스트 모아') }}
             </x-jet-responsive-nav-link>
         </div>
 

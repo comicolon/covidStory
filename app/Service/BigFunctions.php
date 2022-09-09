@@ -477,7 +477,46 @@ class BigFunctions
             $com_best_db = new $dbName();
 
             $com_best_db->rating = $idx;
-            $com_best_db->site_name = $item['site_name'];
+
+            $site_name = null;
+            if ($item['site_name'] == 'bbdream'){
+                $site_name = '보배';
+            }
+            elseif ($item['site_name'] == 'clien'){
+                $site_name = '클량';
+            }
+            elseif ($item['site_name'] == 'dcinside'){
+                $site_name = '디씨';
+            }
+            elseif ($item['site_name'] == 'fmkorea'){
+                $site_name = '펨코';
+            }
+            elseif ($item['site_name'] == 'huniv'){
+                $site_name = '웃대';
+            }
+            elseif ($item['site_name'] == 'instiz'){
+                $site_name = '인티';
+            }
+            elseif ($item['site_name'] == 'inven'){
+                $site_name = '인벤';
+            }
+            elseif ($item['site_name'] == 'natepann'){
+                $site_name = '넷판';
+            }
+            elseif ($item['site_name'] == 'ppomppu'){
+                $site_name = '뽐뿌';
+            }
+            elseif ($item['site_name'] == 'ruliweb'){
+                $site_name = '루리';
+            }
+            elseif ($item['site_name'] == 'slrclub'){
+                $site_name = '에세랄';
+            }
+            elseif ($item['site_name'] == 'theqoo'){
+                $site_name = '더쿠';
+            }
+
+            $com_best_db->site_name = $site_name;
             $com_best_db->title = $item['title'];
             $com_best_db->url = $item['url'];
             $com_best_db->writer = $item['writer'];

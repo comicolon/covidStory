@@ -1,19 +1,19 @@
 {
-  "public/images/btn_google_signin_light_normal_web.png": {
-    "file": "assets/btn_google_signin_light_normal_web.ba0db343.png",
-    "src": "public/images/btn_google_signin_light_normal_web.png"
-  },
   "public/images/btn_google_signin_light_focus_web.png": {
     "file": "assets/btn_google_signin_light_focus_web.1e83c336.png",
     "src": "public/images/btn_google_signin_light_focus_web.png"
   },
+  "public/images/btn_google_signin_light_normal_web.png": {
+    "file": "assets/btn_google_signin_light_normal_web.ba0db343.png",
+    "src": "public/images/btn_google_signin_light_normal_web.png"
+  },
   "resources/js/app.js": {
-    "file": "assets/app.93fa4f8f.js",
+    "file": "assets/app.fc061303.js",
     "src": "resources/js/app.js",
     "isEntry": true
   },
   "resources/css/app.css": {
-    "file": "assets/app.8cc12633.css",
+    "file": "assets/app.dc532936.css",
     "src": "resources/css/app.css",
     "isEntry": true
   }

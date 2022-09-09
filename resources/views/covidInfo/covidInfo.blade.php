@@ -3,20 +3,20 @@
 
 <div class="w-full md:flex">
     <div class="flex-1 order-1">
-        <div class="bg-indigo-900 text-2xl text-white flex items-center h-12">
+        <div class="bg-indigo-200 text-xl flex items-center h-10">
             <p class="ml-4"> 국내 코로나 발생 현황 </p>
         </div>
         <div class="max-h-36 bg-amber-100 text-gray-800 px-3">
-                <p class="text-2xl">국내 확진자 수</p>
-                <p class="text-6xl">{{number_format($json['korea']['totalCnt'])}}</p>
+                <p class="text-xl">국내 확진자 수</p>
+                <p class="text-5xl">{{number_format($json['korea']['totalCnt'])}}</p>
         </div>
         <div class="h-8 px-3 bg-gray-300 flex items-center">
             <P class="text-green-800-500">{{ mb_substr($json['API']['updateTime'],23, 13, 'utf8')}}</P>
         </div>
         <div class="h-36 flex bg-amber-200 px-3 text-gray-800">
             <div>
-                <p class="text-2xl">전일대비 확진자 수</p>
-                <p class="text-6xl">{{number_format($json['korea']['incDec'])}}</p>
+                <p class="text-xl">전일대비 확진자 수</p>
+                <p class="text-5xl">{{number_format($json['korea']['incDec'])}}</p>
             </div>
             <div class="flex-grow text-gray-800">
                 <p class="flex justify-center text-2xl">전일 보다</p>

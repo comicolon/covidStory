@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\BestList;
 
 use App\Http\Controllers\Controller;
+use App\Models\Combine_best_12h;
+use App\Models\Combine_best_24h;
+use App\Models\Combine_best_4h;
+use App\Models\Combine_best_8h;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
-
-// 파일정보 가져오기 허용설정
-ini_set("allow_url_fopen",1);
-require_once 'simple_html_dom.php';
 
 class BestListController extends Controller
 {
@@ -17,7 +17,24 @@ class BestListController extends Controller
 
         $path = $this->getPath($request);
 
-        $totalListNormal = array();
+        $before = 4;
+        if ($request->get('before') != null){
+            $before = $request->get('before');
+        }
+
+        $totalList = null;
+        if ($before == 4){
+            $totalList = Combine_best_4h::query()->limit(200)->get();
+        }
+        elseif ($before == 8){
+            $totalList = Combine_best_8h::query()->limit(200)->get();
+        }
+        elseif ($before == 12){
+            $totalList = Combine_best_12h::query()->limit(200)->get();
+        }
+        elseif ($before == 24){
+            $totalList = Combine_best_24h::query()->limit(200)->get();
+        }
 
 
 
@@ -25,7 +42,7 @@ class BestListController extends Controller
 
         return view('bestList.bestList',[
             'path' => $path,
-            'totalListNormal' => $totalListNormal,
+            'totalList' => $totalList,
         ]);
     }
 }

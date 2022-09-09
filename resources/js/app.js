@@ -64,4 +64,49 @@ $.each($('.write_time'), function (index, value) {
     }
 })
 
+// 베스트 모아에서 사이트에 따라서 말머리 색상을 바꿔 줌
+$.each($('.rating_site'), function (index, value) {
+
+    var site_name = $(value).find($('.site_name')).text();
+    console.log(site_name);
+
+    if (site_name === '보배'){
+        $(value).addClass('bg-site_bobaedream');
+    }
+    else if (site_name === '클량'){
+        $(value).addClass('bg-site_clien');
+    }
+    else if (site_name ==='디씨'){
+        $(value).addClass('bg-site_dcinside');
+    }
+    else if (site_name ==='펨코'){
+        $(value).addClass('bg-site_fmkorea');
+    }
+    else if (site_name ==='웃대'){
+        $(value).addClass('bg-site_huniv');
+    }
+    else if (site_name ==='인티'){
+        $(value).addClass('bg-site_instiz');
+    }
+    else if (site_name ==='인벤'){
+        $(value).addClass('bg-site_inven');
+    }
+    else if (site_name ==='넷판'){
+        $(value).addClass('bg-site_natepann');
+    }
+    else if (site_name ==='뽐뿌'){
+        $(value).addClass('bg-site_ppomppu');
+    }
+    else if (site_name ==='루리'){
+        $(value).addClass('bg-site_ruliweb');
+    }
+    else if (site_name ==='에세랄'){
+        $(value).addClass('bg-site_slrclub');
+    }
+    else if (site_name ==='더쿠'){
+        $(value).addClass('bg-site_theqoo');
+    }
+
+})
+
 
