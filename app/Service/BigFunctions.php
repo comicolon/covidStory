@@ -1,7 +1,25 @@
 <?php
 namespace App\Service;
 
+use App\Models\Best_bbdream;
+use App\Models\Best_clien;
+use App\Models\Best_dcinside;
+use App\Models\Best_fmkorea;
+use App\Models\Best_huniv;
+use App\Models\Best_instiz;
+use App\Models\Best_inven;
+use App\Models\Best_natepann;
+use App\Models\Best_ppomppu;
+use App\Models\Best_ruliweb;
+use App\Models\Best_slrclub;
+use App\Models\Best_theqoo;
+use App\Models\Combine_best_4h;
+use App\Models\Combine_best_8h;
+use App\Models\Combine_best_12h;
+use App\Models\Combine_best_24h;
 use App\Models\CovidHistory;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 use Psy\Util\Json;
 
 class BigFunctions
@@ -250,5 +268,228 @@ class BigFunctions
             //PC인경우
             return false;
         }
+    }
+
+    public function insertTotalArr($beforeH){
+
+        $totalArr = array();
+        $now = Carbon::now();
+        $to = $now->toDateTimeString();
+        $nowBefore4h = $now->subHours($beforeH);
+        $from = $nowBefore4h->toDateTimeString();
+
+        $from = date($from);
+        $to = date($to);
+
+        $bbdrArr    = Best_bbdream::whereBetween('write_datetime', [$from, $to])->get();
+        $clienArr   = Best_clien::whereBetween('write_datetime', [$from, $to])->get();
+        $dcArr      = Best_dcinside::whereBetween('write_datetime', [$from, $to])->get();
+        $fmkArr     = Best_fmkorea::whereBetween('write_datetime', [$from, $to])->get();
+        $huArr      = Best_huniv::whereBetween('write_datetime', [$from, $to])->get();
+        $istzArr    = Best_instiz::whereBetween('write_datetime', [$from, $to])->get();
+        $ivArr      = Best_inven::whereBetween('write_datetime', [$from, $to])->get();
+        $npArr      = Best_natepann::whereBetween('write_datetime', [$from, $to])->get();
+        $ppArr      = Best_ppomppu::whereBetween('write_datetime', [$from, $to])->get();
+        $rrwArr     = Best_ruliweb::whereBetween('write_datetime', [$from, $to])->get();
+        $slrArr     = Best_slrclub::whereBetween('write_datetime', [$from, $to])->get();
+        $tqArr      = Best_theqoo::whereBetween('write_datetime', [$from, $to])->get();
+
+        //전체 배열에 넣어준다
+
+        foreach ($bbdrArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+
+
+        }
+
+        foreach ($clienArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($dcArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($fmkArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($huArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($istzArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($ivArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($npArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($ppArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($rrwArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($slrArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        foreach ($tqArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+            ]);
+        }
+
+        // 조회순서대로 소팅
+        $viewsArr = array();
+        foreach ($totalArr as $key => $row)
+        {
+            $viewsArr[$key] = $row['views'];
+        }
+        array_multisort($viewsArr, SORT_DESC, $totalArr);
+
+        return $totalArr;
+    }
+
+    public function insertTotalArrToDB($totalArr, $dbName){
+
+        // 디비에 넣어준다
+//        Combine_best_4h::truncate();      // 아이디 값까지 초기화
+        $dbName::query()->delete(); // 디비를 비워준다.
+
+        $idx = 1;
+        foreach ($totalArr as $item){
+
+            $com_best_db = new $dbName();
+
+            $com_best_db->rating = $idx;
+            $com_best_db->site_name = $item['site_name'];
+            $com_best_db->title = $item['title'];
+            $com_best_db->url = $item['url'];
+            $com_best_db->writer = $item['writer'];
+            $com_best_db->write_datetime = $item['write_datetime'];
+            $com_best_db->views = $item['views'];
+            $com_best_db->num = $item['num'];
+
+            $com_best_db->save();
+
+            $idx++;
+        }
+
+        return null;
     }
 }
