@@ -18,5 +18,7 @@ class Combine_best_12h extends Model
         'views',
         'comment_count',
         'num',
+        'comments',
+        't_score',
     ];
 }

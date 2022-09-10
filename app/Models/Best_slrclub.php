@@ -21,5 +21,7 @@ class Best_slrclub extends Model
         'views_on_local',
         'is_week_best',
         'is_month_best',
+        'comments',
+        't_score',
     ];
 }

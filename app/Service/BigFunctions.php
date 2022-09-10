@@ -306,6 +306,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
 
 
@@ -321,6 +323,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -334,6 +338,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -347,6 +353,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -360,6 +368,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -373,6 +383,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -386,6 +398,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -399,6 +413,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -412,6 +428,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -425,6 +443,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -438,6 +458,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -451,6 +473,8 @@ class BigFunctions
                 'write_datetime'    => $item->write_datetime,
                 'views'             => $item->views,
                 'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $item->t_score,
             ]);
         }
 
@@ -523,6 +547,8 @@ class BigFunctions
             $com_best_db->write_datetime = $item['write_datetime'];
             $com_best_db->views = $item['views'];
             $com_best_db->num = $item['num'];
+            $com_best_db->comments = $item['comments'];
+            $com_best_db->t_score = $item['t_score'];
 
             $com_best_db->save();
 

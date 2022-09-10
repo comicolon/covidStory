@@ -74,6 +74,8 @@ class CrawlingBestList extends Command
                 $views = preg_replace("/[^0-9]*/s", "", $views);
                 $pos = strpos($url, '&no=');
                 $num = substr($url, $pos + 4);
+                $comments = $board_data->find('.gall_comment')[0]->plaintext;
+                $comments = preg_replace("/[^0-9]*/s", "", $comments);
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -83,6 +85,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($dcArr, $arr);
                 $idx++;
@@ -99,8 +102,10 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_dcinside::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_dcinside();
 
@@ -110,6 +115,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -122,7 +128,6 @@ class CrawlingBestList extends Command
 
         // slr 클럽 가져오기
         //인기글
-
 
         $html = file_get_html('http://www.slrclub.com/bbs/zboard.php?id=hot_article');
         $slrArr = array();
@@ -142,6 +147,8 @@ class CrawlingBestList extends Command
                 $datetime = date_create_from_format('Y/m/d H:i:s', $time);
                 $views = $item->find('.list_click')[0]->plaintext;
                 $num = $item->find('.list_num')[0]->plaintext;
+                $comments = $html2->find('.rewlis')[0]->plaintext;
+                $comments = preg_replace("/[^0-9]*/s", "", $comments);
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -151,6 +158,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($slrArr, $arr);
                 $idx++;
@@ -159,15 +167,18 @@ class CrawlingBestList extends Command
             } catch (\Exception $e) {
                 Log::info('에세랄클럽 가져오기 실패',['error : '=>$e]);
             }
-        }//디비에 넣어준다.
+        }
+        //디비에 넣어준다.
         foreach ($slrArr as $item) {
 
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_slrclub::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_slrclub();
 
@@ -177,6 +188,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -189,7 +201,6 @@ class CrawlingBestList extends Command
 
         //루리웹 가져오기
         //유머 게시판 베스트 글
-
 
         $html = file_get_html('https://bbs.ruliweb.com/community/board/300143?view_best=1');
         $rrwArr = array();
@@ -207,6 +218,7 @@ class CrawlingBestList extends Command
                 $time = preg_replace("/[^0-9]*/s", "", $time);
                 $datetime = date_create_from_format('YmdHis', $time);
                 $views = $item->find('.hit')[0]->plaintext;
+                $comments = $item->find('.num')[0]->plaintext;
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -216,6 +228,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($rrwArr, $arr);
                 $idx++;
@@ -224,15 +237,18 @@ class CrawlingBestList extends Command
             } catch (\Exception $e) {
                 Log::info('루리웹 가져오기 실패',['error : '=>$e]);
             }
-        }//디비에 넣어준다.
+        }
+        //디비에 넣어준다.
         foreach ($rrwArr as $item) {
 
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_ruliweb::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_ruliweb();
 
@@ -242,6 +258,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -275,6 +292,7 @@ class CrawlingBestList extends Command
                     $views = $item->find('.m_no')[0]->plaintext;
                     $pos = strpos($url, 'document_srl=');
                     $num = trim(substr($url, $pos + 13));
+                    $comments = $item->find('.replyNum')[0]->plaintext;
                 }
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
@@ -285,6 +303,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($fmkArr, $arr);
                 $idx++;
@@ -301,8 +320,10 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_fmkorea::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_fmkorea();
 
@@ -312,6 +333,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -323,7 +345,6 @@ class CrawlingBestList extends Command
 
 
         //네이트 판
-
 
         $html = file_get_html('https://pann.nate.com/talk/ranking');
         $ntpArr = array();
@@ -343,6 +364,8 @@ class CrawlingBestList extends Command
                 $views = preg_replace("/[^0-9]*/s", "", $views);
                 $pos = strpos($url, 'talk/');
                 $num = substr($url, $pos + 5);
+                $comments = $item->find('.reple-num')[0]->plaintext;
+                $comments = preg_replace("/[^0-9]*/s", "", $comments);
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -352,6 +375,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($ntpArr, $arr);
                 $idx++;
@@ -360,15 +384,18 @@ class CrawlingBestList extends Command
             } catch (\Exception $e) {
                 Log::info('네이트판 가져오기 실패',['error : '=>$e]);
             }
-        }//디비에 넣어준다.
+        }
+        //디비에 넣어준다.
         foreach ($ntpArr as $item) {
 
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_natepann::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_natepann();
 
@@ -378,6 +405,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -410,6 +438,8 @@ class CrawlingBestList extends Command
                 $num = substr($num, $pos + 5);
                 $pos = strpos($num, '?iskin');
                 $num = substr($num, 0, $pos);
+                $comments = $item->find('.comment')[0]->plaintext;
+                $comments = preg_replace("/[^0-9]*/s", "", $comments);
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -419,6 +449,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($ivArr, $arr);
                 $idx++;
@@ -427,15 +458,18 @@ class CrawlingBestList extends Command
             } catch (\Exception $e) {
                 Log::info('인벤 가져오기 실패',['error : '=>$e]);
             }
-        }//디비에 넣어준다.
+        }
+        //디비에 넣어준다.
         foreach ($ivArr as $item) {
 
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_inven::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_inven();
 
@@ -445,6 +479,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -456,7 +491,6 @@ class CrawlingBestList extends Command
 
 
         //뽐뿌 핫게시글
-
 
         $html = file_get_html('https://www.ppomppu.co.kr/hot.php');
         $ppArr = array();
@@ -479,6 +513,8 @@ class CrawlingBestList extends Command
                 $views = $item->find('.board_date')[2]->plaintext;
                 $pos = strpos($url, '&no=');
                 $num = substr($url, $pos + 4);
+                $comments = $item->find('.list_comment2')[0]->plaintext;
+                $comments = preg_replace("/[^0-9]*/s", "", $comments);
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -488,6 +524,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($ppArr, $arr);
                 $idx++;
@@ -496,15 +533,18 @@ class CrawlingBestList extends Command
             } catch (\Exception $e) {
                 Log::info('뽐뿌 가져오기 실패',['error : '=>$e]);
             }
-        }//디비에 넣어준다.
+        }
+        //디비에 넣어준다.
         foreach ($ppArr as $item) {
 
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_ppomppu::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_ppomppu();
 
@@ -514,6 +554,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -525,7 +566,6 @@ class CrawlingBestList extends Command
 
 
         //더쿠 핫게시판
-
 
         $html = file_get_html('https://theqoo.net/hot');
         $dqArr = array();
@@ -549,6 +589,7 @@ class CrawlingBestList extends Command
                 $pos = strpos($views, '  ');
                 $views = substr($views, 0, $pos);
                 $views = preg_replace("/[^0-9]*/s", "", $views);
+                $comments = $item->find('.replyNum')[0]->plaintext;
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -558,6 +599,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($dqArr, $arr);
                 $idx++;
@@ -566,15 +608,18 @@ class CrawlingBestList extends Command
             } catch (\Exception $e) {
                 Log::info('더쿠 가져오기 실패',['error : '=>$e]);
             }
-        }//디비에 넣어준다.
+        }
+       // 디비에 넣어준다.
         foreach ($dqArr as $item) {
 
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_theqoo::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_theqoo();
 
@@ -584,6 +629,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -595,7 +641,6 @@ class CrawlingBestList extends Command
 
 
         // 클리앙
-
 
         $html = file_get_html('https://www.clien.net/service/board/park?&od=T33&category=0&po=0');
         $claArr = array();
@@ -616,6 +661,7 @@ class CrawlingBestList extends Command
                 $pos = strpos($url, 'park/');
                 $pos2 = strpos($url, '?od=');
                 $num = substr($url, $pos + 5, $pos2 - ($pos + 5));
+                $comments = $item->find('.rSymph05')[0]->plaintext;
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -625,6 +671,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($claArr, $arr);
                 $idx++;
@@ -633,15 +680,18 @@ class CrawlingBestList extends Command
             } catch (\Exception $e) {
                 Log::info('클리앙 가져오기 실패',['error : '=>$e]);
             }
-        }//디비에 넣어준다.
+        }
+       // 디비에 넣어준다.
         foreach ($claArr as $item) {
 
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_clien::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_clien();
 
@@ -651,6 +701,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -660,8 +711,10 @@ class CrawlingBestList extends Command
         }
 
 
+
 //
 //        // 웃긴대학 인기자료
+//         // 코멘트 가져오기 해줘야함
 //	try {
 //            // 크롤링이 막혀 있어 우회함
 //            $url = 'http://web.humoruniv.com/board/humor/list.html?table=pick';
@@ -753,7 +806,6 @@ class CrawlingBestList extends Command
 
         // 보배드림
 
-
         $html = file_get_html('https://www.bobaedream.co.kr/list?code=best');
         $bbdrArr = array();
         $idx = 0;
@@ -773,6 +825,7 @@ class CrawlingBestList extends Command
                 $datetime = date_create_from_format('YmdHi', $time);
                 $pos = strpos($url, '&No=');
                 $num = substr($url, $pos + 4, 6);
+                $comments = $item->find('.totreply')[0]->plaintext;
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -782,6 +835,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($bbdrArr, $arr);
                 $idx++;
@@ -790,15 +844,18 @@ class CrawlingBestList extends Command
             } catch (\Exception $e) {
                 Log::info('보배드림 가져오기 실패',['error : '=>$e]);
             }
-        }//디비에 넣어준다.
+        }
+       // 디비에 넣어준다.
         foreach ($bbdrArr as $item) {
 
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_bbdream::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_bbdream();
 
@@ -808,6 +865,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
@@ -852,6 +910,7 @@ class CrawlingBestList extends Command
                     $time = $nowTime->subHours($timeDiff);
                     $datetime = $time->toDateTime();
                 }
+                $comments = $html2[$i]->find('.cmt2')[0]->plaintext;
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -861,6 +920,7 @@ class CrawlingBestList extends Command
                     'datetime' => $datetime,
                     'views' => $views,
                     'num' => $num,
+                    'comments' => $comments,
                 );
                 array_push($istzArr, $arr);
             } catch (\Exception $e) {
@@ -876,8 +936,10 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_instiz::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    $beforeBe->views = $item['views'];
-                    $beforeBe->save();
+                    $beforeBe->update([
+                        'views'     => $item['views'],
+                        'comments'  => $item['comments'],
+                    ]);
                 } else {
                     $nowBest = new Best_instiz();
 
@@ -887,6 +949,7 @@ class CrawlingBestList extends Command
                     $nowBest->write_datetime = $item['datetime'];
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
 
                     $nowBest->save();
                 }
