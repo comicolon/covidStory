@@ -22,8 +22,8 @@
                             <p class="site_name flex justify-center text-sm">{{$item->site_name}}</p>
                         </div>
                         <div class="flex-row w-full">
-                            <a href="{{$item->url}}">
-                                <p class="w-72 truncate md:w-full">{{$item->title}}</p>
+                            <a href="{{$item->url}}" class="best_list_item" num="{{$item->num}}" site_name="{{$item->site_name}}">
+                                <p class="w-72 truncate md:w-full">{!! $item->title !!}</p>
                             </a>
                             <div class="flex text-gray-400 text-sm">
                                 <p>{{$item->write_datetime}}</p>

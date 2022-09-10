@@ -3,7 +3,7 @@
 
 <div class="w-full md:flex">
     <div class="flex-1 order-1">
-        <div class="bg-indigo-200 text-xl flex items-center h-10">
+        <div class="bg-indigo-200 text-base flex items-center h-10">
             <p class="ml-4"> 국내 코로나 발생 현황 </p>
         </div>
         <div class="max-h-36 bg-amber-100 text-gray-800 px-3">

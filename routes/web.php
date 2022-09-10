@@ -76,6 +76,7 @@ Route::middleware('auth')->group(function () {
 
 // 베스트 링크
 Route::get('/bestList', [BestListController::class, 'index'])->name('bestList.index');
+Route::get('/bestListClick', [BestListController::class, 'listClick'])->name('bestList.listClick');
 
 
 //프로필

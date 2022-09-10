@@ -531,4 +531,26 @@ class BigFunctions
 
         return null;
     }
+
+    //사이트 이름과 번호를 입력하여 베스트글 하나를 얻는 함수
+    public function getBestItem($site_name, $num){
+
+        $bestDB = null;
+        if ($site_name == '보배'){$bestDB = Best_bbdream::class;}
+        if ($site_name == '클량'){$bestDB = Best_clien::class;}
+        if ($site_name == '디씨'){$bestDB = Best_dcinside::class;}
+        if ($site_name == '펨코'){$bestDB = Best_fmkorea::class;}
+        if ($site_name == '웃대'){$bestDB = Best_huniv::class;}
+        if ($site_name == '인티'){$bestDB = Best_instiz::class;}
+        if ($site_name == '인벤'){$bestDB = Best_inven::class;}
+        if ($site_name == '넷판'){$bestDB = Best_natepann::class;}
+        if ($site_name == '뽐뿌'){$bestDB = Best_ppomppu::class;}
+        if ($site_name == '루리'){$bestDB = Best_ruliweb::class;}
+        if ($site_name == '에세랄'){$bestDB = Best_slrclub::class;}
+        if ($site_name == '더쿠'){$bestDB = Best_theqoo::class;}
+
+        $resItem = $bestDB::where('num',$num)->get()->first();
+
+        return $resItem;
+    }
 }

@@ -68,7 +68,6 @@ $.each($('.write_time'), function (index, value) {
 $.each($('.rating_site'), function (index, value) {
 
     var site_name = $(value).find($('.site_name')).text();
-    console.log(site_name);
 
     if (site_name === '보배'){
         $(value).css('background-color', '#5486c6');
@@ -106,7 +105,17 @@ $.each($('.rating_site'), function (index, value) {
     else if (site_name ==='더쿠'){
         $(value).css('background-color', '#3e5370');
     }
-
 })
+
+// 베스트 모아 리스트 아이템 클릭시 함수 연결
+$(".best_list_item").on("click", function () {
+
+    var num = $(this).attr("num");
+    var site_name = $(this).attr('site_name');
+
+    location.href = '/bestListClick?num='+num+'&site_name='+site_name;
+});
+
+
 
 
