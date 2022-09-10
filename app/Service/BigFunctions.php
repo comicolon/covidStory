@@ -270,6 +270,7 @@ class BigFunctions
         }
     }
 
+    //각 테이블에 저장된 데이터를 배열에 담는다.
     public function insertTotalArr($beforeH){
 
         $totalArr = array();
@@ -307,10 +308,8 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
-
-
         }
 
         foreach ($clienArr as $item){
@@ -324,7 +323,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -339,7 +338,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -354,7 +353,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -369,7 +368,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -384,7 +383,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -399,7 +398,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -414,7 +413,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -429,7 +428,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -444,7 +443,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -459,7 +458,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -474,7 +473,7 @@ class BigFunctions
                 'views'             => $item->views,
                 'num'               => $item->num,
                 'comments'          => $item->comments,
-                't_score'           => $item->t_score,
+                't_score'           => $this->getItemScore($item),
             ]);
         }
 
@@ -489,6 +488,7 @@ class BigFunctions
         return $totalArr;
     }
 
+    //완성된 배열을 시간 테이블에 넣어준다.
     public function insertTotalArrToDB($totalArr, $dbName){
 
         // 디비에 넣어준다
@@ -578,5 +578,32 @@ class BigFunctions
         $resItem = $bestDB::where('num',$num)->get()->first();
 
         return $resItem;
+    }
+
+    //베스트글의 점수를 계산해 주는 함수
+    public function getItemScore($item){
+        $score = null;
+        //이전 조회수와 댓글수가 있으면 가져옴
+        ($item->before_views ? $before_views = $item->before_views : $before_views = $item->views);
+        ($item->before_comments ? $before_comments = $item->before_comments : $before_comments = $item->comments);
+
+        if ($before_comments == 0){$before_comments = 1;}
+
+        //증가율을 구해줌
+        $incrateViews = round($item->views / $before_views, 3);
+        $incrateComments = round($item->comments / $before_comments, 3);
+        //점수를 곱해줌
+        $v_score = ($item->views * baseConfig::pointPerView);
+        $c_score = ($item->comments * baseConfig::pointPerComment);
+        //증가율과 점수를 이어줌
+        $v_score = $v_score * $incrateViews;
+        $c_score = $c_score * $incrateComments;
+        //가중치를 이어줌
+        $v_score = $v_score * baseConfig::viewCoeffi;
+        $c_score = $c_score * baseConfig::commentCoeffi;
+
+        $score = round($v_score + $c_score);
+
+        return $score;
     }
 }

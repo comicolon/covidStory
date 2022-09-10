@@ -102,9 +102,19 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_dcinside::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    echo "is be";
+
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
+
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_dcinside();
@@ -175,9 +185,17 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_slrclub::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
+
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_slrclub();
@@ -245,9 +263,17 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_ruliweb::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
+
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_ruliweb();
@@ -320,9 +346,17 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_fmkorea::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
+
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_fmkorea();
@@ -392,9 +426,17 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_natepann::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
+
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_natepann();
@@ -466,9 +508,14 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_inven::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_inven();
@@ -541,9 +588,14 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_ppomppu::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_ppomppu();
@@ -616,9 +668,14 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_theqoo::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_theqoo();
@@ -688,9 +745,14 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_clien::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_clien();
@@ -852,9 +914,14 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_bbdream::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_bbdream();
@@ -936,9 +1003,14 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_instiz::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
                     $beforeBe->update([
-                        'views'     => $item['views'],
-                        'comments'  => $item['comments'],
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
                     ]);
                 } else {
                     $nowBest = new Best_instiz();
