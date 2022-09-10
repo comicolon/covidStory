@@ -15,25 +15,25 @@
 {{--        </div>--}}
         <div>
             <ul class="">
-                @foreach($totalList as $item)
+                @for($i=0; $i < count($totalList); $i++)
                     <li class="flex border-b">
                         <div class="rating_site w-16 text-white">
-                            <p class="flex justify-center">{{$item->rating}}</p>
-                            <p class="site_name flex justify-center text-sm">{{$item->site_name}}</p>
+                            <p class="flex justify-center">{{$i+1}}</p>
+                            <p class="site_name flex justify-center text-sm">{{$totalList[$i]->site_name}}</p>
                         </div>
                         <div class="flex-row w-full">
-                            <a href="{{$item->url}}" class="best_list_item" num="{{$item->num}}" site_name="{{$item->site_name}}">
-                                <p class="w-72 truncate md:w-full">{!! $item->title !!}</p>
+                            <a href="{{$totalList[$i]->url}}" class="best_list_item" num="{{$totalList[$i]->num}}" site_name="{{$totalList[$i]->site_name}}">
+                                <p class="w-72 truncate md:w-full">{!! $totalList[$i]->title !!}</p>
                             </a>
                             <div class="flex text-gray-400 text-sm">
-                                <p>{{$item->write_datetime}}</p>
-                                <p class="ml-auto">{{$item->writer}}</p>
+                                <p>{{$totalList[$i]->write_datetime}}</p>
+                                <p class="ml-auto">{{$totalList[$i]->writer}}</p>
                             </div>
                         </div>
                     </li>
 
 
-                @endforeach
+                @endfor
             </ul>
         </div>
 
