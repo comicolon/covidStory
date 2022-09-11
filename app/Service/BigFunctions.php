@@ -608,7 +608,20 @@ class BigFunctions
         $v_score = $v_score * baseConfig::viewCoeffi;
         $c_score = $c_score * baseConfig::commentCoeffi;
 
-        $score = round($v_score + $c_score);
+        $h_score = $v_score + $c_score;
+        //사이트별 가중치를 곱해준다
+        if ($item->site_name == 'bbdream'){$score = round($h_score * baseConfig::coeffi_bbdream);}
+        if ($item->site_name == 'clien'){$score = round($h_score * baseConfig::coeffi_clien);}
+        if ($item->site_name == 'dcinside'){$score = round($h_score * baseConfig::coeffi_dcinside);}
+        if ($item->site_name == 'fmkorea'){$score = round($h_score * baseConfig::coeffi_fmkorea);}
+        if ($item->site_name == 'huniv'){$score = round($h_score * baseConfig::coeffi_huniv);}
+        if ($item->site_name == 'instiz'){$score = round($h_score * baseConfig::coeffi_instiz);}
+        if ($item->site_name == 'inven'){$score = round($h_score * baseConfig::coeffi_inven);}
+        if ($item->site_name == 'natepann'){$score = round($h_score * baseConfig::coeffi_natepann);}
+        if ($item->site_name == 'ppomppu'){$score = round($h_score * baseConfig::coeffi_ppomppu);}
+        if ($item->site_name == 'ruliweb'){$score = round($h_score * baseConfig::coeffi_ruliweb);}
+        if ($item->site_name == 'slrclub'){$score = round($h_score * baseConfig::coeffi_slrclub);}
+        if ($item->site_name == 'theqoo'){$score = round($h_score * baseConfig::coeffi_theqoo);}
 
         return $score;
     }
