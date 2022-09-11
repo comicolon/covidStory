@@ -592,11 +592,10 @@ class BigFunctions
         //증가율을 구해줌
         $incrateViews = round($item->views / $before_views, 3);
         $incrateComments = round($item->comments / $before_comments, 3);
-        //새글인 경우에는 증가율을 2로 고정 시켜줌
+        //새글인 경우에는 증가율을 고정 시켜줌
         if($item->before_views == null && $item->before_comments == null){
-
-            $incrateViews = 2;
-            $incrateComments = 2;
+            $incrateViews = 3;
+            $incrateComments = 3;
         }
         //점수를 곱해줌
         $v_score = ($item->views * baseConfig::pointPerView);

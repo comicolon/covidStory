@@ -24,7 +24,7 @@ class baseConfig
     const coeffi_inven = 0.482877038;
     const coeffi_natepann = 4.898599001;
     const coeffi_ppomppu = 2.357625294;
-    const coeffi_ruliweb = 0.606677348;
+    const coeffi_ruliweb = 0.506677348;
     const coeffi_slrclub = 11.80992894;
     const coeffi_theqoo = 0.62999411;
 }
