@@ -22,12 +22,12 @@
                             <p class="site_name flex justify-center text-sm">{{$totalList[$i]->site_name}}</p>
                         </div>
                         <div class="flex-row w-full">
-                            <a href="{{$totalList[$i]->url}}" class="best_list_item" num="{{$totalList[$i]->num}}" site_name="{{$totalList[$i]->site_name}}">
+                            <a href="{{$totalList[$i]->url}}" class="best_list_item best_sbj_link" num="{{$totalList[$i]->num}}" site_name="{{$totalList[$i]->site_name}}">
                                 <p class="w-72 truncate md:w-full">{!! $totalList[$i]->title !!}</p>
                             </a>
-                            <div class="flex text-gray-400 text-sm">
-                                <p>{{$totalList[$i]->write_datetime}}</p>
-                                <p class="ml-auto">{{$totalList[$i]->writer}}</p>
+                            <div class="flex text-sm">
+                                <p class="text-gray-300">{{$totalList[$i]->write_datetime}}</p>
+                                <p class="ml-auto text-gray-400">{{$totalList[$i]->writer}}</p>
                             </div>
                         </div>
                     </li>

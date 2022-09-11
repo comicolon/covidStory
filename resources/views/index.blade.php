@@ -59,7 +59,7 @@
                        <p class="flex justify-center rating_site px-2 w-10 text-white">{{$i+1}}
                             <span class="site_name hidden">{{$bestMoa[$i]->site_name}}</span>
                        </p>
-                        <a href="{{$bestMoa[$i]->url}}">
+                        <a href="{{$bestMoa[$i]->url}}" class="best_sbj_link">
                             <p class="w-72 truncate md:w-full">{!! $bestMoa[$i]->title !!}</p>
                         </a>
                    </li>
