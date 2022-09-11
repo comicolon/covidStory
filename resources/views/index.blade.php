@@ -45,6 +45,29 @@
                     </a>
                 </div>
             </div>
+
+{{--            베스트모아 게시판 10개--}}
+            <div class="bg-zinc-50">
+                <div class="px-3 py-1 bg-siteTheme3 text-white">
+                    <a href="{{'/bestList'}}">
+                        <h3>베스트 모아</h3>
+                    </a>
+                </div>
+                <ul>
+                    @for($i=0; $i < count($bestMoa); $i++)
+                   <li class="flex">
+                       <p class="flex justify-center rating_site px-2 w-10 text-white">{{$i+1}}
+                            <span class="site_name hidden">{{$bestMoa[$i]->site_name}}</span>
+                       </p>
+                        <a href="{{$bestMoa[$i]->url}}">
+                            <p class="w-72 truncate md:w-full">{!! $bestMoa[$i]->title !!}</p>
+                        </a>
+                   </li>
+                    @endfor
+                </ul>
+            </div>
+
+
         </div>
         {{--   뉴스 게시판  일상 게시판    --}}
         <div class="main_order2">

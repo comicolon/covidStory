@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\covidInfo\covidInfo;
+use App\Models\Combine_best_4h;
 use App\Models\covidNews;
 use App\Models\LifeStoryBoard;
 use App\Service\BigFunctions;
@@ -43,6 +44,8 @@ class BaseController extends Controller
         //현재와 비교하여 차이를 계산함
         $diffincDec = $json['korea']['incDec'] - $jsonBefore['korea']['incDec'];        // 전체 확진자 차이
 
+        //베스트 모아 게시판 가져오기 상위 10개만
+        $bestMoa = Combine_best_4h::query()->orderByDesc('t_score')->limit(20)->get();
 
         // 뉴스 게시판 가져오기
         $covidNews = covidNews::latest()->take(5)->get();
@@ -57,6 +60,7 @@ class BaseController extends Controller
             'diffinDec' => $diffincDec,
             'covidNews' => $covidNews,
             'lifeStory' => $lifeStory,
+            'bestMoa'   => $bestMoa,
         ]);
     }
 }
