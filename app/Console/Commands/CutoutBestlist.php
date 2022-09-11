@@ -14,6 +14,7 @@ use App\Models\Best_ppomppu;
 use App\Models\Best_ruliweb;
 use App\Models\Best_slrclub;
 use App\Models\Best_theqoo;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class CutoutBestlist extends Command
@@ -55,6 +56,12 @@ class CutoutBestlist extends Command
         ];
 
         foreach ($bestDBArr as $item){
+
+            $now = Carbon::now();
+            $nowBefore36h = $now->subHours(36);
+            $nowBefore36h = $nowBefore36h->toDateTimeString();
+
+            $item::query()->where('write_datetime','<',$nowBefore36h)->delete();
 
         }
 

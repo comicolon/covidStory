@@ -276,8 +276,8 @@ class BigFunctions
         $totalArr = array();
         $now = Carbon::now();
         $to = $now->toDateTimeString();
-        $nowBefore4h = $now->subHours($beforeH);
-        $from = $nowBefore4h->toDateTimeString();
+        $nowBeforeh = $now->subHours($beforeH);
+        $from = $nowBeforeh->toDateTimeString();
 
         $from = date($from);
         $to = date($to);
@@ -594,8 +594,6 @@ class BigFunctions
         $incrateComments = round($item->comments / $before_comments, 3);
         //새글인 경우에는 증가율을 2로 고정 시켜줌
         if($item->before_views == null && $item->before_comments == null){
-
-            echo '새글 발견 '.$item->site_name;
 
             $incrateViews = 2;
             $incrateComments = 2;
