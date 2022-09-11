@@ -102,8 +102,6 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_dcinside::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
-                    echo "is be";
-
                     $before_views = $beforeBe->views;
                     $before_comments = $beforeBe->comments;
 
@@ -315,7 +313,7 @@ class CrawlingBestList extends Command
                     $html2 = file_get_html($url);
                     $time = $html2->find('.date')[0]->plaintext;
                     $datetime = date_create_from_format('Y.m.d H:i', $time);
-                    $views = $item->find('.m_no')[0]->plaintext;
+                    $views = trim($item->find('.m_no')[0]->plaintext);
                     $pos = strpos($url, 'document_srl=');
                     $num = trim(substr($url, $pos + 13));
                     $comments = $item->find('.replyNum')[0]->plaintext;
@@ -473,7 +471,8 @@ class CrawlingBestList extends Command
                 $writer = substr($html_dt->find('.articleWriter span')[0]->plaintext, 6);
                 $time = $html_dt->find('.articleDate')[0]->plaintext;
                 $datetime = date_create_from_format('Y-m-d H:i', $time);
-                $views = $html_dt->find('.articleHit')[0]->plaintext;
+                $views = trim($html_dt->find('.articleHit')[0]->plaintext);
+                $views = mb_substr($views, 0, 11);
                 $views = preg_replace("/[^0-9]*/s", "", $views);
                 $num = $html_dt->find('.articleBotUrl a')[1]->href;
                 $pos = strpos($num, '2097/');
@@ -507,6 +506,9 @@ class CrawlingBestList extends Command
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_inven::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
+
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
 
                     $beforeBe->before_views = $before_views;
                     $beforeBe->before_comments = $before_comments;
@@ -588,6 +590,9 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_ppomppu::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
+
                     $beforeBe->before_views = $before_views;
                     $beforeBe->before_comments = $before_comments;
 
@@ -668,6 +673,9 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_theqoo::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
+
                     $beforeBe->before_views = $before_views;
                     $beforeBe->before_comments = $before_comments;
 
@@ -744,6 +752,9 @@ class CrawlingBestList extends Command
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_clien::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
+
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
 
                     $beforeBe->before_views = $before_views;
                     $beforeBe->before_comments = $before_comments;
@@ -914,6 +925,9 @@ class CrawlingBestList extends Command
                 $beforeBe = Best_bbdream::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
+
                     $beforeBe->before_views = $before_views;
                     $beforeBe->before_comments = $before_comments;
 
@@ -1002,6 +1016,9 @@ class CrawlingBestList extends Command
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
                 $beforeBe = Best_instiz::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
+
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
 
                     $beforeBe->before_views = $before_views;
                     $beforeBe->before_comments = $before_comments;

@@ -32,10 +32,14 @@ class Kernel extends ConsoleKernel
         $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(51);
 
         //베스트글 정리 작업
-        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(14);
-        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(29);
-        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(44);
-        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(59);
+        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(15);
+        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(30);
+        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(45);
+        $schedule->command('bestList:ListupBestWriting')->timezone('Asia/Seoul')->hourlyAt(00);
+
+        // 시간이 지난 베스트글을 삭제
+        $schedule->command('bestList:cutoutBestList')->timezone('Asia/Seoul')->dailyAt('04:01');
+        $schedule->command('bestList:cutoutBestList')->timezone('Asia/Seoul')->dailyAt('17:01');
     }
 
     /**
