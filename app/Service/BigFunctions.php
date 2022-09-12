@@ -4,6 +4,7 @@ namespace App\Service;
 use App\Models\Best_bbdream;
 use App\Models\Best_clien;
 use App\Models\Best_dcinside;
+use App\Models\Best_etoland;
 use App\Models\Best_fmkorea;
 use App\Models\Best_huniv;
 use App\Models\Best_instiz;
@@ -285,6 +286,7 @@ class BigFunctions
         $bbdrArr    = Best_bbdream::whereBetween('write_datetime', [$from, $to])->get();
         $clienArr   = Best_clien::whereBetween('write_datetime', [$from, $to])->get();
         $dcArr      = Best_dcinside::whereBetween('write_datetime', [$from, $to])->get();
+        $etoArr     = Best_etoland::whereBetween('write_datetime', [$from, $to])->get();
         $fmkArr     = Best_fmkorea::whereBetween('write_datetime', [$from, $to])->get();
         $huArr      = Best_huniv::whereBetween('write_datetime', [$from, $to])->get();
         $istzArr    = Best_instiz::whereBetween('write_datetime', [$from, $to])->get();
@@ -328,6 +330,21 @@ class BigFunctions
         }
 
         foreach ($dcArr as $item){
+
+            array_push($totalArr, [
+                'site_name'         => $item->site_name,
+                'title'             => $item->title,
+                'url'               => $item->url,
+                'writer'            => $item->writer,
+                'write_datetime'    => $item->write_datetime,
+                'views'             => $item->views,
+                'num'               => $item->num,
+                'comments'          => $item->comments,
+                't_score'           => $this->getItemScore($item),
+            ]);
+        }
+
+        foreach ($etoArr as $item){
 
             array_push($totalArr, [
                 'site_name'         => $item->site_name,
@@ -512,6 +529,9 @@ class BigFunctions
             elseif ($item['site_name'] == 'dcinside'){
                 $site_name = '디씨';
             }
+            elseif ($item['site_name'] == 'etoland'){
+                $site_name = '이토';
+            }
             elseif ($item['site_name'] == 'fmkorea'){
                 $site_name = '펨코';
             }
@@ -565,6 +585,7 @@ class BigFunctions
         if ($site_name == '보배'){$bestDB = Best_bbdream::class;}
         if ($site_name == '클량'){$bestDB = Best_clien::class;}
         if ($site_name == '디씨'){$bestDB = Best_dcinside::class;}
+        if ($site_name == '이토'){$bestDB = Best_etoland::class;}
         if ($site_name == '펨코'){$bestDB = Best_fmkorea::class;}
         if ($site_name == '웃대'){$bestDB = Best_huniv::class;}
         if ($site_name == '인티'){$bestDB = Best_instiz::class;}
@@ -612,6 +633,7 @@ class BigFunctions
         if ($item->site_name == 'bbdream'){$score = round($h_score * baseConfig::coeffi_bbdream);}
         if ($item->site_name == 'clien'){$score = round($h_score * baseConfig::coeffi_clien);}
         if ($item->site_name == 'dcinside'){$score = round($h_score * baseConfig::coeffi_dcinside);}
+        if ($item->site_name == 'etoland'){$score = round($h_score * baseConfig::coeffi_etoland);}
         if ($item->site_name == 'fmkorea'){$score = round($h_score * baseConfig::coeffi_fmkorea);}
         if ($item->site_name == 'huniv'){$score = round($h_score * baseConfig::coeffi_huniv);}
         if ($item->site_name == 'instiz'){$score = round($h_score * baseConfig::coeffi_instiz);}

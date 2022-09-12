@@ -78,6 +78,9 @@ $.each($('.rating_site'), function (index, value) {
     else if (site_name ==='디씨'){
         $(value).css('background-color', '#3e488d');
     }
+    else if (site_name ==='이토'){
+        $(value).css('background-color', '#489635');
+    }
     else if (site_name ==='펨코'){
         $(value).css('background-color', '#5775ca');
     }

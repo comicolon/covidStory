@@ -64,6 +64,7 @@ module.exports = {
                 'site_theqoo': '#3e5370',
                 'site_dcinside': '#3e488d',
                 'site_instiz': '#5cbb65',
+                'site_etoland': '#489635',
             },
 
         },

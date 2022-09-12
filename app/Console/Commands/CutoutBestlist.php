@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Best_bbdream;
 use App\Models\Best_clien;
 use App\Models\Best_dcinside;
+use App\Models\Best_etoland;
 use App\Models\Best_fmkorea;
 use App\Models\Best_huniv;
 use App\Models\Best_instiz;
@@ -44,6 +45,7 @@ class CutoutBestlist extends Command
             Best_bbdream::class,
             Best_clien::class,
             Best_dcinside::class,
+            Best_etoland::class,
             Best_fmkorea::class,
             Best_huniv::class,
             Best_instiz::class,

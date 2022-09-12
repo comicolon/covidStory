@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Best_bbdream;
 use App\Models\Best_clien;
 use App\Models\Best_dcinside;
+use App\Models\Best_etoland;
 use App\Models\Best_fmkorea;
 use App\Models\Best_huniv;
 use App\Models\Best_instiz;
@@ -1044,6 +1045,102 @@ class CrawlingBestList extends Command
                 }
             } catch (\Exception $e) {
                 Log::info('인스티즈 디비넣기 실패',['error : '=>$e]);
+            }
+        }
+
+        //이토렌드
+
+        $html = file_get_html('https://www.etoland.co.kr/bbs/pop.php');
+        $etoArr = array();
+        $idx = 0;
+
+        foreach ($html->find('.subject > a') as $item){
+
+
+            try {
+                usleep($sleepTimeM);
+                $url = $item->href;
+                $url = 'https://www.etoland.co.kr/bbs' . substr($url, 1);
+                $html2 = file_get_html($url);//세부 페이지 게시판이 두종류라서 나누어짐
+                if ($html2->find('.title_wrap')) {
+                    $title = trim($html2->find('.title_wrap')[0]->plaintext);
+                    $title = trim(mb_substr($title, 4));
+                    $writer = trim($html2->find('.member')[0]->plaintext);
+                    $views = trim($html2->find('.views')[0]->plaintext);
+                    $num = trim($html2->find('.document_address_link')[0]->href);
+                    $pos = strpos($num, '?n=');
+                    $num = substr($num, $pos + 3);
+                    $time = trim($html2->find('.datetime')[0]->plaintext);
+                    $time = preg_replace("/[^0-9]*/s", "", $time);
+                    $datetime = date_create_from_format('YmdHi', $time);
+                    $comments = trim($html2->find('.comment_list_title_count')[0]->plaintext);
+
+                } elseif ($html2->find('.mw_basic_view_subject')) {
+                    $title = trim($html2->find('.mw_basic_view_subject > h1')[0]->plaintext);
+                    $writer = trim($html2->find('.member')[0]->plaintext);
+                    $views = trim($html2->find('.mw_basic_view_hit')[0]->plaintext);
+                    $num = trim($html2->find('.document_address_link')[0]->href);
+                    $pos = strpos($num, '?n=');
+                    $num = substr($num, $pos + 3);
+                    $time = trim($html2->find('.mw_basic_view_datetime')[0]->plaintext);
+                    $time = preg_replace("/[^0-9]*/s", "", $time);
+                    $datetime = date_create_from_format('YmdHi', $time);
+                    $comments = trim($html2->find('.comment_list_title_count')[0]->plaintext);
+
+
+                }//중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                $arr = array(
+                    'title' => $title,
+                    'url' => $url,
+                    'writer' => $writer,
+                    'datetime' => $datetime,
+                    'views' => $views,
+                    'num' => $num,
+                    'comments' => $comments,
+                );
+                array_push($etoArr, $arr);
+                $idx++;
+                if ($idx == $idxMax)
+                    break;
+            } catch (\Exception $e) {
+                Log::info('이토랜드 가져오기 실패', ['error' => $e]);
+            }
+        }
+
+        //디비에 넣어준다.
+        foreach ($etoArr as $item) {
+
+            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
+                $beforeBe = Best_etoland::where('num', $item['num'])->first();
+                if ($beforeBe != null) {
+
+                    $before_views = $beforeBe->views;
+                    $before_comments = $beforeBe->comments;
+
+                    $beforeBe->before_views = $before_views;
+                    $beforeBe->before_comments = $before_comments;
+
+                    $beforeBe->update([
+                        'before_views'      => $beforeBe->before_views,
+                        'before_comments'   => $beforeBe->before_comments,
+                        'views'             => $item['views'],
+                        'comments'          => $item['comments'],
+                    ]);
+                } else {
+                    $nowBest = new Best_etoland();
+
+                    $nowBest->title = $item['title'];
+                    $nowBest->url = $item['url'];
+                    $nowBest->writer = $item['writer'];
+                    $nowBest->write_datetime = $item['datetime'];
+                    $nowBest->views = $item['views'];
+                    $nowBest->num = $item['num'];
+                    $nowBest->comments = $item['comments'];
+
+                    $nowBest->save();
+                }
+            } catch (\Exception $e) {
+                Log::info('이토랜드 디비넣기 실패',['error : '=>$e]);
             }
         }
 
