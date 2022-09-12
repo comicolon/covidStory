@@ -641,6 +641,7 @@ class BigFunctions
         $c_score = $c_score * baseConfig::commentCoeffi;
 
         $h_score = $v_score + $c_score;
+        $score = $h_score;
         //사이트별 가중치를 곱해준다
         if ($item->site_name == 'bbdream'){$score = round($h_score * baseConfig::coeffi_bbdream);}
         if ($item->site_name == 'clien'){$score = round($h_score * baseConfig::coeffi_clien);}

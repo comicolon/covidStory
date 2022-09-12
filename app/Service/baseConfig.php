@@ -14,18 +14,18 @@ class baseConfig
     const pointPerComment = 5;              // 1댓글당 점수
     const viewCoeffi = 0.635;               // 조회수 증가에 따른 점수 계수
     const commentCoeffi = 0.805;            // 댓글 증가에 따른 점수 계수
-    //사이트당 가중치 점수 평균 40000에 맞춤
-    const coeffi_bbdream = 6.053342937;
-    const coeffi_clien = 2.337513587;
-    const coeffi_dcinside = 1.974541024;
-    const coeffi_etoland = 9.5;
-    const coeffi_fmkorea = 0.4088577;
+    //사이트당 가중치 점수 평균 25000에 맞춤
+    const coeffi_bbdream = 2.747296774;
+    const coeffi_clien = 1.493375387;
+    const coeffi_dcinside = 1.462285464;
+    const coeffi_etoland = 15.57316;
+    const coeffi_fmkorea = 0.90740808;
     const coeffi_huniv = 1;
-    const coeffi_instiz = 1.400360826;
-    const coeffi_inven = 2.682877038;
-    const coeffi_natepann = 4.398599001;
-    const coeffi_ppomppu = 2.857625294;
-    const coeffi_ruliweb = 0.706677348;
-    const coeffi_slrclub = 8.80992894;
-    const coeffi_theqoo = 0.82999411;
+    const coeffi_instiz = 2.291654254;
+    const coeffi_inven = 15.39777588;
+    const coeffi_natepann = 1.380834024;
+    const coeffi_ppomppu = 3.088969379;
+    const coeffi_ruliweb = 3.375851359;
+    const coeffi_slrclub = 10.28393454;
+    const coeffi_theqoo = 0.937966448;
 }
