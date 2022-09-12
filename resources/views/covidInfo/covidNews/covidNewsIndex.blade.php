@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', 'Page 코로나 뉴스')
 @section('content')
 
     <div class="">

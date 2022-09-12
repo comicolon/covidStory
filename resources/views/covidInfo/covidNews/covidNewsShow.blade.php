@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', '코로나 뉴스 보기')
 @section('content')
     <section class="py-2 w-full md:px-2">
 

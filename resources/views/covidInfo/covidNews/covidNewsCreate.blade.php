@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+@section('title', '코로나 뉴스 입력')
 
 @section('content')
 <div class="flex-grow">

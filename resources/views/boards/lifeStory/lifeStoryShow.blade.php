@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '일상 이야기 보기')
 @section('content')
 <div class="w-full">
 

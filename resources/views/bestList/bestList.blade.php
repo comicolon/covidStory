@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '베스트 모아')
 @section('content')
     <div class="w-full">
         <div class="flex">

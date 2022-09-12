@@ -33,7 +33,7 @@
         <meta property="og:url" content="https://costory.kr">
 
 {{--        <title>{{ config('app.name', 'Covid Story') }}</title>--}}
-        <title>{{'코스토리 - 코로나 이야기'}}</title>
+        <title>@yield('title')</title>
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -87,6 +87,7 @@
                     @include('.components.footer')
                 </footer>
 
+            </div>
         </div>
         @stack('modals')
 

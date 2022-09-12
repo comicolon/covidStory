@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '코스토리 - 코로나 이야기')
 @section('content')
 
     <div class="main_page_content">

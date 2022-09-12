@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '일상 이야기 수정')
 @section('content')
 <section>
     <form id="submitform" action="/lifeStory/{{$lifeStory->id}}" method="post" class="mt-8 w-full"

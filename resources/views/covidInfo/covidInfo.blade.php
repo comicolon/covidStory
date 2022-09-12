@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title', '코로나 정보')
 @section('content')
 
 <div class="w-full md:flex">
