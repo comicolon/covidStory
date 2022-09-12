@@ -21,6 +21,7 @@ use App\Models\Combine_best_24h;
 use App\Models\CovidHistory;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Psy\Util\Json;
 
 class BigFunctions
@@ -582,19 +583,19 @@ class BigFunctions
     public function getBestItem($site_name, $num){
 
         $bestDB = null;
-        if ($site_name == '보배'){$bestDB = Best_bbdream::class;}
-        if ($site_name == '클량'){$bestDB = Best_clien::class;}
-        if ($site_name == '디씨'){$bestDB = Best_dcinside::class;}
-        if ($site_name == '이토'){$bestDB = Best_etoland::class;}
-        if ($site_name == '펨코'){$bestDB = Best_fmkorea::class;}
-        if ($site_name == '웃대'){$bestDB = Best_huniv::class;}
-        if ($site_name == '인티'){$bestDB = Best_instiz::class;}
-        if ($site_name == '인벤'){$bestDB = Best_inven::class;}
-        if ($site_name == '넷판'){$bestDB = Best_natepann::class;}
-        if ($site_name == '뽐뿌'){$bestDB = Best_ppomppu::class;}
-        if ($site_name == '루리'){$bestDB = Best_ruliweb::class;}
-        if ($site_name == '에세랄'){$bestDB = Best_slrclub::class;}
-        if ($site_name == '더쿠'){$bestDB = Best_theqoo::class;}
+        if ($site_name == '보배' || $site_name == 'bbdream'){$bestDB = Best_bbdream::class;}
+        if ($site_name == '클량' || $site_name == 'clien'){$bestDB = Best_clien::class;}
+        if ($site_name == '디씨' || $site_name == 'dcinside'){$bestDB = Best_dcinside::class;}
+        if ($site_name == '이토' || $site_name == 'etoland'){$bestDB = Best_etoland::class;}
+        if ($site_name == '펨코' || $site_name == 'fmkorea'){$bestDB = Best_fmkorea::class;}
+        if ($site_name == '웃대' || $site_name == 'huniv'){$bestDB = Best_huniv::class;}
+        if ($site_name == '인티' || $site_name == 'instiz'){$bestDB = Best_instiz::class;}
+        if ($site_name == '인벤' || $site_name == 'inven'){$bestDB = Best_inven::class;}
+        if ($site_name == '넷판' || $site_name == 'natepann'){$bestDB = Best_natepann::class;}
+        if ($site_name == '뽐뿌' || $site_name == 'ppomppu'){$bestDB = Best_ppomppu::class;}
+        if ($site_name == '루리' || $site_name == 'ruliweb'){$bestDB = Best_ruliweb::class;}
+        if ($site_name == '에세랄' || $site_name == 'slrclub'){$bestDB = Best_slrclub::class;}
+        if ($site_name == '더쿠' || $site_name == 'theqoo'){$bestDB = Best_theqoo::class;}
 
         $resItem = $bestDB::where('num',$num)->get()->first();
 
@@ -608,16 +609,27 @@ class BigFunctions
         ($item->before_views ? $before_views = $item->before_views : $before_views = $item->views);
         ($item->before_comments ? $before_comments = $item->before_comments : $before_comments = $item->comments);
 
+        //0으로 나누어지는것 방지
         if ($before_comments == 0){$before_comments = 1;}
 
-        //증가율을 구해줌
-        $incrateViews = round($item->views / $before_views, 3);
-        $incrateComments = round($item->comments / $before_comments, 3);
         //새글인 경우에는 증가율을 고정 시켜줌
-        if($item->before_views == null && $item->before_comments == null){
-            $incrateViews = 3;
-            $incrateComments = 3;
+        if($item->is_new == true){
+            $incrateViews = 2;
+            $incrateComments = 2;
         }
+        // 이전의 기록이 있고 프론트 페이지에서 다시 스캔된 경우
+        else if ($item->is_new == false && $item->is_front_page == true){
+            //증가율을 구해줌
+            $incrateViews = round($item->views / $before_views, 3);
+            $incrateComments = round($item->comments / $before_comments, 3);
+        }
+        // 이전의 기록이 있고 페이지가 넘어가서 새로 스캔이 되지 못한 글의 경우
+        else if ($item->is_new == false && $item->is_front_page == false){
+            $incrateViews = 1;
+            $incrateComments =1;
+        }
+
+
         //점수를 곱해줌
         $v_score = ($item->views * baseConfig::pointPerView);
         $c_score = ($item->comments * baseConfig::pointPerComment);

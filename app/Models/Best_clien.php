@@ -23,5 +23,7 @@ class Best_clien extends Model
         'is_month_best',
         'comments',
         't_score',
+        'is_new',
+        'is_front_page',
     ];
 }

@@ -23,5 +23,8 @@ class Best_bbdream extends Model
         'is_month_best',
         'comments',
         't_score',
+        'is_new',
+        'is_front_page',
     ];
 }
+

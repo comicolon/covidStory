@@ -97,41 +97,7 @@ class CrawlingBestList extends Command
             }
         }
         //디비에 넣어준다.
-        foreach ($dcArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_dcinside::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_dcinside();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('디씨인사이드 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('디씨', $dcArr, Best_dcinside::class);
 
 
 
@@ -178,41 +144,7 @@ class CrawlingBestList extends Command
             }
         }
         //디비에 넣어준다.
-        foreach ($slrArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_slrclub::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_slrclub();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('에세랄클럽 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('이토랜드', $slrArr, Best_slrclub::class);
 
 
 
@@ -256,41 +188,7 @@ class CrawlingBestList extends Command
             }
         }
         //디비에 넣어준다.
-        foreach ($rrwArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_ruliweb::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_ruliweb();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('루리웹 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('루리웹', $rrwArr, Best_ruliweb::class);
 
 
 
@@ -339,41 +237,7 @@ class CrawlingBestList extends Command
             }
         }
         //디비에 넣어준다.
-        foreach ($fmkArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_fmkorea::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_fmkorea();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('에펨코리아 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('에펨코리아', $fmkArr, Best_fmkorea::class);
 
 
 
@@ -419,41 +283,7 @@ class CrawlingBestList extends Command
             }
         }
         //디비에 넣어준다.
-        foreach ($ntpArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_natepann::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_natepann();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('네이트판 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('네이트판', $ntpArr, Best_natepann::class);
 
 
 
@@ -502,41 +332,7 @@ class CrawlingBestList extends Command
             }
         }
         //디비에 넣어준다.
-        foreach ($ivArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_inven::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_inven();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('인벤 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('인벤', $ivArr, Best_inven::class);
 
 
 
@@ -585,41 +381,7 @@ class CrawlingBestList extends Command
             }
         }
         //디비에 넣어준다.
-        foreach ($ppArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_ppomppu::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_ppomppu();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('뽐뿌 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('뽐뿌', $ppArr, Best_ppomppu::class);
 
 
 
@@ -668,41 +430,7 @@ class CrawlingBestList extends Command
             }
         }
        // 디비에 넣어준다.
-        foreach ($dqArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_theqoo::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_theqoo();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('더쿠 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('더쿠', $dqArr, Best_theqoo::class);
 
 
 
@@ -748,41 +476,7 @@ class CrawlingBestList extends Command
             }
         }
        // 디비에 넣어준다.
-        foreach ($claArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_clien::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_clien();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('클리앙 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('클리앙', $claArr, Best_clien::class);
 
 
 
@@ -852,30 +546,7 @@ class CrawlingBestList extends Command
 ////                    break;
 //            }
 //            //디비에 넣어준다.
-////            foreach ($huArr as $item) {
-////
-////                //먼저 있는것과 비교해서 있으면 업데이트 해준다.
-////                $beforeBe = Best_huniv::where('num', $item['num'])->first();
-////                if ($beforeBe != null) {
-////
-////                    $beforeBe->views = $item['views'];
-////                    $beforeBe->save();
-////                } else {
-////                    $nowBest = new Best_huniv();
-////
-////                    $nowBest->title = $item['title'];
-////                    $nowBest->url = $item['url'];
-////                    $nowBest->writer = $item['writer'];
-////                    $nowBest->write_datetime = $item['datetime'];
-////                    $nowBest->views = $item['views'];
-////                    $nowBest->num = $item['num'];
-////
-////                    $nowBest->save();
-////                }
-////            }
-//        } catch (\Exception $e) {
-//            Log::info('웃긴대학 가져오기 실패',['error : '=>$e]);
-//        }
+////         $this->insertEachArrToDB('웃대', $huArr, Best_huniv::class);
 
 
         // 보배드림
@@ -920,41 +591,7 @@ class CrawlingBestList extends Command
             }
         }
        // 디비에 넣어준다.
-        foreach ($bbdrArr as $item) {
-
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_bbdream::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_bbdream();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('보배드림 디비넣기 실패',['error : '=>$e]);
-            }
-        }
+        $this->insertEachArrToDB('보배드림', $bbdrArr, Best_bbdream::class);
 
 
 
@@ -1012,41 +649,8 @@ class CrawlingBestList extends Command
         }
 
         //디비에 넣어준다.
-        foreach ($istzArr as $item) {
+        $this->insertEachArrToDB('인스티즈', $istzArr, Best_instiz::class);
 
-            try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_instiz::where('num', $item['num'])->first();
-                if ($beforeBe != null) {
-
-                    $before_views = $beforeBe->views;
-                    $before_comments = $beforeBe->comments;
-
-                    $beforeBe->before_views = $before_views;
-                    $beforeBe->before_comments = $before_comments;
-
-                    $beforeBe->update([
-                        'before_views'      => $beforeBe->before_views,
-                        'before_comments'   => $beforeBe->before_comments,
-                        'views'             => $item['views'],
-                        'comments'          => $item['comments'],
-                    ]);
-                } else {
-                    $nowBest = new Best_instiz();
-
-                    $nowBest->title = $item['title'];
-                    $nowBest->url = $item['url'];
-                    $nowBest->writer = $item['writer'];
-                    $nowBest->write_datetime = $item['datetime'];
-                    $nowBest->views = $item['views'];
-                    $nowBest->num = $item['num'];
-                    $nowBest->comments = $item['comments'];
-
-                    $nowBest->save();
-                }
-            } catch (\Exception $e) {
-                Log::info('인스티즈 디비넣기 실패',['error : '=>$e]);
-            }
-        }
 
         //이토렌드
 
@@ -1108,12 +712,36 @@ class CrawlingBestList extends Command
         }
 
         //디비에 넣어준다.
-        foreach ($etoArr as $item) {
+        $this->insertEachArrToDB('이토랜드', $etoArr, Best_etoland::class);
+
+
+        return 0;
+    }
+
+    // 뽑아낸 배열을 각 디비로 넣어주는 펑션
+    public function insertEachArrToDB($siteName, $eachArr, $classInstance){
+
+        // 새로운 글과 앞장의 글 표시된 로우를 가져와서 false로 바꿔준다.
+        $beforeRes = $classInstance::where ('is_new', true)
+            ->orWhere('is_front_page', true)
+            ->get();
+        foreach ($beforeRes as $bres){
+            $bres->is_new = false;
+            $bres->is_front_page = false;
+
+            $bres->update([
+                'is_new' => $bres->is_new,
+                'is_front_page' => $bres->is_front_page,
+            ]);
+        }
+
+        foreach ($eachArr as $item) {
 
             try {//먼저 있는것과 비교해서 있으면 업데이트 해준다.
-                $beforeBe = Best_etoland::where('num', $item['num'])->first();
+                $beforeBe = $classInstance::where('num', $item['num'])->first();
                 if ($beforeBe != null) {
 
+                    // 이전의 조회수와 댓글수를 기록한다.
                     $before_views = $beforeBe->views;
                     $before_comments = $beforeBe->comments;
 
@@ -1125,9 +753,10 @@ class CrawlingBestList extends Command
                         'before_comments'   => $beforeBe->before_comments,
                         'views'             => $item['views'],
                         'comments'          => $item['comments'],
+                        'is_front_page'     => true,
                     ]);
                 } else {
-                    $nowBest = new Best_etoland();
+                    $nowBest = new $classInstance();
 
                     $nowBest->title = $item['title'];
                     $nowBest->url = $item['url'];
@@ -1136,14 +765,16 @@ class CrawlingBestList extends Command
                     $nowBest->views = $item['views'];
                     $nowBest->num = $item['num'];
                     $nowBest->comments = $item['comments'];
+                    $nowBest->is_new = true;
+                    $nowBest->is_front_page = true;
 
                     $nowBest->save();
                 }
             } catch (\Exception $e) {
-                Log::info('이토랜드 디비넣기 실패',['error : '=>$e]);
+                Log::info($siteName.' 디비넣기 실패',['error : '=>$e]);
             }
         }
-
-        return 0;
     }
+
+
 }
