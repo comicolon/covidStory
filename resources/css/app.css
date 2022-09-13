@@ -20,7 +20,7 @@ html, body {
 }
 /*페이지 콘텐트 영역*/
 .page_content {
-    @apply  w-content md:flex justify-center
+    @apply  w-content inline-block justify-center
 }
 
 /*푸터*/

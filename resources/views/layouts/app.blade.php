@@ -76,9 +76,42 @@
                 {{-- @endif --}}
 
                 <!-- Page Content -->
-                <div class="page_content">
-                    @yield('content')
-                </div>
+                    <div class="page_content">
+
+                        <div class="hidden md:inline-block w-full">
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7981523207325760"
+                                    crossorigin="anonymous"></script>
+                            <!-- 콘텐츠 아래 위 광고 -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-7981523207325760"
+                                 data-ad-slot="5688981078"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                        @yield('content')
+
+                        <div class="inline-block w-full">
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7981523207325760"
+                                    crossorigin="anonymous"></script>
+                            <!-- 콘텐츠 아래 위 광고 -->
+                            <ins class="adsbygoogle"
+                                 style="display:block"
+                                 data-ad-client="ca-pub-7981523207325760"
+                                 data-ad-slot="5688981078"
+                                 data-ad-format="auto"
+                                 data-full-width-responsive="true"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
+
+                    </div>
+
                 <div class="">
                     @include('components.right-menu')
                 </div>
