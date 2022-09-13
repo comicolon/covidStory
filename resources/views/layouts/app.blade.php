@@ -78,7 +78,7 @@
                 <!-- Page Content -->
                     <div class="page_content">
                         {{--           모바일 광고             --}}
-                        <div class="w-full flex justify-center md:hidden">
+                        <div class="w-300px h-50px flex justify-center md:hidden">
                             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7981523207325760"
                                     crossorigin="anonymous"></script>
                             <!-- 네비 아래 컨텐츠 상단 모바일 -->

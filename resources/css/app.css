@@ -51,7 +51,7 @@ html, body {
 .text-5xl { font-size: 3.15em;}
 .text-6xl { font-size: 4.35em;}
 
-/*길이*/
+/*넓이*/
 @layer components {
     .w-content {width: 75rem}
     /*뉴스게*/
@@ -63,7 +63,15 @@ html, body {
     .w-140 {width: 35rem}
     .w-176 {width: 44rem}
     .w-180 {width: 45rem}
+
+    .w-300px {width: 300px}
 }
+
+/*높이*/
+@layer components {
+    .h-50px {width: 50px}
+}
+
 
 
 /*게시판*/
