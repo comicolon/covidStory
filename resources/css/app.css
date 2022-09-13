@@ -100,7 +100,7 @@ html, body {
 }
 /*오더2*/
 .main_order2 {
-    @apply order-2 flex-row bg-zinc-50
+    @apply order-2 bg-zinc-50
 }
 
 /*메인 페이지 뉴스 인덱스*/
