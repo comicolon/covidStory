@@ -78,14 +78,16 @@
                 <!-- Page Content -->
                     <div class="page_content">
                         {{--           모바일 광고             --}}
-                        <div class="w-300px h-50px flex justify-center md:hidden">
+                        <div class="w-600px h-50px flex justify-center md:hidden">
                             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7981523207325760"
                                     crossorigin="anonymous"></script>
                             <!-- 네비 아래 컨텐츠 상단 모바일 -->
                             <ins class="adsbygoogle"
-                                 style="display:inline-block;width:300px;height:50px"
+                                 style="display:inline-block;width:600px;height:50px"
                                  data-ad-client="ca-pub-7981523207325760"
-                                 data-ad-slot="4827363532"></ins>
+                                 data-ad-slot="4827363532"
+                                 data-ad-format="horizontal"
+                                 data-full-width-responsive="false"></ins>
                             <script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
