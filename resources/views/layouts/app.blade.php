@@ -78,14 +78,14 @@
                 <!-- Page Content -->
                     <div class="page_content">
                         {{--           모바일 광고             --}}
-                        <div class="w-600px h-50px flex justify-center md:hidden">
+                        <div class="w-full md:hidden">
                             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7981523207325760"
                                     crossorigin="anonymous"></script>
-                            <!-- 네비 아래 컨텐츠 상단 모바일 -->
+                            <!-- 네비아래 모바일 -->
                             <ins class="adsbygoogle"
-                                 style="display:inline-block;width:600px;height:50px"
+                                 style="display:block;height:50px"
                                  data-ad-client="ca-pub-7981523207325760"
-                                 data-ad-slot="4827363532"
+                                 data-ad-slot="1049530938"
                                  data-ad-format="horizontal"
                                  data-full-width-responsive="false"></ins>
                             <script>
