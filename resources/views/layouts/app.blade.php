@@ -77,8 +77,22 @@
 
                 <!-- Page Content -->
                     <div class="page_content">
+                        {{--           모바일 광고             --}}
+                        <div class="w-full flex justify-center md:hidden">
+                            <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7981523207325760"
+                                    crossorigin="anonymous"></script>
+                            <!-- 네비 아래 컨텐츠 상단 모바일 -->
+                            <ins class="adsbygoogle"
+                                 style="display:inline-block;width:300px;height:50px"
+                                 data-ad-client="ca-pub-7981523207325760"
+                                 data-ad-slot="4827363532"></ins>
+                            <script>
+                                (adsbygoogle = window.adsbygoogle || []).push({});
+                            </script>
+                        </div>
 
-                        <div class="hidden md:inline-block w-full">
+                        {{--          pc 광고         --}}
+                        <div class="w-full hidden md:inline-block">
                             <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7981523207325760"
                                     crossorigin="anonymous"></script>
                             <!-- 콘텐츠 아래 위 광고 -->
