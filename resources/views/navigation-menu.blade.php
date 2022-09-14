@@ -38,7 +38,7 @@
 
                 <div class="item hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                     <x-jet-nav-link href="/bestList">
-                        {{ __('베스트 모아') }}
+                        {{ __('나우 베스트') }}
                     </x-jet-nav-link>
                 </div>
 
@@ -192,7 +192,7 @@
         </li>
         <li class="w-24 float-left ml-2 mt-2 md:hidden">
             <h2>
-                <a href="{{route('bestList.index')}}" class="">베스트 모아</a>
+                <a href="{{route('bestList.index')}}" class="">나우 베스트</a>
             </h2>
         </li>
     </ul>
@@ -261,7 +261,7 @@
 
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('bestList.index') }}" :active="request()->routeIs('bestList.index')">
-                {{ __('베스트 모아') }}
+                {{ __('나우 베스트') }}
             </x-jet-responsive-nav-link>
         </div>
 

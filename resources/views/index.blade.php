@@ -55,13 +55,13 @@
                     </a>
                 </div>
                 <ul>
-                    @for($i=0; $i < count($bestMoa); $i++)
+                    @for($i=0; $i < count($nowBest); $i++)
                    <li class="flex">
                        <p class="flex justify-center rating_site px-2 w-10 text-white">{{$i+1}}
-                            <span class="site_name hidden">{{$bestMoa[$i]->site_name}}</span>
+                            <span class="site_name hidden">{{$nowBest[$i]->site_name}}</span>
                        </p>
-                        <a href="{{$bestMoa[$i]->url}}" class="best_sbj_link">
-                            <p class="w-72 truncate md:w-full">{!! $bestMoa[$i]->title !!}</p>
+                        <a href="{{$nowBest[$i]->url}}" class="best_sbj_link">
+                            <p class="w-72 truncate md:w-full">{!! $nowBest[$i]->title !!}</p>
                         </a>
                    </li>
                     @endfor
