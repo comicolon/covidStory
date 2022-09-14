@@ -1,9 +1,9 @@
 @extends('layouts.app')
-@section('title', '베스트 모아')
+@section('title', '나우 베스트 ')
 @section('content')
     <div class="w-full">
         <div class="flex">
-            <h4 class="font-bold p-3 flex-grow">베스트 모아</h4>
+            <h4 class="font-bold p-3 flex-grow">나우 베스트</h4>
         </div>
 {{--        <div class="px-1">--}}
 {{--            <div class="inline-block px-2 mb-2 bg-cyan-900 text-white rounded-md">--}}

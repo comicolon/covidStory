@@ -51,7 +51,7 @@
             <div class="bg-zinc-50">
                 <div class="px-3 py-1 bg-siteTheme3 text-white">
                     <a href="{{'/bestList'}}">
-                        <h3>베스트 모아</h3>
+                        <h3>나우 베스트</h3>
                     </a>
                 </div>
                 <ul>

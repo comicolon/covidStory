@@ -64,7 +64,7 @@ $.each($('.write_time'), function (index, value) {
     }
 })
 
-// 베스트 모아에서 사이트에 따라서 말머리 색상을 바꿔 줌
+// 나우 베스트에서 사이트에 따라서 말머리 색상을 바꿔 줌
 $.each($('.rating_site'), function (index, value) {
 
     var site_name = $(value).find($('.site_name')).text();
@@ -110,7 +110,7 @@ $.each($('.rating_site'), function (index, value) {
     }
 })
 
-// 베스트 모아 리스트 아이템 클릭시 함수 연결
+// 나우 베스트 모아 리스트 아이템 클릭시 함수 연결
 $(".best_list_item").on("click", function () {
 
     var num = $(this).attr("num");
