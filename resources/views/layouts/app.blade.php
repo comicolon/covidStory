@@ -99,11 +99,11 @@
                                     crossorigin="anonymous"></script>
                             <!-- 콘텐츠 아래 위 광고 -->
                             <ins class="adsbygoogle"
-                                 style="display:block"
+                                 style="display:block;height: 100px"
                                  data-ad-client="ca-pub-7981523207325760"
                                  data-ad-slot="5688981078"
-                                 data-ad-format="auto"
-                                 data-full-width-responsive="true"></ins>
+                                 data-ad-format="horizontal"
+                                 data-full-width-responsive="false"></ins>
                             <script>
                                 (adsbygoogle = window.adsbygoogle || []).push({});
                             </script>
