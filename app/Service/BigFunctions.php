@@ -499,11 +499,169 @@ class BigFunctions
         $viewsArr = array();
         foreach ($totalArr as $key => $row)
         {
-            $viewsArr[$key] = $row['views'];
+            $viewsArr[$key] = $row['t_score'];
         }
         array_multisort($viewsArr, SORT_DESC, $totalArr);
 
-        return $totalArr;
+        //각사이트별 정해진 갯수대로 상한선을 정해 랜덤으로 순위를 정해준다.
+        $limitCnt = baseConfig::bestLimitCount;
+        $displayArr = array();
+        $undisplayArr = array();
+
+        $bbdrCnt = 0;
+        $clenCnt = 0;
+        $dcCnt = 0;
+        $etoCnt = 0;
+        $fmkCnt = 0;
+        $huCnt = 0;
+        $istzCnt = 0;
+        $ivCnt = 0;
+        $npCnt = 0;
+        $ppCnt = 0;
+        $rlwCnt = 0;
+        $slrCnt = 0;
+        $tqCnt = 0;
+
+        $bbdrMax    = false;
+        $clenMax    = false;
+        $dcMax    = false;
+        $etoMax    = false;
+        $fmkMax    = false;
+        $huMax    = false;
+        $istzMax    = false;
+        $ivMax    = false;
+        $npMax    = false;
+        $ppMax    = false;
+        $rlwMax    = false;
+        $slrMax    = false;
+        $tqMax    = false;
+
+        for ($i=0; $i < count($totalArr); $i++){
+
+            if($totalArr[$i]['site_name'] == 'bbdream' && $bbdrMax == false){
+                $bbdrCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($bbdrCnt == $limitCnt){ $bbdrMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'bbdream' && $bbdrMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'clien' && $clenMax == false){
+                $clenCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($clenCnt == $limitCnt){ $clenMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'clien' && $clenMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'dcinside' && $dcMax == false){
+                $dcCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($dcCnt == $limitCnt){ $dcCnt = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'dcinside' && $dcMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'etoland' && $etoMax == false){
+                $etoCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($etoCnt == $limitCnt){ $etoMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'etoland' && $etoMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'fmkorea' && $fmkMax == false){
+                $fmkCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($fmkCnt == $limitCnt){ $fmkMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'fmkorea' && $fmkMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'huniv' && $huMax == false){
+                $huCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($huCnt == $limitCnt){ $huMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'huniv' && $huMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'instiz' && $istzMax == false){
+                $istzCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($istzCnt == $limitCnt){ $istzMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'instiz' && $istzMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'inven' && $ivMax == false){
+                $ivCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($ivCnt == $limitCnt){ $ivMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'inven' && $ivMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'natepann' && $npMax == false){
+                $npCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($npCnt == $limitCnt){ $npMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'natepann' && $npMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'ppomppu' && $ppMax == false){
+                $ppCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($ppCnt == $limitCnt){ $ppMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'ppomppu' && $ppMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'ruliweb' && $rlwMax == false){
+                $rlwCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($rlwCnt == $limitCnt){ $rlwMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'ruliweb' && $rlwMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'slrclub' && $slrMax == false){
+                $slrCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($slrCnt == $limitCnt){ $slrMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'slrclub' && $slrMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+            if($totalArr[$i]['site_name'] == 'theqoo' && $tqMax == false){
+                $tqCnt++;
+                array_push($displayArr, $totalArr[$i]);
+                if ($tqCnt == $limitCnt){ $tqMax = true; }
+            }
+            elseif ($totalArr[$i]['site_name'] == 'theqoo' && $tqMax == true){
+                array_push($undisplayArr, $totalArr[$i]);
+            }
+
+        }
+            shuffle($displayArr);
+            shuffle($undisplayArr);
+
+            $shuffleArr = array_merge($displayArr, $undisplayArr);
+
+        return $shuffleArr;
     }
 
     //완성된 배열을 시간 테이블에 넣어준다.

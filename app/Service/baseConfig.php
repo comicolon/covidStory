@@ -9,6 +9,9 @@ class baseConfig
 
     const defaultPassword = 'costory#487';  // 소셜 회원가입시 디폴트로 설정될 패스워드
 
+    //나우 베스트
+    const bestLimitCount = 30;              // 사이트별 베스트 제한 갯수
+
     //베스트 점수
     const pointPerView = 1;                 // 1조회수당 점수
     const pointPerComment = 5;              // 1댓글당 점수

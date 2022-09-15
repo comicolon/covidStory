@@ -25,16 +25,16 @@ class BestListController extends Controller
 
         $totalList = null;
         if ($before == 4){
-            $totalList = Combine_best_4h::query()->orderByDesc('t_score')->limit(200)->get();
+            $totalList = Combine_best_4h::query()->orderByDesc('rating')->limit(200)->get();
         }
         elseif ($before == 8){
-            $totalList = Combine_best_8h::query()->orderByDesc('t_score')->limit(200)->get();
+            $totalList = Combine_best_8h::query()->orderByDesc('rating')->limit(200)->get();
         }
         elseif ($before == 12){
-            $totalList = Combine_best_12h::query()->orderByDesc('t_score')->limit(200)->get();
+            $totalList = Combine_best_12h::query()->orderByDesc('rating')->limit(200)->get();
         }
         elseif ($before == 24){
-            $totalList = Combine_best_24h::query()->orderByDesc('t_score')->limit(200)->get();
+            $totalList = Combine_best_24h::query()->orderByDesc('rating')->limit(200)->get();
         }
 
 
