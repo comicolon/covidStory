@@ -45,7 +45,7 @@ class BaseController extends Controller
         $diffincDec = $json['korea']['incDec'] - $jsonBefore['korea']['incDec'];        // 전체 확진자 차이
 
         //나우 베스트 게시판 가져오기 상위 10개만
-        $nowBest = Combine_best_4h::query()->orderByDesc('t_score')->limit(20)->get();
+        $nowBest = Combine_best_4h::query()->orderBy('rating')->limit(20)->get();
 
         // 뉴스 게시판 가져오기
         $covidNews = covidNews::latest()->take(5)->get();

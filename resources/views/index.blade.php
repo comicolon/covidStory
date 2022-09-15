@@ -4,17 +4,17 @@
 
     <div class="main_page_content">
         <div class="main_order1">
-            <div class="bg-indigo-200 text-gray-800 flex items-center h-10">
+            <div class="bg-siteTheme2 text-white flex items-center h-10">
                 <p class="ml-4"> 국내 코로나 발생 현황 </p>
             </div>
-            <div class="max-h-36 bg-amber-100 text-gray-800 px-3">
+            <div class="max-h-36 bg-siteTheme4 text-gray-800 px-3">
                 <p class="text-xl">국내 확진자 수</p>
                 <p class="text-5xl">{{number_format($json['korea']['totalCnt'])}}</p>
             </div>
             <div class="h-8 px-3 bg-zinc-50 flex items-center">
                 <P class="text-green-800-500">{{ mb_substr($json['API']['updateTime'],23, 13, 'utf8')}}</P>
             </div>
-            <div class="flex bg-amber-200 px-3 text-gray-800">
+            <div class="flex bg-siteTheme4 px-3 text-gray-800">
                 <div class="mt-4">
                     <p class="text-2xl">전일대비 확진자 수</p>
                     <p class="text-5xl">{{number_format($json['korea']['incDec'])}}</p>

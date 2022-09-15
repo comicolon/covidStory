@@ -32,12 +32,7 @@ html, body {
 
 
 .board_title {
-    @apply drop-shadow-lg
-            px-4
-            py-4
-            bg-green-100
-            text-xl
-            font-bold
+    @apply drop-shadow-lg px-4 py-4 bg-siteTheme3 text-xl font-bold
 }
 /*폰트 사이즈*/
 .jb-xx-small { font-size: xx-small; }
@@ -78,17 +73,17 @@ html, body {
 
 /*게시판*/
 .board_to_list {
-    @apply px-4 py-1 my-4 text-white text-lg bg-blue-300 hover:bg-blue-700 rounded-lg
+    @apply px-4 py-1 my-4 text-white text-lg bg-siteTheme2 hover:bg-siteTheme1 rounded-lg
 }
 .board_to_edit {
-    @apply px-4 py-1 text-white text-lg bg-blue-500 hover:bg-blue-700
+    @apply px-4 py-1 text-white text-lg bg-blue-500 hover:bg-blue-700 rounded-lg
 }
 .board_to_delete {
-    @apply px-4 py-1 text-white text-lg bg-red-500 hover:bg-red-700
+    @apply px-4 py-1 text-white text-lg bg-red-500 hover:bg-red-700 rounded-lg
 }
 
 .button_home_detail {
-    @apply px-3 py-2 bg-siteTheme5 hover:bg-siteTheme4 text-lg text-white rounded-xl
+    @apply px-3 py-2 bg-siteTheme2 hover:bg-siteTheme1 text-lg text-white rounded-xl
 }
 
 /*구글 로그인 버튼*/
@@ -162,7 +157,7 @@ html, body {
 
 /*일상 이야기 인덱스 리스트 헤더*/
 .lifeStory_index_header {
-    @apply hidden md:flex border-b border-t border-gray-400 bg-gray-50 text-xs
+    @apply hidden md:flex border-b border-t border-siteTheme5 bg-siteTheme4 text-xs
 }
 
 /*일상 이야기 인덱스 리스트 헤더 번호*/

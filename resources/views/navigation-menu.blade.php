@@ -184,12 +184,13 @@
     </div>
 
 {{--    <div class="h-10 bg-gradient-to-br from-blue-200 to-blue-50"></div>--}}
-    <ul class="h-10 text-center text-lg bg-siteTheme3 text-siteTheme4">
+    <ul class="h-10 text-center text-lg bg-siteTheme3 text-white">
         <li class="w-24 float-left ml-2 mt-2 md:hidden">
             <h2>
                 <a href="{{route('lifeStory')}}" class="">일상이야기</a>
             </h2>
         </li>
+        <li class="w-2 float-left ml-2 mt-2 md:hidden"> | </li>
         <li class="w-24 float-left ml-2 mt-2 md:hidden">
             <h2>
                 <a href="{{route('bestList.index')}}" class="">나우 베스트</a>

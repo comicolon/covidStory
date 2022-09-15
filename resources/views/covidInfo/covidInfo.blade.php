@@ -4,17 +4,17 @@
 
 <div class="w-full md:flex">
     <div class="flex-1 order-1">
-        <div class="bg-indigo-200 text-base flex items-center h-10">
+        <div class="bg-siteTheme2 text-base flex items-center h-10 text-white">
             <p class="ml-4"> 국내 코로나 발생 현황 </p>
         </div>
-        <div class="max-h-36 bg-amber-100 text-gray-800 px-3">
+        <div class="max-h-36 bg-siteTheme4 text-gray-800 px-3">
                 <p class="text-xl">국내 확진자 수</p>
                 <p class="text-5xl">{{number_format($json['korea']['totalCnt'])}}</p>
         </div>
-        <div class="h-8 px-3 bg-gray-300 flex items-center">
+        <div class="h-8 px-3 bg-zinc-50 flex items-center">
             <P class="text-green-800-500">{{ mb_substr($json['API']['updateTime'],23, 13, 'utf8')}}</P>
         </div>
-        <div class="h-36 flex bg-amber-200 px-3 text-gray-800">
+        <div class="h-36 flex bg-siteTheme4 px-3 text-gray-800">
             <div>
                 <p class="text-xl">전일대비 확진자 수</p>
                 <p class="text-5xl">{{number_format($json['korea']['incDec'])}}</p>
@@ -31,25 +31,25 @@
                 @endif
             </div>
         </div>
-        <div class="h-24 bg-emerald-200 px-3 text-gray-800">
+        <div class="h-24 bg-siteThemeCpm2 px-3 text-gray-800">
             <p class="text-xl">국내 완치자 수</p>
             <p class="text-4xl">{{number_format($json['korea']['recCnt'])}}</p>
         </div>
-        <div class="h-24 bg-gray-700 px-3 text-white">
+        <div class="h-24 bg-siteThemeCpm1 px-3 text-white">
             <p class="text-xl">국내 사망자 수</p>
             <p class="text-4xl">{{number_format($json['korea']['deathCnt'])}}</p>
         </div>
-        <div class="h-20 bg-emerald-300 px-3">
+        <div class="h-20 bg-siteThemeCpm2 px-3">
             <p class="text-xl">국내 치료중 환자 수</p>
             <p class="text-3xl">{{number_format($json['korea']['isolCnt'])}}</p>
         </div>
-        <div class="h-20 bg-indigo-200 px-3 text-gray-800">
+        <div class="h-20 bg-siteThemeCpm1 px-3 text-white">
             <p class="text-xl">국내 코로나 발생률</p>
             <p class="text-3xl">{{ number_format($json['korea']['qurRate']/1000,3).'%'}}</p>
         </div>
     </div>
 
-    <div class="flex-1 order-2 flex-row bg-emerald-50">
+    <div class="flex-1 order-2 flex-row bg-siteTheme4">
         <div class="h-24 flex items-center justify-center">
 
             <label for="localArea" class="text-xl">지역 선택
@@ -75,7 +75,7 @@
             </label>
         </div>
         <div class="h-full">
-            <div class="h-4/5 flex-row bg-gradient-to-b from-white to-stone-200
+            <div class="h-7/8 flex-row bg-gradient-to-b from-white to-siteTheme4
                     flex-row justify-center items-center">
                 <div class="flex items-center justify-center px-3 py-3 bg-blue-300">
                     <p class="text-2xl text-green-900">{{$json[$area]['countryNm']}}</p>

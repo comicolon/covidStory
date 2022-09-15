@@ -8,7 +8,7 @@
                 <h4 class="font-bold p-3 flex-grow">일상 이야기</h4>
                 @auth
                     <a href="{{route('lifeStoryCreate')}}" class="flex items-center">
-                        <button class="bg-green-400 hover:bg-green-500 px-4 py-2 mr-2 float-right
+                        <button class="bg-siteTheme2 hover:bg-siteTheme1 px-4 py-2 mr-2 float-right
                             text-white rounded-md">글쓰기</button>
                     </a>
                 @endauth
@@ -25,7 +25,7 @@
             <ul>
                 @foreach ($postPacket as $story)
                     <a href="/lifeStory/{{$story->id}}">
-                        <li class="block border-b py-1 flex-row hover:bg-emerald-50 md:flex">
+                        <li class="block border-b py-1 flex-row hover:bg-siteThemeCpm2 md:flex">
                             <div class="lifeStory_index_item_id">
                                 <p>{{$story->id}}</p>
                             </div>
