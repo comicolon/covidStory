@@ -25,7 +25,7 @@
 {{--                </div>--}}
 
                 <div class="item hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="/lifeStory">
+                    <x-jet-nav-link href="/lifeStory" :active="request()->routeIs('lifeStory')">
                         {{ __('일상 이야기') }}
                     </x-jet-nav-link>
                 </div>
@@ -37,7 +37,7 @@
 {{--                </div>--}}
 
                 <div class="item hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-jet-nav-link href="/bestList">
+                    <x-jet-nav-link href="/bestList" :active="request()->routeIs('bestList.index')">
                         {{ __('나우 베스트') }}
                     </x-jet-nav-link>
                 </div>

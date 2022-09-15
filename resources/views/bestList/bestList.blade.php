@@ -35,7 +35,7 @@
                     @endif
 
                     <li class="flex border-b">
-                        <div class="rating_site w-16 text-white">
+                        <div class="rating_site w-16 text-white rounded-md">
                             <p class="flex justify-center">{{$i+1}}</p>
                             <p class="site_name flex justify-center text-sm">{{$totalList[$i]->site_name}}</p>
                         </div>

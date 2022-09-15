@@ -60,7 +60,7 @@ class CutoutBestlist extends Command
         foreach ($bestDBArr as $item){
 
             $now = Carbon::now();
-            $nowBefore36h = $now->subHours(36);
+            $nowBefore36h = $now->subHours(84);
             $nowBefore36h = $nowBefore36h->toDateTimeString();
 
             $item::query()->where('write_datetime','<',$nowBefore36h)->delete();
