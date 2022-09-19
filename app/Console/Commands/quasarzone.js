@@ -14,6 +14,7 @@ connection.connect();   // DB 접속
 // puppeteer을 가져온다.
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
+const Xvfb = require('xvfb');
 
 function delay(time) {
     return new Promise(function(resolve) {
@@ -22,11 +23,17 @@ function delay(time) {
 }
 
 (async() => {
+
+    var xvfb = new Xvfb({
+        silent: true,
+        xvfb_args: ["-screen", "0", '1280x720x24', "-ac"],
+    });
+    xvfb.start((err)=>{if (err) console.error(err)})
     // 브라우저를 실행한다.
     // 옵션으로 headless모드를 끌 수 있다.
     const browser = await puppeteer.launch({
         headless: false,
-        args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-gpu"]
+        args: ["--no-sandbox", "--disable-setuid-sandbox",'--display='+xvfb._display]
     });
 
     // 새로운 페이지를 연다.
@@ -90,7 +97,7 @@ function delay(time) {
 
     connection.end(); // DB 접속 종료
     await  browser.close();
-
+    xvfb.stop();
 })();
 
 
