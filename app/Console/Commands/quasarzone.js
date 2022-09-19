@@ -15,6 +15,12 @@ connection.connect();   // DB 접속
 const puppeteer = require('puppeteer');
 const cheerio = require('cheerio');
 
+function delay(time) {
+    return new Promise(function(resolve) {
+        setTimeout(resolve, time)
+    });
+}
+
 (async() => {
     // 브라우저를 실행한다.
     // 옵션으로 headless모드를 끌 수 있다.
@@ -77,6 +83,11 @@ const cheerio = require('cheerio');
 
 
     });
+
+    console.log('before waiting');
+    await delay(4000);
+    console.log('after waiting');
+
     connection.end(); // DB 접속 종료
     await  browser.close();
 
