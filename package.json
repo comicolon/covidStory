@@ -20,8 +20,12 @@
     "dependencies": {
         "cheerio": "^1.0.0-rc.12",
         "mysql": "^2.18.1",
+<<<<<<< Updated upstream
         "node": "^18.9.0",
         "puppeteer": "^17.1.3",
         "puppeteer-core": "^17.1.3"
+=======
+        "puppeteer": "^18.0.2"
+>>>>>>> Stashed changes
     }
 }
