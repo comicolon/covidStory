@@ -4,7 +4,7 @@ const conn = {  // mysql 접속 설정
     host: 'localhost',
     port: '3306',
     user: 'root',
-    password: 'qqqq1313',
+    password: 'comicolon78',
     database: 'covidrun'
 };
 
@@ -42,10 +42,10 @@ const cheerio = require('cheerio');
     // 모든 리스트를 순환한다.
     lists.each((index, list) => {
 
-        const title = $(list).find('td:nth-child(2) > div > div.market-info-list-cont > p > a > span.ellipsis-with-reply-cnt').text();
+        const title = $(list).find('td:nth-child(2) > div > div.market-info-list-cont > p > a > span.ellipsis-with-reply-cnt').text().trim();
         let url = $(list).find('td:nth-child(2) > div > div.market-info-list-cont > p > a').attr('href');
         url = 'https://quasarzone.com' + url;
-        let category = $(list).find('td:nth-child(2) > div > div.market-info-list-cont > div > p:nth-child(1) > span.category').text();
+        let category = $(list).find('td:nth-child(2) > div > div.market-info-list-cont > div > p:nth-child(1) > span.category').text().trim();
         let writer = $(list).find('td:nth-child(2) > div > div.market-info-list-cont > div > p:nth-child(2) > span.user-nick-wrap.nick.d-inline-block').attr('data-nick');
         let num = url.substring(45);
 
