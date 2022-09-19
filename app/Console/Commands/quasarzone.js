@@ -20,6 +20,7 @@ const cheerio = require('cheerio');
     // 옵션으로 headless모드를 끌 수 있다.
     const browser = await puppeteer.launch({
         headless: false,
+        args: ['--no-sandbox']
     });
 
     // 새로운 페이지를 연다.
