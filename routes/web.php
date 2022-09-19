@@ -7,6 +7,7 @@ use App\Http\Controllers\covidInfo\covidInfo;
 use App\Http\Controllers\covidInfo\covidNewsController;
 use App\Http\Controllers\extra\CommentController;
 use App\Http\Controllers\GoogleLoginController;
+use App\Http\Controllers\HotDeal\HotDealController;
 use App\Http\Controllers\profile\show;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -77,6 +78,9 @@ Route::middleware('auth')->group(function () {
 // 베스트 링크
 Route::get('/bestList', [BestListController::class, 'index'])->name('bestList.index');
 Route::get('/bestListClick', [BestListController::class, 'listClick'])->name('bestList.listClick');
+
+//핫딜
+Route::get('/hotdeal', [HotDealController::class, 'index'])->name('hotdeal.index');
 
 
 //프로필

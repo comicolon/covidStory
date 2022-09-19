@@ -9,6 +9,7 @@
         "ext-curl": "*",
         "ext-iconv": "*",
         "doctrine/dbal": "^3.4",
+        "fabpot/goutte": "^4.0",
         "filament/filament": "^2.15",
         "guzzlehttp/guzzle": "^7.5",
         "laravel/framework": "^9.19",
@@ -19,9 +20,11 @@
         "livewire/livewire": "^2.5",
         "socialiteproviders/google": "^4.1",
         "symfony/css-selector": "^6.1",
-        "symfony/dom-crawler": "^6.1"
+        "symfony/dom-crawler": "^6.1",
+        "symfony/panther": "^2.0"
     },
     "require-dev": {
+        "dbrekelmans/bdi": "^1.0",
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.0.1",
