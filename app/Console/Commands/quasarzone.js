@@ -25,7 +25,7 @@ function delay(time) {
     // 브라우저를 실행한다.
     // 옵션으로 headless모드를 끌 수 있다.
     const browser = await puppeteer.launch({
-        headless: true,
+        headless: false,
         args: ['--no-sandbox']
     });
 
