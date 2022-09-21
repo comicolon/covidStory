@@ -13,9 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('deal_quasarzones', function (Blueprint $table) {
+        Schema::create('deal_coolenjoys', function (Blueprint $table) {
             $table->id();
-            $table->string('site_name')->default('quasarzone');
+            $table->string('site_name')->default('coolenjoy');
             $table->string('title');
             $table->string('url');
             $table->string('category');
@@ -36,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('deal_quasarzones');
+        Schema::dropIfExists('deal_coolenjoys');
     }
 };

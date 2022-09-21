@@ -143,53 +143,9 @@ class CrawlingBestList extends Command
                 Log::info('에세랄클럽 가져오기 실패',['error : '=>$e]);
             }
         }
+
         //디비에 넣어준다.
-        $this->insertEachArrToDB('이토랜드', $slrArr, Best_slrclub::class);
-
-
-
-        //루리웹 가져오기
-        //유머 게시판 베스트 글
-
-        $html = file_get_html('https://bbs.ruliweb.com/community/board/300143?view_best=1');
-        $rrwArr = array();
-        $idx = 0;
-        foreach ($html->find('[class=table_body blocktarget]') as $item) {
-
-            try {
-                usleep($sleepTimeM);
-                $num = trim($item->find('.id')[0]->plaintext);
-                $url = $item->find('.relative a')[0]->href;
-                $title = trim($item->find('.relative a')[0]->plaintext);
-                $writer = trim($item->find('.writer a')[0]->plaintext);
-                $html2 = file_get_html($url);
-                $time = $html2->find('.regdate')[0]->plaintext;
-                $time = preg_replace("/[^0-9]*/s", "", $time);
-                $datetime = date_create_from_format('YmdHis', $time);
-                $views = $item->find('.hit')[0]->plaintext;
-                $comments = $item->find('.num')[0]->plaintext;
-
-                //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
-                $arr = array(
-                    'title' => $title,
-                    'url' => $url,
-                    'writer' => $writer,
-                    'datetime' => $datetime,
-                    'views' => $views,
-                    'num' => $num,
-                    'comments' => $comments,
-                );
-                array_push($rrwArr, $arr);
-                $idx++;
-                if ($idx == $idxMax)
-                    break;
-            } catch (\Exception $e) {
-                Log::info('루리웹 가져오기 실패',['error : '=>$e]);
-            }
-        }
-        //디비에 넣어준다.
-        $this->insertEachArrToDB('루리웹', $rrwArr, Best_ruliweb::class);
-
+        $this->insertEachArrToDB('이세랄클럽', $slrArr, Best_slrclub::class);
 
 
         //에펨코리아 가져오기
@@ -216,7 +172,51 @@ class CrawlingBestList extends Command
                     $pos = strpos($url, 'document_srl=');
                     $num = trim(substr($url, $pos + 13));
                     $comments = $item->find('.replyNum')[0]->plaintext;
+
+                    //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+                    $arr = array(
+                        'title' => $title,
+                        'url' => $url,
+                        'writer' => $writer,
+                        'datetime' => $datetime,
+                        'views' => $views,
+                        'num' => $num,
+                        'comments' => $comments,
+                    );
+                    array_push($fmkArr, $arr);
                 }
+//                $idx++;
+//                if ($idx == $idxMax)
+//                    break;
+            } catch (\Exception $e) {
+                Log::info('에펨코리아 가져오기 실패',['error : '=>$e]);
+            }
+        }
+
+        //디비에 넣어준다.
+        $this->insertEachArrToDB('에펨코리아', $fmkArr, Best_fmkorea::class);
+
+
+        //루리웹 가져오기
+        //유머 게시판 베스트 글
+
+        $html = file_get_html('https://bbs.ruliweb.com/community/board/300143?view_best=1');
+        $rlwArr = array();
+        $idx = 0;
+        foreach ($html->find('[class=table_body blocktarget]') as $item) {
+
+            try {
+                usleep($sleepTimeM);
+                $num = trim($item->find('.id')[0]->plaintext);
+                $url = $item->find('.relative a')[0]->href;
+                $title = trim($item->find('.relative a')[0]->plaintext);
+                $writer = trim($item->find('.writer a')[0]->plaintext);
+                $html2 = file_get_html($url);
+                $time = $html2->find('.regdate')[0]->plaintext;
+                $time = preg_replace("/[^0-9]*/s", "", $time);
+                $datetime = date_create_from_format('YmdHis', $time);
+                $views = $item->find('.hit')[0]->plaintext;
+                $comments = $item->find('.num')[0]->plaintext;
 
                 //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
                 $arr = array(
@@ -228,17 +228,16 @@ class CrawlingBestList extends Command
                     'num' => $num,
                     'comments' => $comments,
                 );
-                array_push($fmkArr, $arr);
+                array_push($rlwArr, $arr);
                 $idx++;
                 if ($idx == $idxMax)
                     break;
             } catch (\Exception $e) {
-                Log::info('에펨코리아 가져오기 실패',['error : '=>$e]);
+                Log::info('루리웹 가져오기 실패',['error : '=>$e]);
             }
         }
         //디비에 넣어준다.
-        $this->insertEachArrToDB('에펨코리아', $fmkArr, Best_fmkorea::class);
-
+        $this->insertEachArrToDB('루리웹', $rlwArr, Best_ruliweb::class);
 
 
         //네이트 판
