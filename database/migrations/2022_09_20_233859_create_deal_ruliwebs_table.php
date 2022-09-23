@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('url');
             $table->string('category');
             $table->string('writer');
-            $table->string('num');
+            $table->string('num')->unique();
             $table->dateTime('write_datetime')->nullable();
             $table->unsignedInteger('views_on_local')->default(0);
             $table->boolean('is_new')->default(false);

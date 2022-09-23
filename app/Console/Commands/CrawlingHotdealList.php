@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Http\Controllers\HotDeal\HotDeal_city;
 use App\Models\Deal_city;
 use App\Models\Deal_clien;
 use App\Models\Deal_coolenjoy;
@@ -284,7 +285,7 @@ class CrawlingHotdealList extends Command
     }
 
     // 각사이트의 딜을 디비로 넣어주는 펑션
-    public  function insertHotDealToDB ($siteName, $dealArr, $classInstance){
+    public function insertHotDealToDB ($siteName, $dealArr, $classInstance){
 
         foreach ($dealArr as $item){
 
@@ -315,6 +316,30 @@ class CrawlingHotdealList extends Command
                 }
             }
         }
+    }
+
+    public function sortHotDealInDB()
+    {
+
+        //씨티
+        $hd_city = new HotDeal_city();
+        $res = $hd_city->getNewItem();
+
+        foreach ($res as $item) {
+            $hd_city->insertItemToDB($item);
+        }
+
+        //클리앙
+
+        //펨코
+
+        //뽐뿌
+
+        //퀘이사존
+
+        //루리
+
+
 
     }
 
