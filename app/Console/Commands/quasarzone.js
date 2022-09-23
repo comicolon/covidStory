@@ -63,21 +63,30 @@ function delay(time) {
         let writer = $(list).find('td:nth-child(2) > div > div.market-info-list-cont > div > p:nth-child(2) > span.user-nick-wrap.nick.d-inline-block').attr('data-nick');
         let num = url.substring(45);
 
-        let arr = {
-                    title : title,
-                    url : url,
-                    category : category,
-                    writer : writer,
-                    num : num,
+        let beforeBe = "SELECT * FROM deal_quasarzones where `num` = " + num;
+
+        let beforeBeNum;
+        if (beforeBe != null) {
+            beforeBeNum = num;
+            let query = "UPDATE deal_quasarzones SET is_new = false WHERE num = " + num;
+
+            connection.query(query, function (err, results, fields) { // testQuery 실행
+                if (err) {
+                    console.log(err);
+                }
+                console.log(results);
+            });
         }
-        let query = "INSERT INTO deal_quasarzones (`title`, `url`, `category`, `writer`, `num`) VALUES (?, ?, ?, ?, ?)";
+
+        let query = "INSERT INTO deal_quasarzones (`title`, `url`, `category`, `writer`, `num`, `is_new`) VALUES (?, ?, ?, ?, ?, ?)";
 
         var values = [
             title,
             url,
             category,
             writer,
-            num
+            num,
+            true,
         ];
 
         connection.query(query, values, function (err, results, fields) { // testQuery 실행
