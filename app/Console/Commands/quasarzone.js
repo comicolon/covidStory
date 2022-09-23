@@ -91,9 +91,7 @@ function delay(time) {
 
     });
 
-    console.log('before waiting');
     await delay(4000);
-    console.log('after waiting');
 
     connection.end(); // DB 접속 종료
     await  browser.close();

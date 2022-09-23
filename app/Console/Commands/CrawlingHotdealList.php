@@ -282,10 +282,10 @@ class CrawlingHotdealList extends Command
 
         //퀘이사존
         // 노드js 사용으로 실행만 시켜줌
-        $nodeJsPath = __DIR__;
-        $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
+//        $nodeJsPath = __DIR__;
+//        $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
 
-//        $this->sortHotDealInDB();
+        $this->sortHotDealInDB();
 
         return 0;
     }
@@ -326,6 +326,7 @@ class CrawlingHotdealList extends Command
 
     public function sortHotDealInDB()
     {
+
         $dealArr = [HotDeal_city::class,
                     HotDeal_clien::class,
                     HotDeal_coolenjoy::class,

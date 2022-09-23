@@ -43,14 +43,14 @@ class Kernel extends ConsoleKernel
         $schedule->command('bestList:cutoutBestList')->timezone('Asia/Seoul')->dailyAt('17:01');
 
         // 핫딜 크롤링
-        $schedule->command('hotdeal:CrawlingHotdeal')->timezone('Asia/Seoul')->hourlyAt(05)->after(function (){
-            (new Commands\CrawlingHotdealList)->sortHotDealInDB();});
-        $schedule->command('hotdeal:CrawlingHotdeal')->timezone('Asia/Seoul')->hourlyAt(20)->after(function (){
-            (new Commands\CrawlingHotdealList)->sortHotDealInDB();});
-        $schedule->command('hotdeal:CrawlingHotdeal')->timezone('Asia/Seoul')->hourlyAt(35)->after(function (){
-            (new Commands\CrawlingHotdealList)->sortHotDealInDB();});
-        $schedule->command('hotdeal:CrawlingHotdeal')->timezone('Asia/Seoul')->hourlyAt(50)->after(function (){
-            (new Commands\CrawlingHotdealList)->sortHotDealInDB();});
+//        $schedule->command('hotdeal:CrawlingHotdeal')->timezone('Asia/Seoul')->hourlyAt(05)->after(function (){
+//            (new Commands\CrawlingHotdealList)->sortHotDealInDB();});
+//        $schedule->command('hotdeal:CrawlingHotdeal')->timezone('Asia/Seoul')->hourlyAt(20)->after(function (){
+//            (new Commands\CrawlingHotdealList)->sortHotDealInDB();});
+//        $schedule->command('hotdeal:CrawlingHotdeal')->timezone('Asia/Seoul')->hourlyAt(35)->after(function (){
+//            (new Commands\CrawlingHotdealList)->sortHotDealInDB();});
+//        $schedule->command('hotdeal:CrawlingHotdeal')->timezone('Asia/Seoul')->hourlyAt(50)->after(function (){
+//            (new Commands\CrawlingHotdealList)->sortHotDealInDB();});
 
     }
 
