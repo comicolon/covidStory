@@ -3,6 +3,12 @@
 namespace App\Console\Commands;
 
 use App\Http\Controllers\HotDeal\HotDeal_city;
+use App\Http\Controllers\HotDeal\HotDeal_clien;
+use App\Http\Controllers\HotDeal\HotDeal_coolenjoy;
+use App\Http\Controllers\HotDeal\HotDeal_fmkorea;
+use App\Http\Controllers\HotDeal\HotDeal_ppomppu;
+use App\Http\Controllers\HotDeal\HotDeal_quasarzone;
+use App\Http\Controllers\HotDeal\HotDeal_ruliweb;
 use App\Models\Deal_city;
 use App\Models\Deal_clien;
 use App\Models\Deal_coolenjoy;
@@ -85,8 +91,6 @@ class CrawlingHotdealList extends Command
 
             return $ppArr;
         });
-
-//        var_dump($resArr[1][0]['title']);
 
         $this->insertHotDealToDB('뽐뿌', $resArr, Deal_ppomppu::class);
 
@@ -278,8 +282,10 @@ class CrawlingHotdealList extends Command
 
         //퀘이사존
         // 노드js 사용으로 실행만 시켜줌
-//        $nodeJsPath = __DIR__;
-//        $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
+        $nodeJsPath = __DIR__;
+        $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
+
+//        $this->sortHotDealInDB();
 
         return 0;
     }
@@ -320,26 +326,22 @@ class CrawlingHotdealList extends Command
 
     public function sortHotDealInDB()
     {
+        $dealArr = [HotDeal_city::class,
+                    HotDeal_clien::class,
+                    HotDeal_coolenjoy::class,
+                    HotDeal_fmkorea::class,
+                    HotDeal_ppomppu::class,
+                    HotDeal_quasarzone::class,
+                    HotDeal_ruliweb::class];
 
-        //씨티
-        $hd_city = new HotDeal_city();
-        $res = $hd_city->getNewItem();
+        foreach ($dealArr as $item){
+            $hd = new $item();
+            $res = $hd->getNewItem();
 
-        foreach ($res as $item) {
-            $hd_city->insertItemToDB($item);
+            foreach ($res as $re) {
+                $hd->insertItemToDB($re);
+            }
         }
-
-        //클리앙
-
-        //펨코
-
-        //뽐뿌
-
-        //퀘이사존
-
-        //루리
-
-
 
     }
 
