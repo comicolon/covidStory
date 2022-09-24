@@ -59,6 +59,7 @@
 
 
 
+
             <!-- Page Heading -->
             @if (isset($header))
                 <header class="bg-white shadow">

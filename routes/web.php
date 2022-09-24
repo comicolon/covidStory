@@ -9,6 +9,7 @@ use App\Http\Controllers\extra\CommentController;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\HotDeal\HotDealController;
 use App\Http\Controllers\profile\show;
+use App\Http\Livewire\Hotdeal;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -81,6 +82,10 @@ Route::get('/bestListClick', [BestListController::class, 'listClick'])->name('be
 
 //핫딜
 Route::get('/hotdeal', [HotDealController::class, 'index'])->name('hotdeal.index');
+Route::get('/hotdealClick', [HotDealController::class, 'itemClick'])->name('hotdeal.itemClick');
+//라이브와이어
+//Route::get('/hotdeal', [Hotdeal::class, 'render'])->name('hotdeal.render');
+//Route::get('/hotdealClick', [Hotdeal::class, 'itemClick'])->name('hotdeal.itemClick');
 
 
 //프로필

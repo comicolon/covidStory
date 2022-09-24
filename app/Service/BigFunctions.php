@@ -19,6 +19,13 @@ use App\Models\Combine_best_8h;
 use App\Models\Combine_best_12h;
 use App\Models\Combine_best_24h;
 use App\Models\CovidHistory;
+use App\Models\Deal_city;
+use App\Models\Deal_clien;
+use App\Models\Deal_coolenjoy;
+use App\Models\Deal_fmkorea;
+use App\Models\Deal_ppomppu;
+use App\Models\Deal_quasarzone;
+use App\Models\Deal_ruliweb;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -816,5 +823,22 @@ class BigFunctions
         if ($item->site_name == 'theqoo'){$score = round($h_score * baseConfig::coeffi_theqoo);}
 
         return $score;
+    }
+
+    //사이트 이름과 번호를 입력하여 핫딜 아이템 하나를 얻는 함수
+    public function getHotdealItem(mixed $site_name, mixed $num)
+    {
+        $dealDB = null;
+        if ($site_name == '씨티' || $site_name == 'city'){$dealDB = Deal_city::class;}
+        if ($site_name == '클리앙' || $site_name == 'clien'){$dealDB = Deal_clien::class;}
+        if ($site_name == '쿨엔조이' || $site_name == 'coolenjoy'){$dealDB = Deal_coolenjoy::class;}
+        if ($site_name == '펨코' || $site_name == 'fmkorea'){$dealDB = Deal_fmkorea::class;}
+        if ($site_name == '뽐뿌' || $site_name == 'ppomppu'){$dealDB = Deal_ppomppu::class;}
+        if ($site_name == '퀘이사' || $site_name == 'quasarzone'){$dealDB = Deal_quasarzone::class;}
+        if ($site_name == '루리' || $site_name == 'ruliweb'){$dealDB = Deal_ruliweb::class;}
+
+        $resItem = $dealDB::where('num',$num)->get()->first();
+
+        return $resItem;
     }
 }

@@ -1,3 +1,8 @@
-<?php
-//echo '핫딜게 입니다.';
+@extends('layouts.app')
+@section('title', '핫 딜')
+@section('content')
+<div>
+    @livewire('hotdeal')
+</div>
+@endsection
 

@@ -3,11 +3,8 @@
 namespace App\Http\Controllers\HotDeal;
 
 use App\Http\Controllers\Controller;
+use App\Service\BigFunctions;
 use Illuminate\Http\Request;
-use Goutte\Client;
-use Symfony\Component\HttpClient\HttpClient;
-use Symfony\Component\Panther\Client as PantherClient;
-use Illuminate\Support\Facades\Log;
 
 
 class HotDealController extends Controller
@@ -22,5 +19,18 @@ class HotDealController extends Controller
             'path' => $path,
         ]);
 
+    }
+
+    public function itemClick(Request $request){
+        $num = $request->get('num');
+        $site_name = $request->get('site_name');
+
+        $dealItem = (new BigFunctions)->getHotdealItem($site_name, $num);
+
+        //내부적인 조회수를 올려준다.
+        $dealItem->views_on_local++;
+        $dealItem->update([
+            'views_on_local' => $dealItem->views_on_local,
+        ]);
     }
 }
