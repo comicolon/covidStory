@@ -282,11 +282,11 @@ class CrawlingHotdealList extends Command
 
         //퀘이사존
         // 노드js 사용으로 실행만 시켜줌
-        $nodeJsPath = __DIR__;
-        $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
+//        $nodeJsPath = __DIR__;
+//        $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
 
         //디버그용 - 주석처리
-//        $this->sortHotDealInDB();
+        $this->sortHotDealInDB();
 
         return 0;
     }
@@ -294,18 +294,19 @@ class CrawlingHotdealList extends Command
     // 각사이트의 딜을 디비로 넣어주는 펑션
     public function insertHotDealToDB ($siteName, $dealArr, $classInstance){
 
+        //먼저 들어와 있는 것들의 뉴를 없애준다.
+        $res = $classInstance::query()->where('is_new',true)->get();
+        foreach ($res as $re){
+            $re->is_new = false;
+            $re->update([
+                'is_new' => $re->is_new,
+            ]);
+        }
+
         foreach ($dealArr as $item){
 
             if ($item != null){
                 try {
-                    //먼저 들어와 있는 것들의 뉴를 없애준다.
-                    $res = $classInstance::where('is_new' ,true)->all()->get();
-                    foreach ($res as $re){
-                        $re->is_new = false;
-                        $re->update([
-                            'is_new' => $re->is_new,
-                        ]);
-                    }
 
                     //먼저 들어와 있던것 중 중복 처리
                     $beforeBe = $classInstance::where('num', $item[0]['num'])->first();
