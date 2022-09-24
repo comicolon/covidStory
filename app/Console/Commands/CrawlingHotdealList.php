@@ -282,11 +282,11 @@ class CrawlingHotdealList extends Command
 
         //퀘이사존
         // 노드js 사용으로 실행만 시켜줌
-//        $nodeJsPath = __DIR__;
-//        $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
+        $nodeJsPath = __DIR__;
+        $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
 
         //디버그용 - 주석처리
-        $this->sortHotDealInDB();
+//        $this->sortHotDealInDB();
 
         return 0;
     }
