@@ -303,6 +303,7 @@ class CrawlingHotdealList extends Command
                         $beforeBe->is_new = false;
 
                         $beforeBe->update([
+                            'title' => $beforeBe->title,
                             'is_new' => $beforeBe->is_new,
                         ]);
                     } else {
