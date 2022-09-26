@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', '코스토리 - 코로나 이야기')
+@section('title', '코스토리 - 심심한 일상에 새로운 이야기를!')
 @section('content')
 
     <div class="main_page_content">

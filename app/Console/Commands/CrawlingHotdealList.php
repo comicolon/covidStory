@@ -311,13 +311,12 @@ class CrawlingHotdealList extends Command
                     //먼저 들어와 있던것 중 중복 처리
                     $beforeBe = $classInstance::where('num', $item[0]['num'])->first();
                     if ($beforeBe != null) {
-                        $beforeBe->is_new = false;
 
                         $beforeBe->update([
                             'title' => $item[0]['title'],
-                            'is_new' => $beforeBe->is_new,
                         ]);
-                    } else {                            // 새로운 딜 아이템
+                    }
+                    else {                            // 새로운 딜 아이템
                         $deal = new $classInstance();
 
                         $deal->title = $item[0]['title'];

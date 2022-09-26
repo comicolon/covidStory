@@ -7,7 +7,7 @@
                 <div class="item shrink-0 flex items-center">
                     <a href="{{ route('home') }}">
                         {{-- <x-jet-application-mark class="block h-9 w-auto" /> --}}
-                        <img src="/images/logo_02.png" class="block h-16 w-auto fill-current text-gray-600" />
+                        <img src="/images/logo_origin.png" class="block h-16 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
 
