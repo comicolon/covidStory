@@ -19,5 +19,6 @@ class Deal_ruliweb extends Model
         'views_on_local',
         'is_new',
         'is_closed',
+        'is_changed'
     ];
 }

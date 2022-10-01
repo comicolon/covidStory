@@ -287,7 +287,7 @@ class CrawlingHotdealList extends Command
         $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
 
         //디버그용 - 주석처리
-//        $this->sortHotDealInDB();
+        $this->sortHotDealInDB();
 
         return 0;
     }
@@ -304,6 +304,14 @@ class CrawlingHotdealList extends Command
             ]);
         }
 
+        $res2 = $classInstance::query()->where('is_changed',true)->get();
+        foreach ($res2 as $re){
+            $re->is_changed = false;
+            $re->update([
+                'is_changed' => $re->is_changed,
+            ]);
+        }
+
         foreach ($dealArr as $item){
 
             if ($item != null){
@@ -313,11 +321,13 @@ class CrawlingHotdealList extends Command
                     $beforeBe = $classInstance::where('num', $item[0]['num'])->first();
                     if ($beforeBe != null) {
 
-                        $beforeBe->update([
-                            'title' => $item[0]['title'],
-                            'is_changed' => true,
-                            'is_new' => true,
-                        ]);
+                        if ($item[0]['title'] != $beforeBe->title){
+                            $beforeBe->update([
+                                'title' => $item[0]['title'],
+                                'is_changed' => true,
+    //                            'is_new' => true,
+                            ]);
+                        }
                     }
                     else {                            // 새로운 딜 아이템
                         $deal = new $classInstance();

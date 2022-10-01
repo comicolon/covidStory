@@ -14,16 +14,25 @@ class HotDeal_ppomppu extends HotDeal
 
     public function insertItemToDB($item)
     {
-        $ch = new Combine_hotdeal();
+        if ($item['is_changed'] == true){
+            $changeRes = Combine_hotdeal::query()->where('num', $item['num'])->get()->first();
 
-        $ch->site_name = '뽐뿌';
-        $ch->title = $item['title'];
-        $ch->url = $item['url'];
-        $ch->category = $this->selectCategory($item['category']);
-        $ch->writer = $item['writer'];
-        $ch->num = $item['num'];
+            $changeRes->update([
+                'title'  => $item['title'],
+            ]);
+        }
+        else{
+            $ch = new Combine_hotdeal();
 
-        $ch->save();
+            $ch->site_name = '뽐뿌';
+            $ch->title = $item['title'];
+            $ch->url = $item['url'];
+            $ch->category = $this->selectCategory($item['category']);
+            $ch->writer = $item['writer'];
+            $ch->num = $item['num'];
+
+            $ch->save();
+        }
     }
 
     public function selectCategory($category)

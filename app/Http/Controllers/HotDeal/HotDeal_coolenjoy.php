@@ -9,21 +9,31 @@ class HotDeal_coolenjoy extends HotDeal
 {
     public function getNewItem()
     {
-        return Deal_coolenjoy::query()->where('is_new', true)->get();
+        return Deal_coolenjoy::query()->where('is_new', true)->orWhere('is_changed', true)->get();
     }
 
     public function insertItemToDB($item)
     {
-        $ch = new Combine_hotdeal();
 
-        $ch->site_name = '쿨엔조이';
-        $ch->title = $item['title'];
-        $ch->url = $item['url'];
-        $ch->category = $this->selectCategory($item['category']);
-        $ch->writer = $item['writer'];
-        $ch->num = $item['num'];
+        if ($item['is_changed'] == true){
+            $changeRes = Combine_hotdeal::query()->where('num', $item['num'])->get()->first();
 
-        $ch->save();
+            $changeRes->update([
+                'title'  => $item['title'],
+            ]);
+        }
+        elseif ($item['is_new'] == true){
+            $ch = new Combine_hotdeal();
+
+            $ch->site_name = '쿨엔조이';
+            $ch->title = $item['title'];
+            $ch->url = $item['url'];
+            $ch->category = $this->selectCategory($item['category']);
+            $ch->writer = $item['writer'];
+            $ch->num = $item['num'];
+
+            $ch->save();
+        }
     }
 
     public function selectCategory($category)

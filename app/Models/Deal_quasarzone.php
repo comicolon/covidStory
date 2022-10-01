@@ -19,5 +19,6 @@ class Deal_quasarzone extends Model
         'views_on_local',
         'is_new',
         'is_closed',
+        'is_changed'
     ];
 }
