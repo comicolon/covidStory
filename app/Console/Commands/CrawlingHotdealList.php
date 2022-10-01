@@ -287,7 +287,7 @@ class CrawlingHotdealList extends Command
         $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
 
         //디버그용 - 주석처리
-        $this->sortHotDealInDB();
+//        $this->sortHotDealInDB();
 
         return 0;
     }
