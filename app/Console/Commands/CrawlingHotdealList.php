@@ -10,6 +10,12 @@ use App\Http\Controllers\HotDeal\HotDeal_ppomppu;
 use App\Http\Controllers\HotDeal\HotDeal_quasarzone;
 use App\Http\Controllers\HotDeal\HotDeal_ruliweb;
 
+use App\Models\Deal_city;
+use App\Models\Deal_clien;
+use App\Models\Deal_coolenjoy;
+use App\Models\Deal_fmkorea;
+use App\Models\Deal_ppomppu;
+use App\Models\Deal_ruliweb;
 use Goutte\Client;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
