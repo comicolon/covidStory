@@ -6,7 +6,7 @@
 
     <?xml version="1.0" encoding="UTF-8" standalone="no"?>
     <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="500px" height="396px" viewBox="0 0 1000 792" enable-background="new 0 0 1000 792" xml:space="preserve">  <image id="image0" width="1000" height="792" x="0" y="0"
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="250px" height="198px" viewBox="0 0 1000 792" enable-background="new 0 0 1000 792" xml:space="preserve">  <image id="image0" width="1000" height="792" x="0" y="0"
                                                                                                                                                                                                                                                           href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA+gAAAMYCAYAAABYMc39AAAABGdBTUEAALGPC/xhBQAAACBjSFJN
 AAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAABmJLR0QA/wD/AP+gvaeTAAAA
 B3RJTUUH5gkaECE4hsaJuAAAgABJREFUeNrs3XdgJVd5v/HnvVfaJml3jXHF4EINzaH3ZkIP4WfK

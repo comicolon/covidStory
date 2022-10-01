@@ -161,7 +161,7 @@ class simple_html_dom_node
 
 	function dump($show_attr = true, $depth = 0)
 	{
-		echo simple_html_dom . phpstr_repeat("\t", $depth);
+		echo str_repeat("\t", $depth) . $this->tag;
 
 		if ($show_attr && count($this->attr) > 0) {
 			echo '(';
@@ -878,7 +878,7 @@ class simple_html_dom_node
 
 		preg_match_all(
 			$pattern,
-            trim($selector_string) . ' simple_html_dom.php', // Add final ' ' as pseudo separator
+			trim($selector_string) . ' ', // Add final ' ' as pseudo separator
 			$matches,
 			PREG_SET_ORDER
 		);
@@ -2246,7 +2246,8 @@ class simple_html_dom
 				}
 
 				if (isset($this->noise[$key])) {
-					$text = simple_html_dom . phpsubstr($text, 0, $pos)
+					$text = substr($text, 0, $pos)
+					. $this->noise[$key]
 					. substr($text, $pos + 16);
 				} else {
 					// do this to prevent an infinite loop.

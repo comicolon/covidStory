@@ -9,12 +9,7 @@ use App\Http\Controllers\HotDeal\HotDeal_fmkorea;
 use App\Http\Controllers\HotDeal\HotDeal_ppomppu;
 use App\Http\Controllers\HotDeal\HotDeal_quasarzone;
 use App\Http\Controllers\HotDeal\HotDeal_ruliweb;
-use App\Models\Deal_city;
-use App\Models\Deal_clien;
-use App\Models\Deal_coolenjoy;
-use App\Models\Deal_fmkorea;
-use App\Models\Deal_ppomppu;
-use App\Models\Deal_ruliweb;
+
 use Goutte\Client;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Log;
@@ -46,7 +41,7 @@ class CrawlingHotdealList extends Command
         //파일 정보 가져오기 설정
         ini_set("allow_url_fopen",1);
         //심플 파서 로드
-//        require_once $_SERVER['DOCUMENT_ROOT'].'/../app/Service/simple_html_dom.php';
+//        require $_SERVER['DOCUMENT_ROOT'].'app/lib/simple_html_dom.php';
         //상수선언
         $sleepTimeM = 1200000;
 
@@ -280,8 +275,8 @@ class CrawlingHotdealList extends Command
         $this->insertHotDealToDB('클리앙', $resArr, Deal_clien::class);
 
 
-        //퀘이사존
-        // 노드js 사용으로 실행만 시켜줌
+//        퀘이사존
+//         노드js 사용으로 실행만 시켜줌
         $nodeJsPath = __DIR__;
         $res = exec('cd '.$nodeJsPath.' && node quasarzone.js');
 
@@ -314,6 +309,8 @@ class CrawlingHotdealList extends Command
 
                         $beforeBe->update([
                             'title' => $item[0]['title'],
+                            'is_changed' => true,
+                            'is_new' => true,
                         ]);
                     }
                     else {                            // 새로운 딜 아이템
