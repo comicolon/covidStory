@@ -6,6 +6,7 @@ use App\Http\Controllers\board\lifeStoryController;
 use App\Http\Controllers\covidInfo\covidInfo;
 use App\Http\Controllers\covidInfo\covidNewsController;
 use App\Http\Controllers\extra\CommentController;
+use App\Http\Controllers\extra\weather;
 use App\Http\Controllers\GoogleLoginController;
 use App\Http\Controllers\HotDeal\HotDealController;
 use App\Http\Controllers\profile\show;
@@ -83,9 +84,7 @@ Route::get('/bestListClick', [BestListController::class, 'listClick'])->name('be
 //핫딜
 Route::get('/hotdeal', [HotDealController::class, 'index'])->name('hotdeal.index');
 Route::get('/hotdealClick', [HotDealController::class, 'itemClick'])->name('hotdeal.itemClick');
-//라이브와이어
-//Route::get('/hotdeal', [Hotdeal::class, 'render'])->name('hotdeal.render');
-//Route::get('/hotdealClick', [Hotdeal::class, 'itemClick'])->name('hotdeal.itemClick');
+
 
 
 //프로필
@@ -93,6 +92,8 @@ Route::get('/user/profile', [show::class, 'index'])->name('profileShow');
 
 //임시 api
  Route::get('/official_covid', [covidInfo::class, 'officialIndex']);
+Route::get('/weather', [weather::class, 'index']);
+
 
 //Route::middleware([
 //    'auth:sanctum',

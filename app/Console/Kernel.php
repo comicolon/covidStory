@@ -20,11 +20,10 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         //코로나 히스토리 업데이트
-        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:05');
-        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:15');
-        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:30');
-        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:45');
-        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('11:00');
+        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:04');
+        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:14');
+        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:29');
+        $schedule->command('covidInfo:stackHistory')->timezone('Asia/Seoul')->dailyAt('10:44');
 
         //베스트글 크롤링
         $schedule->command('bestList:crawlingBestSite')->timezone('Asia/Seoul')->hourlyAt(06)->runInBackground();
