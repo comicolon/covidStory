@@ -24,7 +24,7 @@ class HotDeal_quasarzone extends HotDeal
         else{
             $ch = new Combine_hotdeal();
 
-            $ch->site_name = '씨티';
+            $ch->site_name = '퀘이사';
             $ch->title = $item['title'];
             $ch->url = $item['url'];
             $ch->category = $this->selectCategory($item['category']);
