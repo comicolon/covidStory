@@ -4,6 +4,11 @@
 
     <div class="main_page_content">
         <div class="main_order1">
+            {{--      날씨 정보 들어 가는곳      --}}
+
+            @livewire('weather')
+
+
             <div class="bg-siteTheme2 text-white flex items-center h-10">
                 <p class="ml-4"> 국내 코로나 발생 현황 </p>
             </div>
@@ -49,7 +54,7 @@
 
 {{--            베스트모아 게시판 10개--}}
             <div class="bg-zinc-50">
-                <div class="px-3 py-1 bg-siteTheme3 text-white">
+                <div class="px-3 py-1 bg-siteTheme3 text-white rounded-br-2xl">
                     <a href="{{'/bestList'}}">
                         <h3>나우 베스트</h3>
                     </a>
@@ -74,7 +79,7 @@
         <div class="main_order2">
 
             <div>
-                <div class="px-3 py-1 bg-siteTheme3 text-white">
+                <div class="px-3 py-1 bg-siteTheme3 text-white rounded-br-2xl">
                     <a href="{{'/covidNews'}}">
                         <h3>뉴스</h3>
                     </a>
@@ -91,7 +96,7 @@
             </div>
 
             <div>
-                <div class="px-3 py-1 bg-siteTheme3 text-white">
+                <div class="px-3 py-1 bg-siteTheme3 text-white rounded-br-2xl">
                     <a href="{{'/lifeStory'}}">
                         <h3>일상 이야기</h3>
                     </a>
