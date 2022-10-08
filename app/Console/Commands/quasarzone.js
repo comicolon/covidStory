@@ -63,6 +63,16 @@ function delay(time) {
         let writer = $(list).find('td:nth-child(2) > div > div.market-info-list-cont > div > p:nth-child(2) > span.user-nick-wrap.nick.d-inline-block').attr('data-nick');
         let num = url.substring(45);
 
+        // 미리 is_new를 모두 false로 바꿔준다.
+        let query_1 = "UPDATE deal_quasarzones SET is_new = false where is_new = true";
+
+        connection.query(query_1, function (err, results, fields) { // testQuery 실행
+            if (err) {
+                console.log(err);
+            }
+            console.log(results);
+        });
+
         let beforeBe = "SELECT * FROM deal_quasarzones where `num` = " + num;
 
         let beforeBeNum;
