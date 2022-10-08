@@ -34,7 +34,7 @@
 
     <div class="flex">
         @foreach($waArr as $wa)
-        <div class="px-1">
+        <div class="">
             <p class="text-sm">{{substr($wa[6], 8, 2)}}일</p>
             <p class="text-sm">{{substr($wa[6], 11, 2)}}시</p>
             <img src="{{$wa[5]}}" alt=""/>
