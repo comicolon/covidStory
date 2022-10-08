@@ -38,8 +38,8 @@
             <p class="text-sm">{{substr($wa[6], 8, 2)}}일</p>
             <p class="text-sm">{{substr($wa[6], 11, 2)}}시</p>
             <img src="{{$wa[5]}}" alt=""/>
-            {{$wa[4]}}
-            {{$wa[0]}}
+            <p class="text-sm">{{$wa[4]}}</p>
+            <p class="text-sm">{{$wa[0]}}</p>
         </div>
         @endforeach
     </div>
