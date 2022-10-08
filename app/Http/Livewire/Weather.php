@@ -13,9 +13,11 @@ class Weather extends Component
     public function render()
     {
         $wcArr = $this->getCurrentWeather($this->city);
+        $waArr = $this->getAfterWeather($this->city);
 
         return view('livewire.weather',[
             'wcArr' => $wcArr,
+            'waArr' => $waArr,
         ]);
 
     }
@@ -78,10 +80,14 @@ class Weather extends Component
         $a = curl_exec($wd);
         curl_close($wd);
 
+
+
         if (isset($a) && $a){
             $weather2 = json_decode($a);
 
             //    dd($weather2);
+
+            $waArr = array();
 
             for ($i = 3; $i < 11; $i++ ){
 
@@ -101,10 +107,24 @@ class Weather extends Component
 //                echo '설명 : '.${'after_3h_weather_description_'.$i};
 //                echo '예상 시간 : '.${'after_3h_weather_dt_'.$i};
 
+                $resArr = [
+                   ${'after_3h_temp_'.$i},
+                   ${'after_3h_temp_min_'.$i},
+                   ${'after_3h_temp_max_'.$i},
+                   ${'after_3h_weather_main_'.$i},
+                   ${'after_3h_weather_description_'.$i},
+                   ${'after_3h_weather_icon_'.$i},
+                   ${'after_3h_weather_dt_'.$i},
+                ];
+
+                array_push($waArr, $resArr);
+
             }
         }else{
             exit(0);
         }
+
+        return $waArr;
     }
 
 }

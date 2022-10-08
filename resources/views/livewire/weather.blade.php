@@ -11,7 +11,7 @@
             <p>{{$wcArr[4]}}</p>
     </div>
 
-    <div class="flex justify-center">
+    <div class="flex justify-center mb-1">
         <label>
             <select class="rounded-md py-1 my-1" wire:model="city" name="city">
                 <option value="Seoul">서울</option>
@@ -31,4 +31,20 @@
             </select>
         </label>
     </div>
+
+    <div class="flex">
+        @foreach($waArr as $wa)
+        <div class="px-1">
+            <p class="text-sm">{{substr($wa[6], 8, 2)}}일</p>
+            <p class="text-sm">{{substr($wa[6], 11, 2)}}시</p>
+            <img src="{{$wa[5]}}" alt=""/>
+            {{$wa[4]}}
+            {{$wa[0]}}
+        </div>
+        @endforeach
+    </div>
+
+
+
+
 </div>
