@@ -35,11 +35,11 @@
     <div class="flex">
         @foreach($waArr as $wa)
         <div class="">
-            <p class="text-sm md:">{{substr($wa[6], 8, 2)}}일</p>
-            <p class="text-sm md:">{{substr($wa[6], 11, 2)}}시</p>
+            <p class="text-sm lg:text-base px-3">{{substr($wa[6], 8, 2)}}일</p>
+            <p class="text-sm lg:text-base px-3">{{substr($wa[6], 11, 2)}}시</p>
             <img src="{{$wa[5]}}" alt=""/>
-            <p class="text-sm md:">{{$wa[4]}}</p>
-            <p class="text-sm md:">{{$wa[0]}}°</p>
+{{--            <p class="text-sm md:">{{$wa[4]}}</p>--}}
+            <p class="text-sm lg:text-base px-3">{{ round($wa[0])}}°</p>
         </div>
         @endforeach
     </div>
