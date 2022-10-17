@@ -144,53 +144,53 @@ class CrawlingBestList extends Command
         $this->insertEachArrToDB('이세랄클럽', $slrArr, Best_slrclub::class);
 
 
-        //에펨코리아 가져오기
-
-
-        $html = file_get_html('https://www.fmkorea.com/index.php?mid=humor&sort_index=pop&order_type=desc&listStyle=list&page=1');
-        $fmkArr = array();
-        $idx = 0;
-        foreach ($html->find('tbody tr') as $item) {
-
-            try {
-                usleep($sleepTimeM);
-                if ($item->class != 'notice notice_pop0' && $item->class != 'notice notice_pop0 show_folded_notice') {
-
-                    $url = $item->find('a')[0]->href;
-                    $url = 'https://www.fmkorea.com' . $url;
-                    $url = str_replace('amp;', '', $url);
-                    $title = trim($item->find('.title a')[0]->plaintext);
-                    $writer = trim($item->find('.author a')[0]->plaintext);
-                    $html2 = file_get_html($url);
-                    $time = $html2->find('.date')[0]->plaintext;
-                    $datetime = date_create_from_format('Y.m.d H:i', $time);
-                    $views = trim($item->find('.m_no')[0]->plaintext);
-                    $pos = strpos($url, 'document_srl=');
-                    $num = trim(substr($url, $pos + 13));
-                    $comments = $item->find('.replyNum')[0]->plaintext;
-
-                    //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
-                    $arr = array(
-                        'title' => $title,
-                        'url' => $url,
-                        'writer' => $writer,
-                        'datetime' => $datetime,
-                        'views' => $views,
-                        'num' => $num,
-                        'comments' => $comments,
-                    );
-                    array_push($fmkArr, $arr);
-                }
-//                $idx++;
-//                if ($idx == $idxMax)
-//                    break;
-            } catch (\Exception $e) {
-                Log::info('에펨코리아 가져오기 실패',['error : '=>$e]);
-            }
-        }
-
-        //디비에 넣어준다.
-        $this->insertEachArrToDB('에펨코리아', $fmkArr, Best_fmkorea::class);
+//        //에펨코리아 가져오기
+//
+//
+//        $html = file_get_html('https://www.fmkorea.com/index.php?mid=humor&sort_index=pop&order_type=desc&listStyle=list&page=1');
+//        $fmkArr = array();
+//        $idx = 0;
+//        foreach ($html->find('tbody tr') as $item) {
+//
+//            try {
+//                usleep($sleepTimeM);
+//                if ($item->class != 'notice notice_pop0' && $item->class != 'notice notice_pop0 show_folded_notice') {
+//
+//                    $url = $item->find('a')[0]->href;
+//                    $url = 'https://www.fmkorea.com' . $url;
+//                    $url = str_replace('amp;', '', $url);
+//                    $title = trim($item->find('.title a')[0]->plaintext);
+//                    $writer = trim($item->find('.author a')[0]->plaintext);
+//                    $html2 = file_get_html($url);
+//                    $time = $html2->find('.date')[0]->plaintext;
+//                    $datetime = date_create_from_format('Y.m.d H:i', $time);
+//                    $views = trim($item->find('.m_no')[0]->plaintext);
+//                    $pos = strpos($url, 'document_srl=');
+//                    $num = trim(substr($url, $pos + 13));
+//                    $comments = $item->find('.replyNum')[0]->plaintext;
+//
+//                    //중첩 배열로 만들어 준다 한번에 디비에 넣기 위함
+//                    $arr = array(
+//                        'title' => $title,
+//                        'url' => $url,
+//                        'writer' => $writer,
+//                        'datetime' => $datetime,
+//                        'views' => $views,
+//                        'num' => $num,
+//                        'comments' => $comments,
+//                    );
+//                    array_push($fmkArr, $arr);
+//                }
+////                $idx++;
+////                if ($idx == $idxMax)
+////                    break;
+//            } catch (\Exception $e) {
+//                Log::info('에펨코리아 가져오기 실패',['error : '=>$e]);
+//            }
+//        }
+//
+//        //디비에 넣어준다.
+//        $this->insertEachArrToDB('에펨코리아', $fmkArr, Best_fmkorea::class);
 
 
         //루리웹 가져오기
